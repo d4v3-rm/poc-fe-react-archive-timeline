@@ -1,332 +1,75 @@
-import type { PoeticEvent } from '../types'
+import rawPoeticEvents from '../content/poetic-events.json'
+import type {
+  PoemEntry,
+  PoemGroup,
+  PoeticBranch,
+  PoeticEvent,
+  PoeticMood,
+} from '../types'
 
-export const poeticEvents: PoeticEvent[] = [
-  {
-    id: 'dolce-stil-novo',
-    year: 1292,
-    title: 'Nascita del Dolce Stil Novo',
-    location: 'Firenze',
-    mood: 'amore',
-    branch: 'radice',
-    description:
-      'La lingua amorosa diventa laboratorio formale: armonia, introspezione e lessico spirituale segnano l inizio della tradizione moderna.',
-    connections: ['commedia-dante', 'leopardi-infinito'],
-    poems: [
-      {
-        id: 'donna-pregha',
-        title: 'Donna me pregha',
-        author: 'Guido Cavalcanti',
-        excerpt: 'La ragione dell amore si scontra con il corpo e con il tremore.',
-        group: 'manifesto',
-      },
-      {
-        id: 'tanto-gentile',
-        title: 'Tanto gentile e tanto onesta pare',
-        author: 'Dante Alighieri',
-        excerpt: 'Lo sguardo poetico trasforma il quotidiano in apparizione.',
-        group: 'ciclo',
-      },
-    ],
-  },
-  {
-    id: 'commedia-dante',
-    year: 1321,
-    title: 'Si chiude la Commedia',
-    location: 'Ravenna',
-    mood: 'spirituale',
-    branch: 'radice',
-    description:
-      'Il poema lega teologia, politica e invenzione narrativa in un sistema che diventera punto di riferimento per secoli.',
-    connections: ['dolce-stil-novo', 'leopardi-infinito', 'montale-ossi'],
-    poems: [
-      {
-        id: 'inferno-xxvi',
-        title: 'Inferno XXVI',
-        author: 'Dante Alighieri',
-        excerpt: 'Il viaggio di Ulisse fonde conoscenza, rischio e limite umano.',
-        group: 'frammenti',
-      },
-      {
-        id: 'purgatorio-i',
-        title: 'Purgatorio I',
-        author: 'Dante Alighieri',
-        excerpt: 'La montagna del riscatto introduce una nuova etica del tempo.',
-        group: 'ciclo',
-      },
-      {
-        id: 'paradiso-xxxiii',
-        title: 'Paradiso XXXIII',
-        author: 'Dante Alighieri',
-        excerpt: 'La visione finale mette in crisi i confini del linguaggio.',
-        group: 'manifesto',
-      },
-    ],
-  },
-  {
-    id: 'leopardi-infinito',
-    year: 1819,
-    title: 'Leopardi apre la linea dell infinito',
-    location: 'Recanati',
-    mood: 'natura',
-    branch: 'visione',
-    branchFrom: 'commedia-dante',
-    description:
-      'La siepe diventa dispositivo filosofico: guardare il limite per immaginare l oltre e misurare la coscienza moderna.',
-    connections: ['commedia-dante', 'baude-fleurs', 'montale-ossi'],
-    poems: [
-      {
-        id: 'infinito',
-        title: 'L infinito',
-        author: 'Giacomo Leopardi',
-        excerpt: 'Il pensiero annega nel mare e trova forma proprio nel naufragio.',
-        group: 'manifesto',
-      },
-      {
-        id: 'sera-festa',
-        title: 'La sera del di di festa',
-        author: 'Giacomo Leopardi',
-        excerpt: 'Tempo storico e tempo interiore si sfalsano in una malinconia lucida.',
-        group: 'ciclo',
-      },
-    ],
-  },
-  {
-    id: 'baude-fleurs',
-    year: 1857,
-    title: 'Baudelaire e la frattura urbana',
-    location: 'Parigi',
-    mood: 'rivolta',
-    branch: 'visione',
-    description:
-      'Con Les Fleurs du mal la modernita entra nella poesia: metropoli, corpo e ambiguita morale diventano materia lirica.',
-    connections: ['leopardi-infinito', 'ungaretti-porto', 'ginsberg-howl'],
-    poems: [
-      {
-        id: 'spleen',
-        title: 'Spleen',
-        author: 'Charles Baudelaire',
-        excerpt: 'Il cielo basso pesa come coperchio sulla citta contemporanea.',
-        group: 'frammenti',
-      },
-      {
-        id: 'albatros',
-        title: 'L albatros',
-        author: 'Charles Baudelaire',
-        excerpt: 'Il poeta e maestoso in volo ma impacciato sul ponte sociale.',
-        group: 'manifesto',
-      },
-    ],
-  },
-  {
-    id: 'ungaretti-porto',
-    year: 1916,
-    title: 'La parola ridotta alla soglia',
-    location: 'Carso',
-    mood: 'esilio',
-    branch: 'civile',
-    branchFrom: 'baude-fleurs',
-    description:
-      'In trincea il verso si spezza e si concentra. La pagina diventa spazio di sopravvivenza linguistica.',
-    connections: ['baude-fleurs', 'montale-ossi', 'quasimodo-giorno'],
-    poems: [
-      {
-        id: 'porto-sepolto',
-        title: 'Il porto sepolto',
-        author: 'Giuseppe Ungaretti',
-        excerpt: 'Scendere nel fondo per riportare in superficie una sillaba necessaria.',
-        group: 'manifesto',
-      },
-      {
-        id: 'soldati',
-        title: 'Soldati',
-        author: 'Giuseppe Ungaretti',
-        excerpt: 'La precarieta del vivere prende forma in quattro righe asciutte.',
-        group: 'frammenti',
-      },
-    ],
-  },
-  {
-    id: 'montale-ossi',
-    year: 1925,
-    title: 'Montale e il paesaggio aspro',
-    location: 'Genova',
-    mood: 'natura',
-    branch: 'visione',
-    description:
-      'Ossi di seppia rende il paesaggio costiero un vocabolario di attriti, secchezza e disincanto.',
-    connections: ['commedia-dante', 'leopardi-infinito', 'ungaretti-porto', 'merini-rientro'],
-    poems: [
-      {
-        id: 'meriggiare',
-        title: 'Meriggiare pallido e assorto',
-        author: 'Eugenio Montale',
-        excerpt: 'La luce estiva espone la fatica del senso e la ruvidita del reale.',
-        group: 'ciclo',
-      },
-      {
-        id: 'non-chiederci',
-        title: 'Non chiederci la parola',
-        author: 'Eugenio Montale',
-        excerpt: 'La poesia rifiuta formule assolute e resta fedele alla frattura.',
-        group: 'manifesto',
-      },
-      {
-        id: 'spesso-male',
-        title: 'Spesso il male di vivere ho incontrato',
-        author: 'Eugenio Montale',
-        excerpt: 'L esperienza del dolore si concentra in immagini minime e taglienti.',
-        group: 'frammenti',
-      },
-    ],
-  },
-  {
-    id: 'quasimodo-giorno',
-    year: 1947,
-    title: 'Il tono civile del dopoguerra',
-    location: 'Milano',
-    mood: 'rivolta',
-    branch: 'civile',
-    description:
-      'La voce privata si apre al discorso storico e alla responsabilita collettiva nella ricostruzione del paese.',
-    connections: ['ungaretti-porto', 'ginsberg-howl'],
-    poems: [
-      {
-        id: 'uomo-tempo',
-        title: 'Uomo del mio tempo',
-        author: 'Salvatore Quasimodo',
-        excerpt: 'La guerra moderna appare come antica brutalita mai superata.',
-        group: 'manifesto',
-      },
-      {
-        id: 'giorno-dopo-giorno',
-        title: 'Giorno dopo giorno',
-        author: 'Salvatore Quasimodo',
-        excerpt: 'Il quotidiano porta il peso della memoria e del lutto pubblico.',
-        group: 'ciclo',
-      },
-    ],
-  },
-  {
-    id: 'ginsberg-howl',
-    year: 1956,
-    title: 'Howl e la poesia performance',
-    location: 'San Francisco',
-    mood: 'rivolta',
-    branch: 'performativa',
-    branchFrom: 'quasimodo-giorno',
-    description:
-      'Il reading pubblico cambia la fruizione del testo: verso lungo, corpo in scena e controcultura diventano un solo gesto.',
-    connections: ['baude-fleurs', 'quasimodo-giorno', 'slam-poetry'],
-    poems: [
-      {
-        id: 'howl-pt1',
-        title: 'Howl Parte I',
-        author: 'Allen Ginsberg',
-        excerpt: 'Catalogo visionario di vite ai margini della metropoli americana.',
-        group: 'manifesto',
-      },
-      {
-        id: 'america',
-        title: 'America',
-        author: 'Allen Ginsberg',
-        excerpt: 'Dialogo ironico e feroce con la nazione e i suoi fantasmi.',
-        group: 'frammenti',
-      },
-      {
-        id: 'supermarket',
-        title: 'A Supermarket in California',
-        author: 'Allen Ginsberg',
-        excerpt: 'Passeggiata notturna tra consumo, desiderio e memoria letteraria.',
-        group: 'ciclo',
-      },
-    ],
-  },
-  {
-    id: 'merini-rientro',
-    year: 1979,
-    title: 'La voce frontale di Merini',
-    location: 'Milano',
-    mood: 'amore',
-    branch: 'visione',
-    description:
-      'Con il ritorno editoriale la poesia intreccia eros, spiritualita e fragilita biografica senza mediazioni.',
-    connections: ['montale-ossi', 'poesia-digitale'],
-    poems: [
-      {
-        id: 'terra-santa',
-        title: 'La Terra Santa',
-        author: 'Alda Merini',
-        excerpt: 'L esperienza del dolore psichico si converte in voce profetica.',
-        group: 'manifesto',
-      },
-      {
-        id: 'aforismi-amore',
-        title: 'Poesie d amore',
-        author: 'Alda Merini',
-        excerpt: 'La tenerezza convive con urgenza e ferita in un tono diretto.',
-        group: 'frammenti',
-      },
-    ],
-  },
-  {
-    id: 'slam-poetry',
-    year: 1994,
-    title: 'Lo slam apre la piazza europea',
-    location: 'Parigi e Roma',
-    mood: 'rivolta',
-    branch: 'performativa',
-    description:
-      'La competizione orale rende la poesia un rito comunitario dove ritmo, gesto e risposta del pubblico sono centrali.',
-    connections: ['ginsberg-howl', 'poesia-digitale'],
-    poems: [
-      {
-        id: 'slam-set-1',
-        title: 'Set orale metropolitano',
-        author: 'Comunità slam',
-        excerpt: 'Testi brevi e percussivi pensati per voce, platea e improvvisazione.',
-        group: 'ciclo',
-      },
-      {
-        id: 'spoken-resistenza',
-        title: 'Spoken words di resistenza',
-        author: 'Comunità slam',
-        excerpt: 'La lingua quotidiana entra in scena con energia politica e inclusiva.',
-        group: 'manifesto',
-      },
-    ],
-  },
-  {
-    id: 'poesia-digitale',
-    year: 2015,
-    title: 'Ecologia poetica digitale',
-    location: 'Piattaforme online',
-    mood: 'spirituale',
-    branch: 'performativa',
-    description:
-      'Social, video e newsletter trasformano ritmo e scala della lettura, creando micro comunita transnazionali.',
-    connections: ['merini-rientro', 'slam-poetry'],
-    poems: [
-      {
-        id: 'instapoetry-feed',
-        title: 'Sequenze feed poetry',
-        author: 'Nuove autrici e nuovi autori',
-        excerpt: 'Versi brevi pensati per scorrimento rapido e impatto visivo immediato.',
-        group: 'frammenti',
-      },
-      {
-        id: 'longform-newsletter',
-        title: 'Lunghe lettere poetiche',
-        author: 'Nuove autrici e nuovi autori',
-        excerpt: 'Formati seriali che ricompongono intimità e continuita narrativa.',
-        group: 'ciclo',
-      },
-      {
-        id: 'video-poem-live',
-        title: 'Video poem live',
-        author: 'Nuove autrici e nuovi autori',
-        excerpt: 'Testo, voce e montaggio diventano un unico piano performativo.',
-        group: 'manifesto',
-      },
-    ],
-  },
-]
+interface PoemContentConfig {
+  id: string
+  title: string
+  author: string
+  group: PoemGroup
+  markdown: string
+}
+
+interface PoeticEventContentConfig {
+  id: string
+  year: number
+  title: string
+  location: string
+  mood: PoeticMood
+  branch: PoeticBranch
+  branchFrom?: string
+  description: string
+  connections: string[]
+  poems: PoemContentConfig[]
+}
+
+const markdownFiles = import.meta.glob<string>('../content/poems/**/*.md', {
+  eager: true,
+  import: 'default',
+  query: '?raw',
+})
+
+const resolvePoemBody = (markdownPath: string, poemId: string) => {
+  const normalizedPath = markdownPath.replace(/\\/g, '/').replace(/^\/+/, '')
+  const source = markdownFiles[`../content/poems/${normalizedPath}`]
+
+  if (!source) {
+    console.warn(
+      `[poetic-events] Missing markdown for poem "${poemId}" at path "${markdownPath}".`,
+    )
+    return 'Contenuto non disponibile.'
+  }
+
+  const trimmedSource = source.trim()
+  return trimmedSource.length > 0 ? trimmedSource : 'Contenuto non disponibile.'
+}
+
+const toPoemEntry = (poem: PoemContentConfig): PoemEntry => ({
+  id: poem.id,
+  title: poem.title,
+  author: poem.author,
+  group: poem.group,
+  excerpt: resolvePoemBody(poem.markdown, poem.id),
+})
+
+const toPoeticEvent = (event: PoeticEventContentConfig): PoeticEvent => ({
+  id: event.id,
+  year: event.year,
+  title: event.title,
+  location: event.location,
+  mood: event.mood,
+  branch: event.branch,
+  branchFrom: event.branchFrom,
+  description: event.description,
+  connections: [...event.connections],
+  poems: event.poems.map(toPoemEntry),
+})
+
+export const poeticEvents: PoeticEvent[] = (
+  rawPoeticEvents as PoeticEventContentConfig[]
+).map(toPoeticEvent)
