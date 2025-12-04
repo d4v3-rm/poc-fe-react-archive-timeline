@@ -244,6 +244,7 @@ export function ThreeTimeline({
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     renderer.outputColorSpace = THREE.SRGBColorSpace
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.domElement.style.touchAction = 'none'
     host.appendChild(renderer.domElement)
 
     const labelLayer = document.createElement('div')
@@ -793,8 +794,57 @@ export function ThreeTimeline({
     }
 
     let hoveredId: string | null = null
+    let activeTouchPointerId: number | null = null
+    let touchStartX = 0
+    let touchStartY = 0
+    let touchLastY = 0
+    let touchGesture: 'idle' | 'timeline' | 'camera' = 'idle'
+    let suppressClickUntil = 0
+
+    const updateTimelineOffset = (deltaY: number, speed: number) => {
+      const nextTarget = targetOffsetRef.current - deltaY * speed
+      targetOffsetRef.current = THREE.MathUtils.clamp(nextTarget, minOffset, maxOffset)
+    }
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (event.pointerType !== 'touch') {
+        return
+      }
+
+      activeTouchPointerId = event.pointerId
+      touchStartX = event.clientX
+      touchStartY = event.clientY
+      touchLastY = event.clientY
+      touchGesture = 'idle'
+
+      if (renderer.domElement.setPointerCapture) {
+        renderer.domElement.setPointerCapture(event.pointerId)
+      }
+    }
 
     const handlePointerMove = (event: PointerEvent) => {
+      if (event.pointerType === 'touch' && activeTouchPointerId === event.pointerId) {
+        const deltaX = event.clientX - touchStartX
+        const deltaY = event.clientY - touchStartY
+        const travel = Math.abs(deltaX) + Math.abs(deltaY)
+
+        if (touchGesture === 'idle' && travel > 8) {
+          touchGesture = Math.abs(deltaY) > Math.abs(deltaX) * 1.15 ? 'timeline' : 'camera'
+        }
+
+        if (touchGesture === 'timeline') {
+          controls.enabled = false
+          event.preventDefault()
+          const stepY = event.clientY - touchLastY
+          const speed = Math.abs(stepY) > 14 ? 0.07 : 0.05
+          updateTimelineOffset(stepY, speed)
+          suppressClickUntil = performance.now() + 260
+        }
+
+        touchLastY = event.clientY
+        return
+      }
+
       const hoveredEvent = resolveEventAtPointer(event.clientX, event.clientY)
       const nextHoveredId = hoveredEvent?.id ?? null
 
@@ -808,12 +858,32 @@ export function ThreeTimeline({
     }
 
     const handlePointerLeave = () => {
+      controls.enabled = true
       hoveredId = null
       renderer.domElement.style.cursor = 'grab'
       onHoverRef.current(null)
     }
 
+    const handlePointerRelease = (event: PointerEvent) => {
+      if (event.pointerType !== 'touch' || activeTouchPointerId !== event.pointerId) {
+        return
+      }
+
+      if (renderer.domElement.releasePointerCapture) {
+        renderer.domElement.releasePointerCapture(event.pointerId)
+      }
+
+      activeTouchPointerId = null
+      touchGesture = 'idle'
+      controls.enabled = true
+      renderer.domElement.style.cursor = 'grab'
+    }
+
     const handleClick = (event: MouseEvent) => {
+      if (performance.now() < suppressClickUntil) {
+        return
+      }
+
       const selectedEvent = resolveEventAtPointer(event.clientX, event.clientY)
 
       if (!selectedEvent) {
@@ -827,14 +897,15 @@ export function ThreeTimeline({
       event.preventDefault()
 
       const speed = Math.abs(event.deltaY) > 65 ? 0.016 : 0.011
-      const nextTarget = targetOffsetRef.current - event.deltaY * speed
-
-      targetOffsetRef.current = THREE.MathUtils.clamp(nextTarget, minOffset, maxOffset)
+      updateTimelineOffset(event.deltaY, speed)
     }
 
     renderer.domElement.style.cursor = 'grab'
+    renderer.domElement.addEventListener('pointerdown', handlePointerDown)
     renderer.domElement.addEventListener('pointermove', handlePointerMove)
     renderer.domElement.addEventListener('pointerleave', handlePointerLeave)
+    renderer.domElement.addEventListener('pointerup', handlePointerRelease)
+    renderer.domElement.addEventListener('pointercancel', handlePointerRelease)
     renderer.domElement.addEventListener('click', handleClick)
     renderer.domElement.addEventListener('wheel', handleWheel, { passive: false })
 
@@ -846,7 +917,7 @@ export function ThreeTimeline({
         return
       }
 
-      renderer.setSize(width, height, false)
+      renderer.setSize(width, height)
       camera.aspect = width / height
       camera.updateProjectionMatrix()
     }
@@ -855,6 +926,12 @@ export function ThreeTimeline({
 
     const resizeObserver = new ResizeObserver(resize)
     resizeObserver.observe(host)
+
+    const visualViewport = window.visualViewport
+    if (visualViewport) {
+      visualViewport.addEventListener('resize', resize)
+      visualViewport.addEventListener('scroll', resize)
+    }
 
     const clock = new THREE.Clock()
     let frameId = 0
@@ -1124,9 +1201,16 @@ export function ThreeTimeline({
     return () => {
       window.cancelAnimationFrame(frameId)
       resizeObserver.disconnect()
+      if (visualViewport) {
+        visualViewport.removeEventListener('resize', resize)
+        visualViewport.removeEventListener('scroll', resize)
+      }
 
+      renderer.domElement.removeEventListener('pointerdown', handlePointerDown)
       renderer.domElement.removeEventListener('pointermove', handlePointerMove)
       renderer.domElement.removeEventListener('pointerleave', handlePointerLeave)
+      renderer.domElement.removeEventListener('pointerup', handlePointerRelease)
+      renderer.domElement.removeEventListener('pointercancel', handlePointerRelease)
       renderer.domElement.removeEventListener('click', handleClick)
       renderer.domElement.removeEventListener('wheel', handleWheel)
 
