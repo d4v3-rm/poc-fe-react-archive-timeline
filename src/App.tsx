@@ -8,6 +8,7 @@ import { StartupLoader } from './components/StartupLoader'
 import { StatsPanel } from './components/StatsPanel'
 import { ThreeTimeline } from './components/ThreeTimeline'
 import { TutorialDock } from './components/TutorialDock'
+import { startupLoaderConfig } from './data/uiConfig'
 import {
   selectEffectiveSelectedEventId,
   selectFilteredEvents,
@@ -24,7 +25,9 @@ import type { PoeticEvent } from './types'
 import './App.scss'
 
 function App() {
-  const [showStartupLoader, setShowStartupLoader] = useState(true)
+  const [showStartupLoader, setShowStartupLoader] = useState(
+    startupLoaderConfig.enabled,
+  )
   const dispatch = useAppDispatch()
   const filteredEvents = useAppSelector(selectFilteredEvents)
   const activeEventId = useAppSelector(selectEffectiveSelectedEventId)
@@ -46,9 +49,13 @@ function App() {
   )
 
   useEffect(() => {
+    if (!startupLoaderConfig.enabled) {
+      return
+    }
+
     const timer = window.setTimeout(() => {
       setShowStartupLoader(false)
-    }, 2000)
+    }, startupLoaderConfig.delayMs)
 
     return () => {
       window.clearTimeout(timer)
@@ -80,7 +87,13 @@ function App() {
 
   return (
     <div className="app-shell">
-      {showStartupLoader ? <StartupLoader /> : null}
+      {showStartupLoader ? (
+        <StartupLoader
+          ariaLabel={startupLoaderConfig.ariaLabel}
+          eyebrow={startupLoaderConfig.eyebrow}
+          label={startupLoaderConfig.label}
+        />
+      ) : null}
       <div className="ambient-glow ambient-glow--left" />
       <div className="ambient-glow ambient-glow--right" />
 

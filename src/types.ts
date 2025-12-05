@@ -33,3 +33,11 @@ export interface PoeticEvent {
   connections: string[]
   poems: PoemEntry[]
 }
+
+export interface StartupLoaderConfig {
+  enabled: boolean
+  delayMs: number
+  ariaLabel: string
+  eyebrow: string
+  label: string
+}

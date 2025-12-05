@@ -1,10 +1,16 @@
-export function StartupLoader() {
+interface StartupLoaderProps {
+  ariaLabel: string
+  eyebrow: string
+  label: string
+}
+
+export function StartupLoader({ ariaLabel, eyebrow, label }: StartupLoaderProps) {
   return (
     <div
       className="startup-loader"
       role="status"
       aria-live="polite"
-      aria-label="Caricamento archivio poetico"
+      aria-label={ariaLabel}
     >
       <div className="startup-loader__scene" aria-hidden="true">
         <span className="startup-loader__ring startup-loader__ring--outer" />
@@ -15,8 +21,8 @@ export function StartupLoader() {
         <span className="startup-loader__satellite startup-loader__satellite--two" />
       </div>
 
-      <p className="startup-loader__eyebrow">Archivio poetico 3D</p>
-      <p className="startup-loader__label">Sincronizzazione timeline</p>
+      <p className="startup-loader__eyebrow">{eyebrow}</p>
+      <p className="startup-loader__label">{label}</p>
     </div>
   )
 }
