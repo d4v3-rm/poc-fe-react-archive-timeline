@@ -1,9 +1,10 @@
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from './app/hooks'
 import { EmptyState } from './components/EmptyState'
 import { MoodFilterDock } from './components/MoodFilterDock'
 import { NodeModal } from './components/NodeModal'
 import { PoemModal } from './components/PoemModal'
+import { StartupLoader } from './components/StartupLoader'
 import { StatsPanel } from './components/StatsPanel'
 import { ThreeTimeline } from './components/ThreeTimeline'
 import { TutorialDock } from './components/TutorialDock'
@@ -23,6 +24,7 @@ import type { PoeticEvent } from './types'
 import './App.scss'
 
 function App() {
+  const [showStartupLoader, setShowStartupLoader] = useState(true)
   const dispatch = useAppDispatch()
   const filteredEvents = useAppSelector(selectFilteredEvents)
   const activeEventId = useAppSelector(selectEffectiveSelectedEventId)
@@ -42,6 +44,16 @@ function App() {
     },
     [dispatch],
   )
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setShowStartupLoader(false)
+    }, 2000)
+
+    return () => {
+      window.clearTimeout(timer)
+    }
+  }, [])
 
   useEffect(() => {
     if (!isNodeModalOpen && !openPoem) {
@@ -68,6 +80,7 @@ function App() {
 
   return (
     <div className="app-shell">
+      {showStartupLoader ? <StartupLoader /> : null}
       <div className="ambient-glow ambient-glow--left" />
       <div className="ambient-glow ambient-glow--right" />
 
