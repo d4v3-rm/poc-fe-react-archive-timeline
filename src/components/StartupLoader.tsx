@@ -1,3 +1,5 @@
+import './StartupLoader.scss'
+
 interface StartupLoaderProps {
   ariaLabel: string
   eyebrow: string

@@ -1,5 +1,6 @@
 import { useAppSelector } from '../app/hooks'
 import { selectStats } from '../features/timeline/timelineSelectors'
+import './StatsPanel.scss'
 
 export function StatsPanel() {
   const stats = useAppSelector(selectStats)

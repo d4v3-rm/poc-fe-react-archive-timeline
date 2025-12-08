@@ -1,5 +1,6 @@
 import { useAppSelector } from '../app/hooks'
 import { selectHoveredEvent } from '../features/timeline/timelineSelectors'
+import './TutorialDock.scss'
 
 export function TutorialDock() {
   const hoveredEvent = useAppSelector(selectHoveredEvent)

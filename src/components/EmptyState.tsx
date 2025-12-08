@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { selectHasNoFilteredEvents } from '../features/timeline/timelineSelectors'
 import { resetMoodFilter } from '../features/timeline/timelineSlice'
+import './EmptyState.scss'
 
 export function EmptyState() {
   const dispatch = useAppDispatch()

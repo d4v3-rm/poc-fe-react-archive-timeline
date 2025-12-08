@@ -7,6 +7,7 @@ import type {
   PoeticEvent,
   PoeticMood,
 } from '../types'
+import './ThreeTimeline.scss'
 
 interface ThreeTimelineProps {
   events: PoeticEvent[]

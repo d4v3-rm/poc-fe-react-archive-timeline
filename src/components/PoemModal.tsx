@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { moodLabels, poemGroupLabels } from '../features/timeline/constants'
 import { selectOpenPoem, selectSelectedEvent } from '../features/timeline/timelineSelectors'
 import { closePoem } from '../features/timeline/timelineSlice'
+import './PoemModal.scss'
 
 export function PoemModal() {
   const dispatch = useAppDispatch()

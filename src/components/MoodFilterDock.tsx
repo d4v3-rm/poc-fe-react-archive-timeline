@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { moodOptions } from '../features/timeline/constants'
 import { selectMoodFilter } from '../features/timeline/timelineSelectors'
 import { setMoodFilter } from '../features/timeline/timelineSlice'
+import './MoodFilterDock.scss'
 
 export function MoodFilterDock() {
   const dispatch = useAppDispatch()

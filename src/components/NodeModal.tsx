@@ -14,6 +14,7 @@ import {
   selectSelectedNodeIndex,
 } from '../features/timeline/timelineSelectors'
 import { closeNodeModal, openPoemById, selectRelatedEvent } from '../features/timeline/timelineSlice'
+import './NodeModal.scss'
 
 export function NodeModal() {
   const dispatch = useAppDispatch()

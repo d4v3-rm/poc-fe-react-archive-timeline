@@ -1,0 +1,127 @@
+.poem-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 7;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at center, rgba(9, 15, 37, 0.4), rgba(7, 11, 26, 0.72)),
+    rgba(4, 7, 18, 0.72);
+  backdrop-filter: blur(6px);
+  padding:
+    calc(1rem + var(--safe-top))
+    calc(1rem + var(--safe-right))
+    calc(1rem + var(--safe-bottom))
+    calc(1rem + var(--safe-left));
+  animation: modal-fade 170ms ease;
+}
+
+.poem-modal__card {
+  width: min(38rem, 100%);
+  border-radius: 0;
+  border: 1px solid rgba(170, 191, 247, 0.36);
+  background: rgba(10, 17, 40, 0.94);
+  box-shadow: 0 22px 52px rgba(3, 8, 22, 0.46);
+  padding: 1.18rem 1.26rem;
+  display: grid;
+  gap: 0.86rem;
+  animation: modal-card-in 180ms ease;
+
+  h3 {
+    margin: 0;
+    font-family: 'Bodoni Moda', serif;
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    line-height: 1.08;
+  }
+}
+
+.poem-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+}
+
+.poem-modal__close {
+  border: 1px solid rgba(168, 191, 247, 0.43);
+  border-radius: 0;
+  background: rgba(11, 19, 43, 0.68);
+  color: #d5dff9;
+  padding: 0.48rem 1rem;
+  font-size: 0.74rem;
+  cursor: pointer;
+
+  &:hover {
+    border-color: rgba(255, 214, 144, 0.75);
+  }
+}
+
+.poem-modal__meta {
+  margin: 0;
+  color: #bfcbe9;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.poem-modal__author {
+  margin: -0.08rem 0 0;
+  color: #ccd7f4;
+  font-size: 0.86rem;
+}
+
+.poem-modal__body {
+  max-height: min(45dvh, 19rem);
+  overflow: auto;
+  padding-right: 0.1rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 210, 146, 0.72) rgba(24, 34, 67, 0.45);
+
+  blockquote {
+    margin: 0.2rem 0 0;
+    border-left: 2px solid rgba(255, 214, 149, 0.62);
+    padding-left: 0.76rem;
+
+    p {
+      margin: 0;
+      color: #f2dfc5;
+      font-size: 1rem;
+      line-height: 1.58;
+    }
+  }
+}
+
+.poem-modal__body::-webkit-scrollbar {
+  width: 10px;
+}
+
+.poem-modal__body::-webkit-scrollbar-track {
+  border-radius: 0;
+  background: rgba(20, 30, 60, 0.45);
+}
+
+.poem-modal__body::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  background-image: linear-gradient(
+    130deg,
+    rgba(255, 202, 131, 0.88),
+    rgba(126, 171, 255, 0.88)
+  );
+  box-shadow: 0 0 10px rgba(139, 179, 255, 0.35);
+}
+
+@media (max-width: 700px) {
+  .poem-modal {
+    padding:
+      calc(0.75rem + var(--safe-top))
+      calc(0.75rem + var(--safe-right))
+      calc(0.75rem + var(--safe-bottom))
+      calc(0.75rem + var(--safe-left));
+  }
+
+  .poem-modal__card {
+    padding: 0.82rem 0.82rem 0.9rem;
+  }
+}
