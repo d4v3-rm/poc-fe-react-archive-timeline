@@ -1,0 +1,76 @@
+.poem-groups {
+  margin: 0;
+  display: grid;
+  gap: 0.68rem;
+}
+
+.poem-group {
+  border: 0;
+  border-top: 1px solid rgba(133, 157, 219, 0.24);
+  border-radius: 0;
+  padding: 0.62rem 0 0;
+  background: none;
+}
+
+.poem-group:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.poem-group__title {
+  margin: 0 0 0.5rem;
+  font-size: 0.67rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #cbd7f5;
+}
+
+.poem-group__items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.58rem;
+}
+
+.poem-chip {
+  border: 1px solid rgba(136, 160, 221, 0.26);
+  border-radius: 0;
+  background: transparent;
+  padding: 0.58rem 0.62rem;
+  text-align: left;
+  display: grid;
+  gap: 0.22rem;
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease;
+
+  strong {
+    font-size: 0.77rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #dce6ff;
+  }
+
+  span {
+    font-size: 0.69rem;
+    color: #aebddb;
+  }
+
+  &:hover {
+    border-color: rgba(182, 202, 246, 0.48);
+    background: rgba(12, 21, 48, 0.34);
+  }
+
+  &:focus-visible {
+    border-color: rgba(196, 213, 250, 0.62);
+  }
+
+  &.is-active {
+    border-color: rgba(208, 223, 255, 0.62);
+    background: rgba(20, 33, 68, 0.5);
+  }
+}
+
+.poem-group--manifesto,
+.poem-group--ciclo,
+.poem-group--frammenti {
+  background: none;
+}

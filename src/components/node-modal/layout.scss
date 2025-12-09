@@ -1,0 +1,63 @@
+.node-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  padding:
+    calc(1rem + var(--safe-top))
+    calc(1rem + var(--safe-right))
+    calc(1rem + var(--safe-bottom))
+    calc(1rem + var(--safe-left));
+  background: rgba(5, 8, 20, 0.64);
+  backdrop-filter: blur(3px);
+  animation: modal-fade 170ms ease;
+}
+
+.node-modal__card {
+  width: min(54rem, 100%);
+  max-height: min(86dvh, 52rem);
+  border-radius: 0;
+  border: 1px solid rgba(148, 171, 230, 0.34);
+  background: rgba(8, 13, 31, 0.96);
+  box-shadow: 0 14px 28px rgba(3, 8, 22, 0.36);
+  padding: 1.28rem 1.34rem;
+  display: grid;
+  grid-template-rows: auto auto auto minmax(0, 1fr);
+  gap: 0.96rem;
+  animation: modal-card-in 180ms ease;
+
+  h2 {
+    margin: 0;
+    font-family: 'Bodoni Moda', serif;
+    font-size: clamp(1.35rem, 2.5vw, 2rem);
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+}
+
+.node-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+  padding-bottom: 0.18rem;
+}
+
+.node-modal__close {
+  border: 1px solid rgba(151, 174, 236, 0.4);
+  border-radius: 0;
+  background: rgba(10, 17, 40, 0.7);
+  color: #cfdaff;
+  padding: 0.48rem 1rem;
+  font-size: 0.74rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease;
+
+  &:hover {
+    border-color: rgba(199, 215, 255, 0.62);
+    background: rgba(16, 25, 56, 0.78);
+  }
+}

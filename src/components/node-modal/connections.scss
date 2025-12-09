@@ -1,0 +1,82 @@
+.connections {
+  margin: 0;
+  border-left: 1px solid rgba(133, 157, 219, 0.24);
+  border-radius: 0;
+  background: none;
+  padding: 0 0 0 0.86rem;
+  align-self: start;
+  position: static;
+}
+
+.connections__title {
+  margin: 0 0 0.48rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #c9d5f3;
+}
+
+.connections__items {
+  display: grid;
+  gap: 0.5rem;
+  max-height: min(47dvh, 24rem);
+  overflow: auto;
+  padding-right: 0.12rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(136, 160, 221, 0.55) rgba(24, 34, 67, 0.35);
+
+  button {
+    border: 1px solid rgba(136, 160, 221, 0.26);
+    border-radius: 0;
+    background: transparent;
+    padding: 0.58rem 0.62rem;
+    display: grid;
+    gap: 0.22rem;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 150ms ease, background 150ms ease;
+
+    span {
+      font-size: 0.67rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #aebddb;
+    }
+
+    strong {
+      font-size: 0.8rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    &:hover {
+      border-color: rgba(182, 202, 246, 0.48);
+      background: rgba(12, 21, 48, 0.34);
+    }
+  }
+}
+
+.connections__items::-webkit-scrollbar {
+  width: 8px;
+}
+
+.connections__items::-webkit-scrollbar-track {
+  border-radius: 0;
+  background: rgba(20, 30, 60, 0.35);
+}
+
+.connections__items::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  background: rgba(136, 160, 221, 0.72);
+}
+
+.connections__empty {
+  margin: 0;
+  border: 1px solid rgba(141, 164, 225, 0.2);
+  border-radius: 0;
+  color: #aebddb;
+  font-size: 0.75rem;
+  padding: 0.62rem;
+}

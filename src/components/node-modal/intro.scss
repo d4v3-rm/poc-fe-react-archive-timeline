@@ -1,0 +1,53 @@
+.node-modal__intro {
+  border: 0;
+  background: none;
+  padding: 0;
+  display: grid;
+  gap: 0.56rem;
+}
+
+.node-panel__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem 0.78rem;
+}
+
+.node-panel__fact {
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  font-weight: 500;
+  color: #bfd0f2;
+  position: relative;
+  padding-left: 0.7rem;
+}
+
+.node-panel__fact:first-child {
+  padding-left: 0;
+}
+
+.node-panel__fact:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.08rem;
+  bottom: 0.08rem;
+  width: 1px;
+  background: rgba(133, 157, 219, 0.32);
+}
+
+.node-panel__description {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.56;
+  color: #cfd9f3;
+}
+
+.node-panel__hint {
+  margin: 0;
+  border: 0;
+  color: #adbdde;
+  font-size: 0.76rem;
+  line-height: 1.5;
+  padding-top: 0.08rem;
+}

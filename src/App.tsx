@@ -1,13 +1,15 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
-import { EmptyState } from "./components/EmptyState";
-import { MoodFilterDock } from "./components/MoodFilterDock";
-import { NodeModal } from "./components/NodeModal";
-import { PoemModal } from "./components/PoemModal";
-import { StartupLoader } from "./components/StartupLoader";
-import { StatsPanel } from "./components/StatsPanel";
-import { ThreeTimeline } from "./components/three-timeline/ThreeTimeline";
-import { TutorialDock } from "./components/TutorialDock";
+import {
+  EmptyState,
+  MoodFilterDock,
+  NodeModal,
+  PoemModal,
+  StartupLoader,
+  StatsPanel,
+  ThreeTimeline,
+  TutorialDock,
+} from "./components";
 import { startupLoaderConfig } from "./data/uiConfig";
 import {
   selectEffectiveSelectedEventId,

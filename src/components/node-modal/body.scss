@@ -1,0 +1,35 @@
+.node-modal__body {
+  min-height: 0;
+  max-height: min(56dvh, 29rem);
+  overflow: auto;
+  padding-right: 0.24rem;
+  padding-top: 0.88rem;
+  border-top: 1px solid rgba(133, 157, 219, 0.24);
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(13rem, 1fr);
+  gap: 0.92rem;
+  align-items: start;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 210, 146, 0.72) rgba(24, 34, 67, 0.45);
+}
+
+.node-modal__body::-webkit-scrollbar {
+  width: 10px;
+}
+
+.node-modal__body::-webkit-scrollbar-track {
+  border-radius: 0;
+  background: rgba(20, 30, 60, 0.45);
+}
+
+.node-modal__body::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  background-image: linear-gradient(
+    130deg,
+    rgba(255, 202, 131, 0.88),
+    rgba(126, 171, 255, 0.88)
+  );
+  box-shadow: 0 0 10px rgba(139, 179, 255, 0.35);
+}
