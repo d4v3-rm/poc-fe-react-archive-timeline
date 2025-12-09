@@ -1,9 +1,9 @@
-import { useAppDispatch, useAppSelector } from '../app/hooks'
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 import {
   branchLabels,
   moodLabels,
   poemGroupLabels,
-} from '../features/timeline/constants'
+} from "../features/timeline/constants";
 import {
   selectEffectiveSelectedPoem,
   selectFilteredEvents,
@@ -12,28 +12,39 @@ import {
   selectRelatedEvents,
   selectSelectedEvent,
   selectSelectedNodeIndex,
-} from '../features/timeline/timelineSelectors'
-import { closeNodeModal, openPoemById, selectRelatedEvent } from '../features/timeline/timelineSlice'
-import './NodeModal.scss'
+} from "../features/timeline/timelineSelectors";
+import {
+  closeNodeModal,
+  openPoemById,
+  selectRelatedEvent,
+} from "../features/timeline/timelineSlice";
+import "./NodeModal.scss";
 
 export function NodeModal() {
-  const dispatch = useAppDispatch()
-  const isNodeModalOpen = useAppSelector(selectIsNodeModalOpen)
-  const selectedEvent = useAppSelector(selectSelectedEvent)
-  const selectedNodeIndex = useAppSelector(selectSelectedNodeIndex)
-  const filteredEvents = useAppSelector(selectFilteredEvents)
-  const groupedPoems = useAppSelector(selectGroupedPoems)
-  const relatedEvents = useAppSelector(selectRelatedEvents)
-  const effectiveSelectedPoem = useAppSelector(selectEffectiveSelectedPoem)
+  // #region State and Selectors
+  const dispatch = useAppDispatch();
+  const isNodeModalOpen = useAppSelector(selectIsNodeModalOpen);
+  const selectedEvent = useAppSelector(selectSelectedEvent);
+  const selectedNodeIndex = useAppSelector(selectSelectedNodeIndex);
+  const filteredEvents = useAppSelector(selectFilteredEvents);
+  const groupedPoems = useAppSelector(selectGroupedPoems);
+  const relatedEvents = useAppSelector(selectRelatedEvents);
+  const effectiveSelectedPoem = useAppSelector(selectEffectiveSelectedPoem);
+  // #endregion
 
+  // #region Guard
   if (!isNodeModalOpen || !selectedEvent) {
-    return null
+    return null;
   }
+  // #endregion
 
+  // #region Actions
   const closeModal = () => {
-    dispatch(closeNodeModal())
-  }
+    dispatch(closeNodeModal());
+  };
+  // #endregion
 
+  // #region Render
   return (
     <div
       className="node-modal"
@@ -42,12 +53,19 @@ export function NodeModal() {
       aria-labelledby="node-modal-title"
       onClick={closeModal}
     >
-      <article className="node-modal__card" onClick={(event) => event.stopPropagation()}>
+      <article
+        className="node-modal__card"
+        onClick={(event) => event.stopPropagation()}
+      >
         <header className="node-modal__header">
           <p className={`mood-chip mood-chip--${selectedEvent.mood}`}>
             {moodLabels[selectedEvent.mood]}
           </p>
-          <button className="node-modal__close" onClick={closeModal} type="button">
+          <button
+            className="node-modal__close"
+            onClick={closeModal}
+            type="button"
+          >
             Chiudi
           </button>
         </header>
@@ -61,7 +79,9 @@ export function NodeModal() {
             )}
             <p className="node-panel__fact">{selectedEvent.year}</p>
             <p className="node-panel__fact">{selectedEvent.location}</p>
-            <p className="node-panel__fact">{branchLabels[selectedEvent.branch]}</p>
+            <p className="node-panel__fact">
+              {branchLabels[selectedEvent.branch]}
+            </p>
           </div>
           <h2 id="node-modal-title">{selectedEvent.title}</h2>
           <p className="node-panel__description">{selectedEvent.description}</p>
@@ -71,9 +91,15 @@ export function NodeModal() {
         </section>
 
         <div className="node-modal__body">
-          <section className="poem-groups" aria-label="Poesie raggruppate per tipologia">
+          <section
+            className="poem-groups"
+            aria-label="Poesie raggruppate per tipologia"
+          >
             {groupedPoems.map(({ group, poems }) => (
-              <article key={group} className={`poem-group poem-group--${group}`}>
+              <article
+                key={group}
+                className={`poem-group poem-group--${group}`}
+              >
                 <p className="poem-group__title">
                   {poemGroupLabels[group]} ({poems.length})
                 </p>
@@ -82,7 +108,9 @@ export function NodeModal() {
                     <button
                       key={poem.id}
                       className={`poem-chip${
-                        effectiveSelectedPoem?.id === poem.id ? ' is-active' : ''
+                        effectiveSelectedPoem?.id === poem.id
+                          ? " is-active"
+                          : ""
                       }`}
                       onClick={() => dispatch(openPoemById(poem.id))}
                       type="button"
@@ -112,12 +140,15 @@ export function NodeModal() {
                   </button>
                 ))
               ) : (
-                <p className="connections__empty">Nessuna connessione disponibile.</p>
+                <p className="connections__empty">
+                  Nessuna connessione disponibile.
+                </p>
               )}
             </div>
           </section>
         </div>
       </article>
     </div>
-  )
+  );
+  // #endregion
 }
