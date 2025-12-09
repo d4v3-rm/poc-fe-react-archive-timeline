@@ -1,28 +1,32 @@
 import { useAppSelector } from '../app/hooks'
 import { selectHoveredEvent } from '../features/timeline/timelineSelectors'
+import { messages, t } from '../i18n'
 import './TutorialDock.scss'
 
 export function TutorialDock() {
   const hoveredEvent = useAppSelector(selectHoveredEvent)
 
   return (
-    <aside className="tutorial-dock" aria-label="Tutorial navigazione">
+    <aside className="tutorial-dock" aria-label={t('tutorial.ariaLabel')}>
       <div className="interaction-hints">
         <p className="interaction-hints__item">
-          <kbd>Scroll</kbd>
-          <span>tempo</span>
+          <kbd>{messages.tutorial.actions.scroll.key}</kbd>
+          <span>{messages.tutorial.actions.scroll.label}</span>
         </p>
         <p className="interaction-hints__item">
-          <kbd>Drag</kbd>
-          <span>camera</span>
+          <kbd>{messages.tutorial.actions.drag.key}</kbd>
+          <span>{messages.tutorial.actions.drag.label}</span>
         </p>
         <p className="interaction-hints__item">
-          <kbd>Click</kbd>
-          <span>nodo</span>
+          <kbd>{messages.tutorial.actions.click.key}</kbd>
+          <span>{messages.tutorial.actions.click.label}</span>
         </p>
         {hoveredEvent ? (
           <p className="interaction-hints__focus">
-            {hoveredEvent.year}: {hoveredEvent.title}
+            {t('tutorial.focus', {
+              year: hoveredEvent.year,
+              title: hoveredEvent.title,
+            })}
           </p>
         ) : null}
       </div>

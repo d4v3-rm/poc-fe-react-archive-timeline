@@ -1,4 +1,5 @@
 import rawUiConfig from '../content/ui-config.json'
+import { messages } from '../i18n'
 import type { StartupLoaderConfig } from '../types'
 
 interface RawStartupLoaderConfig {
@@ -16,9 +17,9 @@ interface RawUiConfig {
 const DEFAULT_STARTUP_LOADER_CONFIG: StartupLoaderConfig = {
   enabled: true,
   delayMs: 2000,
-  ariaLabel: 'Caricamento archivio poetico',
-  eyebrow: 'Archivio poetico 3D',
-  label: 'Sincronizzazione timeline',
+  ariaLabel: messages.loader.defaults.ariaLabel,
+  eyebrow: messages.loader.defaults.eyebrow,
+  label: messages.loader.defaults.label,
 }
 
 const toFiniteNumber = (value: unknown) =>

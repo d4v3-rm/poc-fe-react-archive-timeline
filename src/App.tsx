@@ -21,6 +21,7 @@ import {
   selectEvent,
   setHoveredEventId,
 } from "./features/timeline/timelineSlice";
+import { t } from "./i18n";
 import type { PoeticEvent } from "./types";
 import "./App.scss";
 
@@ -106,7 +107,7 @@ function App() {
 
       <main
         className="stage"
-        aria-label="Timeline poetica fullscreen con diramazioni"
+        aria-label={t("app.stageAriaLabel")}
       >
         <ThreeTimeline
           events={filteredEvents}

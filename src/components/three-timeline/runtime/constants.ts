@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import type { PoemGroup, PoeticBranch, PoeticMood } from "../../../types";
+import { messages } from "../../../i18n";
 import type { LabelRect, TrackGeometry } from "./types";
 
 export const moodPalette: Record<PoeticMood, number> = {
@@ -28,10 +29,10 @@ export const poemGroupStyles: Record<PoemGroup, { color: number; speed: number }
   };
 
 export const branchLabels: Record<PoeticBranch, string> = {
-  radice: "Radice canonica",
-  visione: "Ramo visione",
-  civile: "Ramo civile",
-  performativa: "Ramo performativo",
+  radice: messages.timeline.branchLabels.radice,
+  visione: messages.timeline.branchLabels.visione,
+  civile: messages.timeline.branchLabels.civile,
+  performativa: messages.timeline.branchLabels.performativa,
 };
 
 export const groupOrder: PoemGroup[] = ["manifesto", "ciclo", "frammenti"];

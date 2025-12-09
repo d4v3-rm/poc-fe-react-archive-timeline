@@ -18,6 +18,7 @@ import {
   openPoemById,
   selectRelatedEvent,
 } from "../features/timeline/timelineSlice";
+import { t } from "../i18n";
 import "./NodeModal.scss";
 
 export function NodeModal() {
@@ -66,15 +67,21 @@ export function NodeModal() {
             onClick={closeModal}
             type="button"
           >
-            Chiudi
+            {t("nodeModal.close")}
           </button>
         </header>
 
-        <section className="node-modal__intro" aria-label="Introduzione nodo">
+        <section
+          className="node-modal__intro"
+          aria-label={t("nodeModal.introAriaLabel")}
+        >
           <div className="node-panel__facts">
             {selectedNodeIndex >= 0 && (
               <p className="node-panel__fact">
-                Nodo {selectedNodeIndex + 1}/{filteredEvents.length}
+                {t("nodeModal.nodeCounter", {
+                  current: selectedNodeIndex + 1,
+                  total: filteredEvents.length,
+                })}
               </p>
             )}
             <p className="node-panel__fact">{selectedEvent.year}</p>
@@ -86,14 +93,14 @@ export function NodeModal() {
           <h2 id="node-modal-title">{selectedEvent.title}</h2>
           <p className="node-panel__description">{selectedEvent.description}</p>
           <p className="node-panel__hint">
-            Seleziona una poesia per aprire la scheda completa in modale.
+            {t("nodeModal.poemSelectionHint")}
           </p>
         </section>
 
         <div className="node-modal__body">
           <section
             className="poem-groups"
-            aria-label="Poesie raggruppate per tipologia"
+            aria-label={t("nodeModal.groupedPoemsAriaLabel")}
           >
             {groupedPoems.map(({ group, poems }) => (
               <article
@@ -125,8 +132,11 @@ export function NodeModal() {
             ))}
           </section>
 
-          <section className="connections" aria-label="Connessioni fra nodi">
-            <p className="connections__title">Nodi collegati</p>
+          <section
+            className="connections"
+            aria-label={t("nodeModal.connectionsAriaLabel")}
+          >
+            <p className="connections__title">{t("nodeModal.connectionsTitle")}</p>
             <div className="connections__items">
               {relatedEvents.length > 0 ? (
                 relatedEvents.map((event) => (
@@ -141,7 +151,7 @@ export function NodeModal() {
                 ))
               ) : (
                 <p className="connections__empty">
-                  Nessuna connessione disponibile.
+                  {t("nodeModal.connectionsEmpty")}
                 </p>
               )}
             </div>

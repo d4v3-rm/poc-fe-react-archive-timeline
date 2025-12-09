@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { selectHasNoFilteredEvents } from '../features/timeline/timelineSelectors'
 import { resetMoodFilter } from '../features/timeline/timelineSlice'
+import { t } from '../i18n'
 import './EmptyState.scss'
 
 export function EmptyState() {
@@ -13,9 +14,9 @@ export function EmptyState() {
 
   return (
     <div className="empty-state">
-      <p>Nessun nodo con il filtro corrente.</p>
+      <p>{t('emptyState.message')}</p>
       <button onClick={() => dispatch(resetMoodFilter())} type="button">
-        Ripristina tutti i mood
+        {t('emptyState.resetButton')}
       </button>
     </div>
   )

@@ -1,0 +1,91 @@
+{
+  "app": {
+    "stageAriaLabel": "Timeline poetica fullscreen con diramazioni"
+  },
+  "loader": {
+    "defaults": {
+      "ariaLabel": "Caricamento archivio poetico",
+      "eyebrow": "Archivio poetico 3D",
+      "label": "Sincronizzazione timeline"
+    }
+  },
+  "timeline": {
+    "ariaLabel": "Timeline poetica tridimensionale a diramazioni",
+    "nodeLabelPoems": "{{count}} poesie",
+    "branchLabels": {
+      "radice": "Radice canonica",
+      "visione": "Ramo visione",
+      "civile": "Ramo civile",
+      "performativa": "Ramo performativo"
+    }
+  },
+  "filters": {
+    "ariaLabel": "Filtri mood",
+    "all": "Tutti i mood",
+    "moods": {
+      "amore": "Amore",
+      "natura": "Natura",
+      "rivolta": "Rivolta",
+      "esilio": "Esilio",
+      "spirituale": "Spirituale"
+    }
+  },
+  "poems": {
+    "groups": {
+      "manifesto": "Manifesti",
+      "ciclo": "Cicli",
+      "frammenti": "Frammenti"
+    }
+  },
+  "emptyState": {
+    "message": "Nessun nodo con il filtro corrente.",
+    "resetButton": "Ripristina tutti i mood"
+  },
+  "stats": {
+    "ariaLabel": "Statistiche timeline",
+    "nodes": {
+      "ariaLabel": "{{count}} nodi",
+      "tooltip": "Nodi visibili con il filtro attuale"
+    },
+    "branches": {
+      "ariaLabel": "{{count}} rami",
+      "tooltip": "Diramazioni poetiche attive"
+    },
+    "poems": {
+      "ariaLabel": "{{count}} poesie",
+      "tooltip": "Totale poesie nei nodi correnti"
+    }
+  },
+  "tutorial": {
+    "ariaLabel": "Tutorial navigazione",
+    "actions": {
+      "scroll": {
+        "key": "Scroll",
+        "label": "tempo"
+      },
+      "drag": {
+        "key": "Drag",
+        "label": "camera"
+      },
+      "click": {
+        "key": "Click",
+        "label": "nodo"
+      }
+    },
+    "focus": "{{year}}: {{title}}"
+  },
+  "nodeModal": {
+    "close": "Chiudi",
+    "introAriaLabel": "Introduzione nodo",
+    "nodeCounter": "Nodo {{current}}/{{total}}",
+    "poemSelectionHint": "Seleziona una poesia per aprire la scheda completa in modale.",
+    "groupedPoemsAriaLabel": "Poesie raggruppate per tipologia",
+    "connectionsAriaLabel": "Connessioni fra nodi",
+    "connectionsTitle": "Nodi collegati",
+    "connectionsEmpty": "Nessuna connessione disponibile."
+  },
+  "poemModal": {
+    "close": "Chiudi",
+    "metaSeparator": " - "
+  }
+}

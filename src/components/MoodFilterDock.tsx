@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { moodOptions } from '../features/timeline/constants'
 import { selectMoodFilter } from '../features/timeline/timelineSelectors'
 import { setMoodFilter } from '../features/timeline/timelineSlice'
+import { t } from '../i18n'
 import './MoodFilterDock.scss'
 
 export function MoodFilterDock() {
@@ -9,8 +10,8 @@ export function MoodFilterDock() {
   const moodFilter = useAppSelector(selectMoodFilter)
 
   return (
-    <aside className="filter-dock" aria-label="Filtri mood">
-      <section className="toolbar" aria-label="Filtri mood">
+    <aside className="filter-dock" aria-label={t('filters.ariaLabel')}>
+      <section className="toolbar" aria-label={t('filters.ariaLabel')}>
         {moodOptions.map((option) => (
           <button
             key={option.id}

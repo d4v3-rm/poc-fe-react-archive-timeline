@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import type { PoeticEvent } from "../../../types";
+import { t } from "../../../i18n";
 import {
   branchLabels,
   createPoemGeometry,
@@ -114,10 +115,13 @@ export const createNodeRuntime = ({
     const label = document.createElement("div");
     label.className = "timeline-node-label";
     label.classList.add(`timeline-node-label--${event.branch}`);
+    const poemCountLabel = t("timeline.nodeLabelPoems", {
+      count: event.poems.length,
+    });
     label.innerHTML = `
       <div class="timeline-node-label__head">
         <span class="timeline-node-label__year">${event.year}</span>
-        <span class="timeline-node-label__tag">${event.poems.length} poesie</span>
+        <span class="timeline-node-label__tag">${poemCountLabel}</span>
       </div>
       <strong class="timeline-node-label__title">${event.title}</strong>
       <small class="timeline-node-label__meta">${branchLabels[event.branch]} - ${event.location}</small>

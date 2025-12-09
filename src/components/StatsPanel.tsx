@@ -1,31 +1,44 @@
 import { useAppSelector } from '../app/hooks'
 import { selectStats } from '../features/timeline/timelineSelectors'
+import { t } from '../i18n'
 import './StatsPanel.scss'
 
 export function StatsPanel() {
   const stats = useAppSelector(selectStats)
 
   return (
-    <div className="hero-panel__stats" aria-label="Statistiche timeline">
-      <span className="hero-panel__stat" aria-label={`${stats.nodes} nodi`} tabIndex={0}>
+    <div className="hero-panel__stats" aria-label={t('stats.ariaLabel')}>
+      <span
+        className="hero-panel__stat"
+        aria-label={t('stats.nodes.ariaLabel', { count: stats.nodes })}
+        tabIndex={0}
+      >
         <strong className="hero-panel__value">{stats.nodes}</strong>
         <span className="hero-panel__icon hero-panel__icon--nodes" aria-hidden="true" />
         <span className="hero-panel__tooltip" role="tooltip">
-          Nodi visibili con il filtro attuale
+          {t('stats.nodes.tooltip')}
         </span>
       </span>
-      <span className="hero-panel__stat" aria-label={`${stats.branches} rami`} tabIndex={0}>
+      <span
+        className="hero-panel__stat"
+        aria-label={t('stats.branches.ariaLabel', { count: stats.branches })}
+        tabIndex={0}
+      >
         <strong className="hero-panel__value">{stats.branches}</strong>
         <span className="hero-panel__icon hero-panel__icon--branches" aria-hidden="true" />
         <span className="hero-panel__tooltip" role="tooltip">
-          Diramazioni poetiche attive
+          {t('stats.branches.tooltip')}
         </span>
       </span>
-      <span className="hero-panel__stat" aria-label={`${stats.poems} poesie`} tabIndex={0}>
+      <span
+        className="hero-panel__stat"
+        aria-label={t('stats.poems.ariaLabel', { count: stats.poems })}
+        tabIndex={0}
+      >
         <strong className="hero-panel__value">{stats.poems}</strong>
         <span className="hero-panel__icon hero-panel__icon--poems" aria-hidden="true" />
         <span className="hero-panel__tooltip" role="tooltip">
-          Totale poesie nei nodi correnti
+          {t('stats.poems.tooltip')}
         </span>
       </span>
     </div>

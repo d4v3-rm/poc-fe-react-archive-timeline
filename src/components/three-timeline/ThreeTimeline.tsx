@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import type { PoeticEvent } from "../../types";
+import { t } from "../../i18n";
 import { mountThreeTimeline } from "./runtime/mountThreeTimeline";
 import "./ThreeTimeline.scss";
 
@@ -74,7 +75,7 @@ export function ThreeTimeline({
       className="three-timeline"
       ref={hostRef}
       role="img"
-      aria-label="Timeline poetica tridimensionale a diramazioni"
+      aria-label={t("timeline.ariaLabel")}
     />
   );
 }

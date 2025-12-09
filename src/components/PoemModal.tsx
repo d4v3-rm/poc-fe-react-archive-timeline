@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { moodLabels, poemGroupLabels } from '../features/timeline/constants'
 import { selectOpenPoem, selectSelectedEvent } from '../features/timeline/timelineSelectors'
 import { closePoem } from '../features/timeline/timelineSlice'
+import { t } from '../i18n'
 import './PoemModal.scss'
 
 export function PoemModal() {
@@ -27,12 +28,16 @@ export function PoemModal() {
             {moodLabels[selectedEvent.mood]}
           </p>
           <button className="poem-modal__close" onClick={() => dispatch(closePoem())} type="button">
-            Chiudi
+            {t('poemModal.close')}
           </button>
         </header>
 
         <p className="poem-modal__meta">
-          {selectedEvent.year} - {selectedEvent.location} - {poemGroupLabels[openPoem.group]}
+          {selectedEvent.year}
+          {t('poemModal.metaSeparator')}
+          {selectedEvent.location}
+          {t('poemModal.metaSeparator')}
+          {poemGroupLabels[openPoem.group]}
         </p>
         <h3 id="poem-modal-title">{openPoem.title}</h3>
         <p className="poem-modal__author">{openPoem.author}</p>
