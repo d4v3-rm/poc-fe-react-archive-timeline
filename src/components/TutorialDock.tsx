@@ -1,10 +1,11 @@
 import { useAppSelector } from '../app/hooks'
 import { selectHoveredEvent } from '../features/timeline/timelineSelectors'
-import { messages, t } from '../i18n'
+import { useI18n } from '../i18n/useI18n'
 import './TutorialDock.scss'
 
 export function TutorialDock() {
   const hoveredEvent = useAppSelector(selectHoveredEvent)
+  const { messages, t } = useI18n()
 
   return (
     <aside className="tutorial-dock" aria-label={t('tutorial.ariaLabel')}>
@@ -33,3 +34,4 @@ export function TutorialDock() {
     </aside>
   )
 }
+

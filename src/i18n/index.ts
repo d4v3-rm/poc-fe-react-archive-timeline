@@ -1,4 +1,24 @@
+import localeEn from "./locales/en.json";
+import localeEs from "./locales/es.json";
+import localeFr from "./locales/fr.json";
 import localeIt from "./locales/it.json";
+import localeZh from "./locales/zh.json";
+
+export const supportedLocales = ["it", "en", "fr", "es", "zh"] as const;
+
+export type AppLocale = (typeof supportedLocales)[number];
+
+export const defaultLocale: AppLocale = "en";
+
+const localeMessagesMap = {
+  it: localeIt,
+  en: localeEn,
+  fr: localeFr,
+  es: localeEs,
+  zh: localeZh,
+} as const;
+
+export type LocaleMessages = (typeof localeMessagesMap)["en"];
 
 type TranslationNode =
   | string
@@ -22,10 +42,20 @@ const getByPath = (source: TranslationNode, path: string) => {
   }, source);
 };
 
-export const messages = localeIt;
+export const isSupportedLocale = (locale: string): locale is AppLocale => {
+  return supportedLocales.includes(locale as AppLocale);
+};
 
-export const t = (key: string, params?: TemplateParams) => {
-  const value = getByPath(messages as TranslationNode, key);
+export const getMessages = (locale: AppLocale): LocaleMessages => {
+  return localeMessagesMap[locale] ?? localeMessagesMap[defaultLocale];
+};
+
+export const translate = (
+  locale: AppLocale,
+  key: string,
+  params?: TemplateParams,
+) => {
+  const value = getByPath(getMessages(locale) as TranslationNode, key);
 
   if (typeof value !== "string") {
     return key;
@@ -40,3 +70,4 @@ export const t = (key: string, params?: TemplateParams) => {
     return tokenValue === undefined ? `{{${token}}}` : String(tokenValue);
   });
 };
+

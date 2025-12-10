@@ -17,6 +17,7 @@ export type {
 
 // #region Runtime Mount
 export const mountThreeTimeline = ({
+  locale,
   host,
   events,
   activeEventIdRef,
@@ -45,6 +46,7 @@ export const mountThreeTimeline = ({
   });
 
   const nodeRuntime = createNodeRuntime({
+    locale,
     events,
     projection: projectionRuntime,
     scene: sceneRuntime,
@@ -86,5 +88,6 @@ export const mountThreeTimeline = ({
   };
 };
 // #endregion
+
 
 

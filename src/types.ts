@@ -1,17 +1,17 @@
 export type PoeticMood =
-  | 'amore'
-  | 'natura'
-  | 'rivolta'
-  | 'esilio'
-  | 'spirituale'
+  | 'love'
+  | 'nature'
+  | 'revolt'
+  | 'exile'
+  | 'spiritual'
 
 export type PoeticBranch =
-  | 'radice'
-  | 'visione'
-  | 'civile'
-  | 'performativa'
+  | 'canonical'
+  | 'vision'
+  | 'civic'
+  | 'performative'
 
-export type PoemGroup = 'ciclo' | 'frammenti' | 'manifesto'
+export type PoemGroup = 'cycle' | 'fragments' | 'manifesto'
 
 export interface PoemEntry {
   id: string
@@ -37,7 +37,5 @@ export interface PoeticEvent {
 export interface StartupLoaderConfig {
   enabled: boolean
   delayMs: number
-  ariaLabel: string
-  eyebrow: string
-  label: string
 }
+

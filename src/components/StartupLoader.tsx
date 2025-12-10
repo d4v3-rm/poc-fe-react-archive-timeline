@@ -28,3 +28,4 @@ export function StartupLoader({ ariaLabel, eyebrow, label }: StartupLoaderProps)
     </div>
   )
 }
+

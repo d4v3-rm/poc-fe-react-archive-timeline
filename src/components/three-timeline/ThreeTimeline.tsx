@@ -1,10 +1,12 @@
 import { useEffect, useRef } from "react";
 import type { PoeticEvent } from "../../types";
-import { t } from "../../i18n";
+import type { AppLocale } from "../../i18n";
+import { useI18n } from "../../i18n/useI18n";
 import { mountThreeTimeline } from "./runtime/mountThreeTimeline";
 import "./ThreeTimeline.scss";
 
 export interface ThreeTimelineProps {
+  locale: AppLocale;
   events: PoeticEvent[];
   activeEventId: string | null;
   onSelect: (event: PoeticEvent) => void;
@@ -12,11 +14,13 @@ export interface ThreeTimelineProps {
 }
 
 export function ThreeTimeline({
+  locale,
   events,
   activeEventId,
   onSelect,
   onHover,
 }: ThreeTimelineProps) {
+  const { t } = useI18n();
   // #region Mutable Runtime Refs
   const hostRef = useRef<HTMLDivElement | null>(null);
   const activeEventIdRef = useRef<string | null>(activeEventId);
@@ -59,6 +63,7 @@ export function ThreeTimeline({
     }
 
     return mountThreeTimeline({
+      locale,
       host,
       events,
       activeEventIdRef,
@@ -67,7 +72,7 @@ export function ThreeTimeline({
       focusOffsetByIdRef,
       targetOffsetRef,
     });
-  }, [events]);
+  }, [events, locale]);
   // #endregion
 
   return (
@@ -79,4 +84,5 @@ export function ThreeTimeline({
     />
   );
 }
+
 

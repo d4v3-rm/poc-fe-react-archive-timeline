@@ -2,11 +2,11 @@
   {
     "id": "dolce-stil-novo",
     "year": 1292,
-    "title": "Nascita del Dolce Stil Novo",
-    "location": "Firenze",
-    "mood": "amore",
-    "branch": "radice",
-    "description": "La lingua amorosa diventa laboratorio formale: armonia, introspezione e lessico spirituale segnano l inizio della tradizione moderna.",
+    "title": "甜美新体诗的诞生",
+    "location": "佛罗伦萨",
+    "mood": "love",
+    "branch": "canonical",
+    "description": "爱情语言成为形式实验室：和谐、内省与精神词汇标记了现代传统的开端。",
     "connections": [
       "commedia-dante",
       "leopardi-infinito"
@@ -23,7 +23,7 @@
         "id": "tanto-gentile",
         "title": "Tanto gentile e tanto onesta pare",
         "author": "Dante Alighieri",
-        "group": "ciclo",
+        "group": "cycle",
         "markdown": "dolce-stil-novo/tanto-gentile.md"
       }
     ]
@@ -31,11 +31,11 @@
   {
     "id": "commedia-dante",
     "year": 1321,
-    "title": "Si chiude la Commedia",
-    "location": "Ravenna",
-    "mood": "spirituale",
-    "branch": "radice",
-    "description": "Il poema lega teologia, politica e invenzione narrativa in un sistema che diventera punto di riferimento per secoli.",
+    "title": "《神曲》完结",
+    "location": "拉文纳",
+    "mood": "spiritual",
+    "branch": "canonical",
+    "description": "这部诗作把神学、政治与叙事创造联结成体系，成为后世数百年的参照。",
     "connections": [
       "dolce-stil-novo",
       "leopardi-infinito",
@@ -46,14 +46,14 @@
         "id": "inferno-xxvi",
         "title": "Inferno XXVI",
         "author": "Dante Alighieri",
-        "group": "frammenti",
+        "group": "fragments",
         "markdown": "commedia-dante/inferno-xxvi.md"
       },
       {
         "id": "purgatorio-i",
         "title": "Purgatorio I",
         "author": "Dante Alighieri",
-        "group": "ciclo",
+        "group": "cycle",
         "markdown": "commedia-dante/purgatorio-i.md"
       },
       {
@@ -68,11 +68,11 @@
   {
     "id": "leopardi-infinito",
     "year": 1819,
-    "title": "Leopardi apre la linea dell infinito",
-    "location": "Recanati",
-    "mood": "natura",
-    "branch": "visione",
-    "description": "La siepe diventa dispositivo filosofico: guardare il limite per immaginare l oltre e misurare la coscienza moderna.",
+    "title": "莱奥帕尔迪开启“无限”线索",
+    "location": "雷卡纳蒂",
+    "mood": "nature",
+    "branch": "vision",
+    "description": "篱笆成为哲学装置：凝视边界，以想象彼岸，并衡量现代意识。",
     "connections": [
       "commedia-dante",
       "baude-fleurs",
@@ -90,7 +90,7 @@
         "id": "sera-festa",
         "title": "La sera del di di festa",
         "author": "Giacomo Leopardi",
-        "group": "ciclo",
+        "group": "cycle",
         "markdown": "leopardi-infinito/sera-festa.md"
       }
     ],
@@ -99,11 +99,11 @@
   {
     "id": "baude-fleurs",
     "year": 1857,
-    "title": "Baudelaire e la frattura urbana",
-    "location": "Parigi",
-    "mood": "rivolta",
-    "branch": "visione",
-    "description": "Con Les Fleurs du mal la modernita entra nella poesia: metropoli, corpo e ambiguita morale diventano materia lirica.",
+    "title": "波德莱尔与都市裂隙",
+    "location": "巴黎",
+    "mood": "revolt",
+    "branch": "vision",
+    "description": "随着《恶之花》，现代性进入诗歌：都市、身体与道德暧昧成为抒情材料。",
     "connections": [
       "leopardi-infinito",
       "ungaretti-porto",
@@ -114,7 +114,7 @@
         "id": "spleen",
         "title": "Spleen",
         "author": "Charles Baudelaire",
-        "group": "frammenti",
+        "group": "fragments",
         "markdown": "baude-fleurs/spleen.md"
       },
       {
@@ -129,11 +129,11 @@
   {
     "id": "ungaretti-porto",
     "year": 1916,
-    "title": "La parola ridotta alla soglia",
-    "location": "Carso",
-    "mood": "esilio",
-    "branch": "civile",
-    "description": "In trincea il verso si spezza e si concentra. La pagina diventa spazio di sopravvivenza linguistica.",
+    "title": "词语被压缩到阈限",
+    "location": "卡尔索",
+    "mood": "exile",
+    "branch": "civic",
+    "description": "在战壕中，诗行被打断并凝缩，页面成为语言生存的空间。",
     "connections": [
       "baude-fleurs",
       "montale-ossi",
@@ -151,7 +151,7 @@
         "id": "soldati",
         "title": "Soldati",
         "author": "Giuseppe Ungaretti",
-        "group": "frammenti",
+        "group": "fragments",
         "markdown": "ungaretti-porto/soldati.md"
       }
     ],
@@ -160,11 +160,11 @@
   {
     "id": "montale-ossi",
     "year": 1925,
-    "title": "Montale e il paesaggio aspro",
-    "location": "Genova",
-    "mood": "natura",
-    "branch": "visione",
-    "description": "Ossi di seppia rende il paesaggio costiero un vocabolario di attriti, secchezza e disincanto.",
+    "title": "蒙塔莱与粗粝风景",
+    "location": "热那亚",
+    "mood": "nature",
+    "branch": "vision",
+    "description": "《乌贼骨》把海岸风景变成摩擦、干涩与幻灭的词汇表。",
     "connections": [
       "commedia-dante",
       "leopardi-infinito",
@@ -176,7 +176,7 @@
         "id": "meriggiare",
         "title": "Meriggiare pallido e assorto",
         "author": "Eugenio Montale",
-        "group": "ciclo",
+        "group": "cycle",
         "markdown": "montale-ossi/meriggiare.md"
       },
       {
@@ -190,7 +190,7 @@
         "id": "spesso-male",
         "title": "Spesso il male di vivere ho incontrato",
         "author": "Eugenio Montale",
-        "group": "frammenti",
+        "group": "fragments",
         "markdown": "montale-ossi/spesso-male.md"
       }
     ]
@@ -198,11 +198,11 @@
   {
     "id": "quasimodo-giorno",
     "year": 1947,
-    "title": "Il tono civile del dopoguerra",
-    "location": "Milano",
-    "mood": "rivolta",
-    "branch": "civile",
-    "description": "La voce privata si apre al discorso storico e alla responsabilita collettiva nella ricostruzione del paese.",
+    "title": "战后的公民语调",
+    "location": "米兰",
+    "mood": "revolt",
+    "branch": "civic",
+    "description": "私人声音向历史话语与集体责任敞开，回应国家重建。",
     "connections": [
       "ungaretti-porto",
       "ginsberg-howl"
@@ -219,7 +219,7 @@
         "id": "giorno-dopo-giorno",
         "title": "Giorno dopo giorno",
         "author": "Salvatore Quasimodo",
-        "group": "ciclo",
+        "group": "cycle",
         "markdown": "quasimodo-giorno/giorno-dopo-giorno.md"
       }
     ]
@@ -227,11 +227,11 @@
   {
     "id": "ginsberg-howl",
     "year": 1956,
-    "title": "Howl e la poesia performance",
-    "location": "San Francisco",
-    "mood": "rivolta",
-    "branch": "performativa",
-    "description": "Il reading pubblico cambia la fruizione del testo: verso lungo, corpo in scena e controcultura diventano un solo gesto.",
+    "title": "《嚎叫》与表演诗学",
+    "location": "旧金山",
+    "mood": "revolt",
+    "branch": "performative",
+    "description": "公开朗读改变了文本接受：长诗行、在场身体与反主流文化合为一体。",
     "connections": [
       "baude-fleurs",
       "quasimodo-giorno",
@@ -249,14 +249,14 @@
         "id": "america",
         "title": "America",
         "author": "Allen Ginsberg",
-        "group": "frammenti",
+        "group": "fragments",
         "markdown": "ginsberg-howl/america.md"
       },
       {
         "id": "supermarket",
         "title": "A Supermarket in California",
         "author": "Allen Ginsberg",
-        "group": "ciclo",
+        "group": "cycle",
         "markdown": "ginsberg-howl/supermarket.md"
       }
     ],
@@ -265,11 +265,11 @@
   {
     "id": "merini-rientro",
     "year": 1979,
-    "title": "La voce frontale di Merini",
-    "location": "Milano",
-    "mood": "amore",
-    "branch": "visione",
-    "description": "Con il ritorno editoriale la poesia intreccia eros, spiritualita e fragilita biografica senza mediazioni.",
+    "title": "梅里尼的正面之声",
+    "location": "米兰",
+    "mood": "love",
+    "branch": "vision",
+    "description": "回归出版之后，诗歌把爱欲、灵性与传记脆弱直接交织在一起。",
     "connections": [
       "montale-ossi",
       "poesia-digitale"
@@ -284,9 +284,9 @@
       },
       {
         "id": "aforismi-amore",
-        "title": "Poesie d amore",
+        "title": "爱的诗句",
         "author": "Alda Merini",
-        "group": "frammenti",
+        "group": "fragments",
         "markdown": "merini-rientro/aforismi-amore.md"
       }
     ]
@@ -294,11 +294,11 @@
   {
     "id": "slam-poetry",
     "year": 1994,
-    "title": "Lo slam apre la piazza europea",
-    "location": "Parigi e Roma",
-    "mood": "rivolta",
-    "branch": "performativa",
-    "description": "La competizione orale rende la poesia un rito comunitario dove ritmo, gesto e risposta del pubblico sono centrali.",
+    "title": "Slam 打开欧洲广场",
+    "location": "巴黎与罗马",
+    "mood": "revolt",
+    "branch": "performative",
+    "description": "口语竞技把诗歌变成共同体仪式，节奏、姿态与观众回应成为核心。",
     "connections": [
       "ginsberg-howl",
       "poesia-digitale"
@@ -307,14 +307,14 @@
       {
         "id": "slam-set-1",
         "title": "Set orale metropolitano",
-        "author": "Comunita slam",
-        "group": "ciclo",
+        "author": "Slam 社群",
+        "group": "cycle",
         "markdown": "slam-poetry/slam-set-1.md"
       },
       {
         "id": "spoken-resistenza",
         "title": "Spoken words di resistenza",
-        "author": "Comunita slam",
+        "author": "Slam 社群",
         "group": "manifesto",
         "markdown": "slam-poetry/spoken-resistenza.md"
       }
@@ -323,11 +323,11 @@
   {
     "id": "poesia-digitale",
     "year": 2015,
-    "title": "Ecologia poetica digitale",
-    "location": "Piattaforme online",
-    "mood": "spirituale",
-    "branch": "performativa",
-    "description": "Social, video e newsletter trasformano ritmo e scala della lettura, creando micro comunita transnazionali.",
+    "title": "数字诗歌生态",
+    "location": "在线平台",
+    "mood": "spiritual",
+    "branch": "performative",
+    "description": "社交媒体、视频与通讯简报改变了阅读节奏与规模，形成跨国微型共同体。",
     "connections": [
       "merini-rientro",
       "slam-poetry"
@@ -336,21 +336,21 @@
       {
         "id": "instapoetry-feed",
         "title": "Sequenze feed poetry",
-        "author": "Nuove autrici e nuovi autori",
-        "group": "frammenti",
+        "author": "新生代作者",
+        "group": "fragments",
         "markdown": "poesia-digitale/instapoetry-feed.md"
       },
       {
         "id": "longform-newsletter",
         "title": "Lunghe lettere poetiche",
-        "author": "Nuove autrici e nuovi autori",
-        "group": "ciclo",
+        "author": "新生代作者",
+        "group": "cycle",
         "markdown": "poesia-digitale/longform-newsletter.md"
       },
       {
         "id": "video-poem-live",
         "title": "Video poem live",
-        "author": "Nuove autrici e nuovi autori",
+        "author": "新生代作者",
         "group": "manifesto",
         "markdown": "poesia-digitale/video-poem-live.md"
       }

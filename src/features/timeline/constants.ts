@@ -1,36 +1,61 @@
-import type { PoemGroup, PoeticBranch, PoeticMood } from '../../types'
-import { messages } from '../../i18n'
+import { getMessages, type AppLocale } from "../../i18n";
+import type { PoemGroup, PoeticBranch, PoeticMood } from "../../types";
 
-export type MoodFilter = 'tutti' | PoeticMood
+export type MoodFilter = "all" | PoeticMood;
 
-export const moodOptions: Array<{ id: MoodFilter; label: string }> = [
-  { id: 'tutti', label: messages.filters.all },
-  { id: 'amore', label: messages.filters.moods.amore },
-  { id: 'natura', label: messages.filters.moods.natura },
-  { id: 'rivolta', label: messages.filters.moods.rivolta },
-  { id: 'esilio', label: messages.filters.moods.esilio },
-  { id: 'spirituale', label: messages.filters.moods.spirituale },
-]
+export const moodFilterOrder: MoodFilter[] = [
+  "all",
+  "love",
+  "nature",
+  "revolt",
+  "exile",
+  "spiritual",
+];
 
-export const moodLabels: Record<PoeticMood, string> = {
-  amore: messages.filters.moods.amore,
-  natura: messages.filters.moods.natura,
-  rivolta: messages.filters.moods.rivolta,
-  esilio: messages.filters.moods.esilio,
-  spirituale: messages.filters.moods.spirituale,
-}
+export const poemGroupOrder: PoemGroup[] = ["manifesto", "cycle", "fragments"];
 
-export const branchLabels: Record<PoeticBranch, string> = {
-  radice: messages.timeline.branchLabels.radice,
-  visione: messages.timeline.branchLabels.visione,
-  civile: messages.timeline.branchLabels.civile,
-  performativa: messages.timeline.branchLabels.performativa,
-}
+export const getMoodOptions = (locale: AppLocale) => {
+  const messages = getMessages(locale);
 
-export const poemGroupOrder: PoemGroup[] = ['manifesto', 'ciclo', 'frammenti']
+  return moodFilterOrder.map((id) => ({
+    id,
+    label: id === "all" ? messages.filters.all : messages.filters.moods[id],
+  }));
+};
 
-export const poemGroupLabels: Record<PoemGroup, string> = {
-  manifesto: messages.poems.groups.manifesto,
-  ciclo: messages.poems.groups.ciclo,
-  frammenti: messages.poems.groups.frammenti,
-}
+export const getMoodLabels = (locale: AppLocale): Record<PoeticMood, string> => {
+  const messages = getMessages(locale);
+
+  return {
+    love: messages.filters.moods.love,
+    nature: messages.filters.moods.nature,
+    revolt: messages.filters.moods.revolt,
+    exile: messages.filters.moods.exile,
+    spiritual: messages.filters.moods.spiritual,
+  };
+};
+
+export const getBranchLabels = (
+  locale: AppLocale,
+): Record<PoeticBranch, string> => {
+  const messages = getMessages(locale);
+
+  return {
+    canonical: messages.timeline.branchLabels.canonical,
+    vision: messages.timeline.branchLabels.vision,
+    civic: messages.timeline.branchLabels.civic,
+    performative: messages.timeline.branchLabels.performative,
+  };
+};
+
+export const getPoemGroupLabels = (
+  locale: AppLocale,
+): Record<PoemGroup, string> => {
+  const messages = getMessages(locale);
+
+  return {
+    manifesto: messages.poems.groups.manifesto,
+    cycle: messages.poems.groups.cycle,
+    fragments: messages.poems.groups.fragments,
+  };
+};

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
 import {
   EmptyState,
+  LanguageSwitcher,
   MoodFilterDock,
   NodeModal,
   PoemModal,
@@ -23,7 +24,7 @@ import {
   selectEvent,
   setHoveredEventId,
 } from "./features/timeline/timelineSlice";
-import { t } from "./i18n";
+import { useI18n } from "./i18n/useI18n";
 import type { PoeticEvent } from "./types";
 import "./App.scss";
 
@@ -33,6 +34,7 @@ function App() {
     startupLoaderConfig.enabled,
   );
   const dispatch = useAppDispatch();
+  const { locale, t } = useI18n();
   const filteredEvents = useAppSelector(selectFilteredEvents);
   const activeEventId = useAppSelector(selectEffectiveSelectedEventId);
   const isNodeModalOpen = useAppSelector(selectIsNodeModalOpen);
@@ -92,6 +94,11 @@ function App() {
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [dispatch, isNodeModalOpen, openPoem]);
+
+  useEffect(() => {
+    window.localStorage.setItem("poetry_portal_locale", locale);
+    document.documentElement.lang = locale;
+  }, [locale]);
   // #endregion
 
   // #region Render
@@ -99,9 +106,9 @@ function App() {
     <div className="app-shell">
       {showStartupLoader ? (
         <StartupLoader
-          ariaLabel={startupLoaderConfig.ariaLabel}
-          eyebrow={startupLoaderConfig.eyebrow}
-          label={startupLoaderConfig.label}
+          ariaLabel={t("loader.defaults.ariaLabel")}
+          eyebrow={t("loader.defaults.eyebrow")}
+          label={t("loader.defaults.label")}
         />
       ) : null}
       <div className="ambient-glow ambient-glow--left" />
@@ -112,6 +119,7 @@ function App() {
         aria-label={t("app.stageAriaLabel")}
       >
         <ThreeTimeline
+          locale={locale}
           events={filteredEvents}
           activeEventId={activeEventId}
           onSelect={handleSelect}
@@ -122,6 +130,7 @@ function App() {
           <header className="hero-panel">
             <StatsPanel />
           </header>
+          <LanguageSwitcher />
         </section>
 
         <TutorialDock />
@@ -137,4 +146,5 @@ function App() {
 }
 
 export default App;
+
 

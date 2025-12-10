@@ -1,12 +1,13 @@
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { selectHasNoFilteredEvents } from '../features/timeline/timelineSelectors'
 import { resetMoodFilter } from '../features/timeline/timelineSlice'
-import { t } from '../i18n'
+import { useI18n } from '../i18n/useI18n'
 import './EmptyState.scss'
 
 export function EmptyState() {
   const dispatch = useAppDispatch()
   const hasNoFilteredEvents = useAppSelector(selectHasNoFilteredEvents)
+  const { t } = useI18n()
 
   if (!hasNoFilteredEvents) {
     return null
@@ -21,3 +22,4 @@ export function EmptyState() {
     </div>
   )
 }
+

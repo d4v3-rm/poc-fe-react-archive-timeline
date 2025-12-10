@@ -1,9 +1,7 @@
 {
   "startupLoader": {
     "enabled": true,
-    "delayMs": 2000,
-    "ariaLabel": "Caricamento archivio poetico",
-    "eyebrow": "Archivio poetico 3D",
-    "label": "Sincronizzazione timeline"
+    "delayMs": 2000
   }
 }
+

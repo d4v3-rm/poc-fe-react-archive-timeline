@@ -22,11 +22,11 @@
   --color-focus: #ffd38c;
   --color-surface-panel: rgba(9, 15, 37, 0.74);
   --color-border-panel: rgba(163, 186, 245, 0.3);
-  --color-accent-amore: #f6be80;
-  --color-accent-natura: #76d8ac;
-  --color-accent-rivolta: #ff8a8a;
-  --color-accent-esilio: #91c1ff;
-  --color-accent-spirituale: #cfb3ff;
+  --color-accent-love: #f6be80;
+  --color-accent-nature: #76d8ac;
+  --color-accent-revolt: #ff8a8a;
+  --color-accent-exile: #91c1ff;
+  --color-accent-spiritual: #cfb3ff;
 
   /* Spacing scale */
   --space-0: 0;
@@ -143,28 +143,28 @@ kbd {
   letter-spacing: var(--tracking-wide);
 }
 
-.mood-chip--amore {
-  color: var(--color-accent-amore);
+.mood-chip--love {
+  color: var(--color-accent-love);
   background: rgba(246, 190, 128, 0.18);
 }
 
-.mood-chip--natura {
-  color: var(--color-accent-natura);
+.mood-chip--nature {
+  color: var(--color-accent-nature);
   background: rgba(118, 216, 172, 0.18);
 }
 
-.mood-chip--rivolta {
-  color: var(--color-accent-rivolta);
+.mood-chip--revolt {
+  color: var(--color-accent-revolt);
   background: rgba(255, 138, 138, 0.16);
 }
 
-.mood-chip--esilio {
-  color: var(--color-accent-esilio);
+.mood-chip--exile {
+  color: var(--color-accent-exile);
   background: rgba(145, 193, 255, 0.17);
 }
 
-.mood-chip--spirituale {
-  color: var(--color-accent-spirituale);
+.mood-chip--spiritual {
+  color: var(--color-accent-spiritual);
   background: rgba(207, 179, 255, 0.16);
 }
 
@@ -273,3 +273,4 @@ kbd {
     transform: translate3d(-50%, -50%, 0) rotate(540deg) translateX(46%);
   }
 }
+

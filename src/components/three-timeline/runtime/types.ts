@@ -1,6 +1,7 @@
 import type { MutableRefObject } from "react";
 import type * as THREE from "three";
 import type { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import type { AppLocale } from "../../../i18n";
 import type { PoeticBranch, PoeticEvent } from "../../../types";
 
 // #region Public Contracts
@@ -13,6 +14,7 @@ export interface TimelineRuntimeRefs {
 }
 
 export interface MountThreeTimelineOptions extends TimelineRuntimeRefs {
+  locale: AppLocale;
   host: HTMLDivElement;
   events: PoeticEvent[];
 }
@@ -156,5 +158,6 @@ export interface InteractionRuntime {
   cleanup: () => void;
 }
 // #endregion
+
 
 

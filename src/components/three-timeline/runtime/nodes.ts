@@ -1,8 +1,8 @@
 import * as THREE from "three";
+import { translate, type AppLocale } from "../../../i18n";
 import type { PoeticEvent } from "../../../types";
-import { t } from "../../../i18n";
 import {
-  branchLabels,
+  getBranchLabels,
   createPoemGeometry,
   createRadialTexture,
   groupOrder,
@@ -17,6 +17,7 @@ import type {
 } from "./types";
 
 interface CreateNodeRuntimeOptions {
+  locale: AppLocale;
   events: PoeticEvent[];
   projection: ProjectionRuntime;
   scene: SceneRuntime;
@@ -24,10 +25,12 @@ interface CreateNodeRuntimeOptions {
 
 // #region Node Runtime
 export const createNodeRuntime = ({
+  locale,
   events,
   projection,
   scene,
 }: CreateNodeRuntimeOptions): NodeRuntime => {
+  const branchLabels = getBranchLabels(locale);
   const { points } = projection;
   const { root, labelLayer, trackGeometry, trackMaterial, trackTexture } = scene;
 
@@ -115,7 +118,7 @@ export const createNodeRuntime = ({
     const label = document.createElement("div");
     label.className = "timeline-node-label";
     label.classList.add(`timeline-node-label--${event.branch}`);
-    const poemCountLabel = t("timeline.nodeLabelPoems", {
+    const poemCountLabel = translate(locale, "timeline.nodeLabelPoems", {
       count: event.poems.length,
     });
     label.innerHTML = `
@@ -219,5 +222,6 @@ export const createNodeRuntime = ({
   };
 };
 // #endregion
+
 
 

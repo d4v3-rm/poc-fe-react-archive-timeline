@@ -1,41 +1,45 @@
 import * as THREE from "three";
+import { getMessages, type AppLocale } from "../../../i18n";
 import type { PoemGroup, PoeticBranch, PoeticMood } from "../../../types";
-import { messages } from "../../../i18n";
 import type { LabelRect, TrackGeometry } from "./types";
 
 export const moodPalette: Record<PoeticMood, number> = {
-  amore: 0xf7b874,
-  natura: 0x6ed0a6,
-  rivolta: 0xff7b7b,
-  esilio: 0x88b9ff,
-  spirituale: 0xc9a5ff,
+  love: 0xf7b874,
+  nature: 0x6ed0a6,
+  revolt: 0xff7b7b,
+  exile: 0x88b9ff,
+  spiritual: 0xc9a5ff,
 };
 
 export const branchStyles: Record<
   PoeticBranch,
   { offsetX: number; offsetY: number; color: number; phase: number }
 > = {
-  radice: { offsetX: 0, offsetY: 0, color: 0x87a8ff, phase: 0.2 },
-  visione: { offsetX: -4.25, offsetY: 1.4, color: 0x78dcb2, phase: 1.1 },
-  civile: { offsetX: 4.35, offsetY: -1.1, color: 0xff9f90, phase: 1.9 },
-  performativa: { offsetX: 2.95, offsetY: 2.25, color: 0xd5b0ff, phase: 2.5 },
+  canonical: { offsetX: 0, offsetY: 0, color: 0x87a8ff, phase: 0.2 },
+  vision: { offsetX: -4.25, offsetY: 1.4, color: 0x78dcb2, phase: 1.1 },
+  civic: { offsetX: 4.35, offsetY: -1.1, color: 0xff9f90, phase: 1.9 },
+  performative: { offsetX: 2.95, offsetY: 2.25, color: 0xd5b0ff, phase: 2.5 },
 };
 
 export const poemGroupStyles: Record<PoemGroup, { color: number; speed: number }> =
   {
     manifesto: { color: 0xffcc84, speed: 0.22 },
-    ciclo: { color: 0x88c8ff, speed: 0.18 },
-    frammenti: { color: 0xd9b8ff, speed: 0.26 },
+    cycle: { color: 0x88c8ff, speed: 0.18 },
+    fragments: { color: 0xd9b8ff, speed: 0.26 },
   };
 
-export const branchLabels: Record<PoeticBranch, string> = {
-  radice: messages.timeline.branchLabels.radice,
-  visione: messages.timeline.branchLabels.visione,
-  civile: messages.timeline.branchLabels.civile,
-  performativa: messages.timeline.branchLabels.performativa,
+export const getBranchLabels = (locale: AppLocale): Record<PoeticBranch, string> => {
+  const messages = getMessages(locale);
+
+  return {
+    canonical: messages.timeline.branchLabels.canonical,
+    vision: messages.timeline.branchLabels.vision,
+    civic: messages.timeline.branchLabels.civic,
+    performative: messages.timeline.branchLabels.performative,
+  };
 };
 
-export const groupOrder: PoemGroup[] = ["manifesto", "ciclo", "frammenti"];
+export const groupOrder: PoemGroup[] = ["manifesto", "cycle", "fragments"];
 
 export const labelPlacementOffsets = [
   { x: 0, y: 0 },
@@ -69,7 +73,7 @@ export const createPoemGeometry = (
     return trackGeometry(new THREE.BoxGeometry(0.18, 0.18, 0.18));
   }
 
-  if (group === "frammenti") {
+  if (group === "fragments") {
     return trackGeometry(new THREE.TetrahedronGeometry(0.15));
   }
 
@@ -98,5 +102,3 @@ export const createRadialTexture = () => {
   texture.needsUpdate = true;
   return texture;
 };
-
-

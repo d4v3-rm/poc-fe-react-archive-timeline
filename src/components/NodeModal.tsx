@@ -1,8 +1,8 @@
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import {
-  branchLabels,
-  moodLabels,
-  poemGroupLabels,
+  getBranchLabels,
+  getMoodLabels,
+  getPoemGroupLabels,
 } from "../features/timeline/constants";
 import {
   selectEffectiveSelectedPoem,
@@ -18,7 +18,7 @@ import {
   openPoemById,
   selectRelatedEvent,
 } from "../features/timeline/timelineSlice";
-import { t } from "../i18n";
+import { useI18n } from "../i18n/useI18n";
 import "./NodeModal.scss";
 
 export function NodeModal() {
@@ -31,6 +31,10 @@ export function NodeModal() {
   const groupedPoems = useAppSelector(selectGroupedPoems);
   const relatedEvents = useAppSelector(selectRelatedEvents);
   const effectiveSelectedPoem = useAppSelector(selectEffectiveSelectedPoem);
+  const { locale, t } = useI18n();
+  const moodLabels = getMoodLabels(locale);
+  const branchLabels = getBranchLabels(locale);
+  const poemGroupLabels = getPoemGroupLabels(locale);
   // #endregion
 
   // #region Guard
@@ -162,3 +166,4 @@ export function NodeModal() {
   );
   // #endregion
 }
+

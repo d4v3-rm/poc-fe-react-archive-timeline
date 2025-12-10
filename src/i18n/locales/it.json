@@ -2,6 +2,16 @@
   "app": {
     "stageAriaLabel": "Timeline poetica fullscreen con diramazioni"
   },
+  "language": {
+    "selectorAriaLabel": "Selettore lingua",
+    "options": {
+      "it": "Italiano",
+      "en": "Inglese",
+      "fr": "Francese",
+      "es": "Spagnolo",
+      "zh": "Cinese"
+    }
+  },
   "loader": {
     "defaults": {
       "ariaLabel": "Caricamento archivio poetico",
@@ -13,28 +23,28 @@
     "ariaLabel": "Timeline poetica tridimensionale a diramazioni",
     "nodeLabelPoems": "{{count}} poesie",
     "branchLabels": {
-      "radice": "Radice canonica",
-      "visione": "Ramo visione",
-      "civile": "Ramo civile",
-      "performativa": "Ramo performativo"
+      "canonical": "Radice canonica",
+      "vision": "Ramo visione",
+      "civic": "Ramo civile",
+      "performative": "Ramo performativo"
     }
   },
   "filters": {
     "ariaLabel": "Filtri mood",
     "all": "Tutti i mood",
     "moods": {
-      "amore": "Amore",
-      "natura": "Natura",
-      "rivolta": "Rivolta",
-      "esilio": "Esilio",
-      "spirituale": "Spirituale"
+      "love": "Amore",
+      "nature": "Natura",
+      "revolt": "Rivolta",
+      "exile": "Esilio",
+      "spiritual": "Spirituale"
     }
   },
   "poems": {
     "groups": {
       "manifesto": "Manifesti",
-      "ciclo": "Cicli",
-      "frammenti": "Frammenti"
+      "cycle": "Cicli",
+      "fragments": "Frammenti"
     }
   },
   "emptyState": {
@@ -89,3 +99,4 @@
     "metaSeparator": " - "
   }
 }
+

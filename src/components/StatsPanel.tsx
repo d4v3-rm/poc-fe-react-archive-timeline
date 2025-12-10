@@ -1,10 +1,11 @@
 import { useAppSelector } from '../app/hooks'
 import { selectStats } from '../features/timeline/timelineSelectors'
-import { t } from '../i18n'
+import { useI18n } from '../i18n/useI18n'
 import './StatsPanel.scss'
 
 export function StatsPanel() {
   const stats = useAppSelector(selectStats)
+  const { t } = useI18n()
 
   return (
     <div className="hero-panel__stats" aria-label={t('stats.ariaLabel')}>
@@ -44,3 +45,4 @@ export function StatsPanel() {
     </div>
   )
 }
+
