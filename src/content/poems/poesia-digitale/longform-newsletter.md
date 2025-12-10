@@ -1,1 +1,1 @@
-Formati seriali che ricompongono intimit� e continuita narrativa.
+Formati seriali che ricompongono intimita e continuita narrativa.
