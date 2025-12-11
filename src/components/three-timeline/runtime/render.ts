@@ -17,7 +17,13 @@ interface StartRenderLoopOptions {
   nodes: NodeRuntime;
   scene: Pick<
     SceneRuntime,
-    "scene" | "camera" | "renderer" | "controls" | "root" | "stars" | "starsMaterial"
+    | "scene"
+    | "camera"
+    | "renderer"
+    | "controls"
+    | "root"
+    | "stars"
+    | "starsMaterial"
   >;
 }
 
@@ -51,7 +57,11 @@ export const startRenderLoop = ({
 
     const elapsed = clock.getElapsedTime();
 
-    currentOffset = THREE.MathUtils.lerp(currentOffset, targetOffsetRef.current, 0.078);
+    currentOffset = THREE.MathUtils.lerp(
+      currentOffset,
+      targetOffsetRef.current,
+      0.078,
+    );
     root.position.z = currentOffset;
 
     stars.rotation.y = elapsed * 0.012;
@@ -61,7 +71,9 @@ export const startRenderLoop = ({
     const activeId = activeEventIdRef.current;
     const activeEvent = activeId ? (eventById.get(activeId) ?? null) : null;
     const activeBranch = activeEvent?.branch ?? null;
-    const relatedIds = new Set<string>(activeEvent ? [activeEvent.id, ...activeEvent.connections] : []);
+    const relatedIds = new Set<string>(
+      activeEvent ? [activeEvent.id, ...activeEvent.connections] : [],
+    );
 
     branchVisuals.forEach(({ branch, mesh, glow }, index) => {
       const isFocused = activeBranch === branch;
@@ -79,7 +91,8 @@ export const startRenderLoop = ({
           (relatedIds.has(sourceId) && relatedIds.has(targetId)));
 
       const pulse = 0.7 + Math.sin(elapsed * 1.5 + index * 0.9) * 0.3;
-      line.material.opacity = (isFocused ? 0.72 : activeBranch === branch ? 0.38 : 0.18) * pulse;
+      line.material.opacity =
+        (isFocused ? 0.72 : activeBranch === branch ? 0.38 : 0.18) * pulse;
     });
 
     connectionVisuals.forEach(({ sourceId, targetId, branch, line }, index) => {
@@ -90,7 +103,8 @@ export const startRenderLoop = ({
           (relatedIds.has(sourceId) && relatedIds.has(targetId)));
 
       const pulse = 0.72 + Math.sin(elapsed * 1.2 + index * 1.4) * 0.28;
-      line.material.opacity = (isFocused ? 0.46 : activeBranch === branch ? 0.2 : 0.12) * pulse;
+      line.material.opacity =
+        (isFocused ? 0.46 : activeBranch === branch ? 0.2 : 0.12) * pulse;
     });
 
     flowParticles.forEach((particle, particleIndex) => {
@@ -114,7 +128,8 @@ export const startRenderLoop = ({
     });
 
     clusters.forEach((cluster, clusterIndex) => {
-      const { event, node, shell, core, aura, satelliteRoot, satellites } = cluster;
+      const { event, node, shell, core, aura, satelliteRoot, satellites } =
+        cluster;
       const isHovered = hoveredState.current === event.id;
       const isActive = activeId === event.id;
 
@@ -129,9 +144,11 @@ export const startRenderLoop = ({
 
       const pulse = Math.sin(elapsed * 2.15 + clusterIndex * 0.58);
       node.material.opacity = isActive ? 0.98 : isHovered ? 0.94 : 0.86;
-      node.material.emissiveIntensity = (isActive ? 1 : isHovered ? 0.7 : 0.42) + pulse * 0.07;
+      node.material.emissiveIntensity =
+        (isActive ? 1 : isHovered ? 0.7 : 0.42) + pulse * 0.07;
 
-      shell.material.opacity = (isActive ? 0.42 : isHovered ? 0.3 : 0.2) + pulse * 0.03;
+      shell.material.opacity =
+        (isActive ? 0.42 : isHovered ? 0.3 : 0.2) + pulse * 0.03;
       shell.rotation.x = elapsed * 0.21 + clusterIndex * 0.18;
       shell.rotation.y = elapsed * 0.3 - clusterIndex * 0.16;
       shell.rotation.z = elapsed * 0.12;
@@ -153,22 +170,32 @@ export const startRenderLoop = ({
         const angle = satellite.baseAngle + elapsed * satellite.speed;
         const radial =
           satellite.radius +
-          Math.sin(elapsed * satellite.drift + satellite.phase) * satellite.wobble;
+          Math.sin(elapsed * satellite.drift + satellite.phase) *
+            satellite.wobble;
         const hoverLift = isActive ? 0.08 : isHovered ? 0.05 : 0;
         const driftOffset = Math.sin(elapsed * 0.42 + satIndex * 0.8) * 0.06;
 
         satellite.mesh.position.set(
           Math.cos(angle) * radial + driftOffset,
           satellite.height +
-            Math.sin(angle * 1.7 + satellite.phase) * (0.12 + satellite.wobble) +
+            Math.sin(angle * 1.7 + satellite.phase) *
+              (0.12 + satellite.wobble) +
             hoverLift,
           Math.sin(angle + satellite.tilt) * radial - driftOffset,
         );
 
         satellite.mesh.rotation.x = elapsed * (0.86 + satellite.wobble);
         satellite.mesh.rotation.y = elapsed * (1 + satellite.drift * 0.08);
-        satellite.mesh.material.emissiveIntensity = isActive ? 0.92 : isHovered ? 0.68 : 0.44;
-        satellite.mesh.material.opacity = isActive ? 0.96 : isHovered ? 0.9 : 0.82;
+        satellite.mesh.material.emissiveIntensity = isActive
+          ? 0.92
+          : isHovered
+            ? 0.68
+            : 0.44;
+        satellite.mesh.material.opacity = isActive
+          ? 0.96
+          : isHovered
+            ? 0.9
+            : 0.82;
       });
     });
 
@@ -183,6 +210,3 @@ export const startRenderLoop = ({
   };
 };
 // #endregion
-
-
-

@@ -1,12 +1,16 @@
-import './StartupLoader.scss'
+import "./StartupLoader.scss";
 
 interface StartupLoaderProps {
-  ariaLabel: string
-  eyebrow: string
-  label: string
+  ariaLabel: string;
+  eyebrow: string;
+  label: string;
 }
 
-export function StartupLoader({ ariaLabel, eyebrow, label }: StartupLoaderProps) {
+export function StartupLoader({
+  ariaLabel,
+  eyebrow,
+  label,
+}: StartupLoaderProps) {
   return (
     <div
       className="startup-loader"
@@ -26,6 +30,5 @@ export function StartupLoader({ ariaLabel, eyebrow, label }: StartupLoaderProps)
       <p className="startup-loader__eyebrow">{eyebrow}</p>
       <p className="startup-loader__label">{label}</p>
     </div>
-  )
+  );
 }
-

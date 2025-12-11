@@ -1,10 +1,7 @@
 import localeEn from "./locales/en.json";
-import localeEs from "./locales/es.json";
-import localeFr from "./locales/fr.json";
 import localeIt from "./locales/it.json";
-import localeZh from "./locales/zh.json";
 
-export const supportedLocales = ["it", "en", "fr", "es", "zh"] as const;
+export const supportedLocales = ["it", "en"] as const;
 
 export type AppLocale = (typeof supportedLocales)[number];
 
@@ -13,9 +10,6 @@ export const defaultLocale: AppLocale = "en";
 const localeMessagesMap = {
   it: localeIt,
   en: localeEn,
-  fr: localeFr,
-  es: localeEs,
-  zh: localeZh,
 } as const;
 
 export type LocaleMessages = (typeof localeMessagesMap)["en"];
@@ -70,4 +64,3 @@ export const translate = (
     return tokenValue === undefined ? `{{${token}}}` : String(tokenValue);
   });
 };
-

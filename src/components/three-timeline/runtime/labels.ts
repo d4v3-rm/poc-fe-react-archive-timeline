@@ -36,7 +36,9 @@ export const updateLabelLayer = ({
   const { camera, renderer } = scene;
 
   const activeEvent = activeId ? (eventById.get(activeId) ?? null) : null;
-  const relatedIds = new Set<string>(activeEvent ? [activeEvent.id, ...activeEvent.connections] : []);
+  const relatedIds = new Set<string>(
+    activeEvent ? [activeEvent.id, ...activeEvent.connections] : [],
+  );
 
   camera.getWorldDirection(cameraDirectionScratch);
   const viewportWidth = renderer.domElement.clientWidth;
@@ -51,7 +53,8 @@ export const updateLabelLayer = ({
 
     cameraToLabelScratch.copy(labelWorldScratch).sub(camera.position);
 
-    const isBehindCamera = cameraDirectionScratch.dot(cameraToLabelScratch) <= 0;
+    const isBehindCamera =
+      cameraDirectionScratch.dot(cameraToLabelScratch) <= 0;
 
     labelProjectScratch.copy(labelWorldScratch).project(camera);
 
@@ -66,7 +69,12 @@ export const updateLabelLayer = ({
     if (isBehindCamera || outOfView) {
       element.style.opacity = "0";
       element.style.zIndex = "0";
-      element.classList.remove("is-active", "is-hovered", "is-related", "is-muted");
+      element.classList.remove(
+        "is-active",
+        "is-hovered",
+        "is-related",
+        "is-muted",
+      );
       return;
     }
 
@@ -74,7 +82,8 @@ export const updateLabelLayer = ({
     const y = (-labelProjectScratch.y * 0.5 + 0.5) * viewportHeight;
     const isActive = activeId === event.id;
     const isHovered = hoveredId === event.id;
-    const isRelated = activeId !== null && relatedIds.has(event.id) && !isActive;
+    const isRelated =
+      activeId !== null && relatedIds.has(event.id) && !isActive;
     const isMuted = hoveredId !== null && !isActive && !isHovered && !isRelated;
 
     const lift = isHovered ? -8 : isActive ? -4 : isRelated ? -2 : 0;
@@ -175,6 +184,3 @@ export const updateLabelLayer = ({
     });
 };
 // #endregion
-
-
-

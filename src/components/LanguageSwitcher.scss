@@ -1,55 +1,64 @@
 .language-switcher {
   pointer-events: auto;
-  justify-self: end;
+  align-self: flex-start;
 }
 
-.language-switcher__list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 0.42rem;
+.language-switcher__control {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
 }
 
-.language-switcher__item {
-  border: 1px solid rgba(166, 189, 244, 0.38);
+.language-switcher__select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 2.9rem;
+  height: 2.05rem;
+  border: 1px solid rgba(166, 189, 244, 0.42);
   border-radius: 0;
-  background: rgba(10, 17, 38, 0.68);
-  color: rgba(223, 235, 255, 0.88);
-  font-size: 0.7rem;
-  letter-spacing: 0.03em;
-  padding: 0.36rem 0.68rem;
+  background: rgba(10, 17, 38, 0.72);
+  color: rgba(236, 243, 255, 0.94);
+  font-size: 1.04rem;
+  line-height: 1;
+  text-align: center;
+  text-align-last: center;
+  padding: 0 1rem 0 0.2rem;
   cursor: pointer;
+  outline: none;
   transition:
-    border-color 150ms ease,
-    background 150ms ease,
-    color 150ms ease;
+    border-color 140ms ease,
+    background 140ms ease,
+    color 140ms ease;
 
   &:hover {
-    border-color: rgba(208, 221, 255, 0.68);
-    background: rgba(18, 28, 57, 0.78);
+    border-color: rgba(208, 221, 255, 0.76);
+    background: rgba(18, 28, 57, 0.82);
     color: #f4f8ff;
   }
 
-  &.is-active {
+  &:focus-visible {
     border-color: rgba(255, 214, 146, 0.88);
-    background: rgba(255, 214, 146, 0.16);
-    color: #ffe7bf;
+    box-shadow: 0 0 0 1px rgba(255, 214, 146, 0.42);
   }
 }
 
-@media (max-width: 1180px) {
-  .language-switcher {
-    justify-self: start;
-  }
-
-  .language-switcher__list {
-    justify-content: flex-start;
-  }
+.language-switcher__caret {
+  position: absolute;
+  right: 0.34rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(200, 216, 248, 0.8);
+  font-size: 0.62rem;
+  line-height: 1;
+  pointer-events: none;
 }
 
 @media (max-width: 700px) {
-  .language-switcher__item {
-    font-size: 0.66rem;
-    padding: 0.3rem 0.56rem;
+  .language-switcher__select {
+    width: 2.65rem;
+    height: 1.85rem;
+    font-size: 0.95rem;
+    padding-right: 0.86rem;
   }
 }

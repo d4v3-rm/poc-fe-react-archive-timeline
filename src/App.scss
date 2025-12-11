@@ -35,24 +35,36 @@
   height: 100%;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 1;
-    background: radial-gradient(circle at center, transparent 32%, rgba(5, 8, 22, 0.35) 100%);
+    background: radial-gradient(
+      circle at center,
+      transparent 32%,
+      rgba(5, 8, 22, 0.35) 100%
+    );
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 2;
     opacity: 0.1;
     background:
-      radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.05), transparent 44%),
-      radial-gradient(circle at 78% 70%, rgba(255, 255, 255, 0.04), transparent 46%);
+      radial-gradient(
+        circle at 20% 18%,
+        rgba(255, 255, 255, 0.05),
+        transparent 44%
+      ),
+      radial-gradient(
+        circle at 78% 70%,
+        rgba(255, 255, 255, 0.04),
+        transparent 46%
+      );
     mix-blend-mode: normal;
   }
 }
@@ -61,12 +73,13 @@
   position: absolute;
   top: calc(1rem + var(--safe-top));
   left: calc(1rem + var(--safe-left));
-  right: calc(1rem + var(--safe-right));
+  right: auto;
   z-index: 4;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
-  gap: 0.9rem;
+  justify-content: flex-start;
+  gap: 0.54rem;
   pointer-events: none;
 }
 
@@ -86,8 +99,7 @@
 
 @media (max-width: 1180px) {
   .ui-top {
-    flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
     gap: 0.62rem;
   }
 
@@ -99,15 +111,27 @@
 
 @media (max-width: 940px) {
   .app-shell::before {
-    content: '';
+    content: "";
     position: fixed;
     inset: 0;
     z-index: -1;
     pointer-events: none;
     background:
-      radial-gradient(circle at 16% 20%, rgba(78, 126, 226, 0.24), transparent 48%),
-      radial-gradient(circle at 82% 24%, rgba(255, 152, 104, 0.2), transparent 46%),
-      radial-gradient(circle at 70% 84%, rgba(141, 106, 203, 0.16), transparent 50%),
+      radial-gradient(
+        circle at 16% 20%,
+        rgba(78, 126, 226, 0.24),
+        transparent 48%
+      ),
+      radial-gradient(
+        circle at 82% 24%,
+        rgba(255, 152, 104, 0.2),
+        transparent 46%
+      ),
+      radial-gradient(
+        circle at 70% 84%,
+        rgba(141, 106, 203, 0.16),
+        transparent 50%
+      ),
       linear-gradient(150deg, var(--bg-1), var(--bg-2));
   }
 
@@ -118,7 +142,11 @@
   }
 
   .stage::before {
-    background: radial-gradient(circle at center, transparent 40%, rgba(5, 8, 22, 0.3) 100%);
+    background: radial-gradient(
+      circle at center,
+      transparent 40%,
+      rgba(5, 8, 22, 0.3) 100%
+    );
   }
 
   .ambient-glow {
@@ -141,4 +169,3 @@
     padding: 0.34rem 0.36rem;
   }
 }
-

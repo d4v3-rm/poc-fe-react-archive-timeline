@@ -32,7 +32,8 @@ export const createNodeRuntime = ({
 }: CreateNodeRuntimeOptions): NodeRuntime => {
   const branchLabels = getBranchLabels(locale);
   const { points } = projection;
-  const { root, labelLayer, trackGeometry, trackMaterial, trackTexture } = scene;
+  const { root, labelLayer, trackGeometry, trackMaterial, trackTexture } =
+    scene;
 
   const interactiveMeshes: NodeRuntime["interactiveMeshes"] = [];
   const clusters: NodeRuntime["clusters"] = [];
@@ -46,7 +47,9 @@ export const createNodeRuntime = ({
     const baseColor = moodPalette[event.mood];
     const nodeRadius = 0.31 + Math.min(event.poems.length, 4) * 0.08;
 
-    const nodeGeometry = trackGeometry(new THREE.IcosahedronGeometry(nodeRadius, 1));
+    const nodeGeometry = trackGeometry(
+      new THREE.IcosahedronGeometry(nodeRadius, 1),
+    );
     const nodeMaterial = trackMaterial(
       new THREE.MeshStandardMaterial({
         color: baseColor,
@@ -66,7 +69,9 @@ export const createNodeRuntime = ({
     root.add(node);
     interactiveMeshes.push(node);
 
-    const shellGeometry = trackGeometry(new THREE.IcosahedronGeometry(nodeRadius * 1.7, 0));
+    const shellGeometry = trackGeometry(
+      new THREE.IcosahedronGeometry(nodeRadius * 1.7, 0),
+    );
     const shellMaterial = trackMaterial(
       new THREE.MeshBasicMaterial({
         color: baseColor,
@@ -82,7 +87,9 @@ export const createNodeRuntime = ({
     shell.position.copy(point);
     root.add(shell);
 
-    const coreGeometry = trackGeometry(new THREE.SphereGeometry(nodeRadius * 0.36, 14, 14));
+    const coreGeometry = trackGeometry(
+      new THREE.SphereGeometry(nodeRadius * 0.36, 14, 14),
+    );
     const coreMaterial = trackMaterial(
       new THREE.MeshBasicMaterial({
         color: baseColor,
@@ -222,6 +229,3 @@ export const createNodeRuntime = ({
   };
 };
 // #endregion
-
-
-

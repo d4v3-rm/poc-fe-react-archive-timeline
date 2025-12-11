@@ -6,10 +6,7 @@
     "selectorAriaLabel": "Language selector",
     "options": {
       "it": "Italiano",
-      "en": "English",
-      "fr": "Francais",
-      "es": "Espanol",
-      "zh": "Chinese"
+      "en": "English"
     }
   },
   "loader": {
@@ -99,4 +96,3 @@
     "metaSeparator": " - "
   }
 }
-

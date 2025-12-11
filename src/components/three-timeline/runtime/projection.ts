@@ -25,7 +25,8 @@ export const createProjectionRuntime = (
   const focusOffsets = points.map((point) => -point.z);
   const minOffset =
     focusOffsets.length > 0 ? Math.min(...focusOffsets) - 4.2 : -12;
-  const maxOffset = focusOffsets.length > 0 ? Math.max(...focusOffsets) + 4.2 : 12;
+  const maxOffset =
+    focusOffsets.length > 0 ? Math.max(...focusOffsets) + 4.2 : 12;
 
   const focusOffsetById = new Map<string, number>();
 
@@ -45,7 +46,9 @@ export const createProjectionRuntime = (
   });
 
   const eventById = new Map(events.map((event) => [event.id, event]));
-  const pointById = new Map(events.map((event, index) => [event.id, points[index]]));
+  const pointById = new Map(
+    events.map((event, index) => [event.id, points[index]]),
+  );
 
   return {
     points,
@@ -58,6 +61,3 @@ export const createProjectionRuntime = (
   };
 };
 // #endregion
-
-
-

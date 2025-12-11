@@ -40,8 +40,10 @@ export const createFlowRuntime = ({
     opacityRange: [number, number],
   ) => {
     for (let index = 0; index < count; index += 1) {
-      const speed = speedRange[0] + Math.random() * (speedRange[1] - speedRange[0]);
-      const scale = scaleRange[0] + Math.random() * (scaleRange[1] - scaleRange[0]);
+      const speed =
+        speedRange[0] + Math.random() * (speedRange[1] - speedRange[0]);
+      const scale =
+        scaleRange[0] + Math.random() * (scaleRange[1] - scaleRange[0]);
       const opacity =
         opacityRange[0] + Math.random() * (opacityRange[1] - opacityRange[0]);
 
@@ -81,13 +83,27 @@ export const createFlowRuntime = ({
       const drift = Math.sin(localIndex * 1.28 + style.phase) * 0.42;
       const lift = Math.cos(localIndex * 0.98 + style.phase * 1.3) * 0.26;
 
-      return new THREE.Vector3(source.x + drift * 0.28, source.y + lift, source.z);
+      return new THREE.Vector3(
+        source.x + drift * 0.28,
+        source.y + lift,
+        source.z,
+      );
     });
 
-    const curve = new THREE.CatmullRomCurve3(branchPoints, false, "centripetal", 0.34);
+    const curve = new THREE.CatmullRomCurve3(
+      branchPoints,
+      false,
+      "centripetal",
+      0.34,
+    );
 
     const branchGeometry = trackGeometry(
-      new THREE.TubeGeometry(curve, Math.max(92, branchPoints.length * 54), 0.052, 10),
+      new THREE.TubeGeometry(
+        curve,
+        Math.max(92, branchPoints.length * 54),
+        0.052,
+        10,
+      ),
     );
 
     const branchMaterial = trackMaterial(
@@ -152,9 +168,14 @@ export const createFlowRuntime = ({
     const controlPoint = fromPoint.clone().add(toPoint).multiplyScalar(0.5);
     controlPoint.x += (toPoint.x - fromPoint.x) * 0.18;
     controlPoint.y += 2.1 + Math.abs(fromPoint.x - toPoint.x) * 0.44;
-    controlPoint.z += Math.sin(index * 0.68 + branchStyles[event.branch].phase) * 0.72;
+    controlPoint.z +=
+      Math.sin(index * 0.68 + branchStyles[event.branch].phase) * 0.72;
 
-    const branchCurve = new THREE.QuadraticBezierCurve3(fromPoint, controlPoint, toPoint);
+    const branchCurve = new THREE.QuadraticBezierCurve3(
+      fromPoint,
+      controlPoint,
+      toPoint,
+    );
 
     const linkGeometry = trackGeometry(
       new THREE.BufferGeometry().setFromPoints(branchCurve.getPoints(26)),
@@ -212,9 +233,14 @@ export const createFlowRuntime = ({
       seenLinks.add(linkKey);
       const targetEvent = eventById.get(targetId);
       const sourceColor = branchStyles[event.branch].color;
-      const targetColor = targetEvent ? branchStyles[targetEvent.branch].color : sourceColor;
+      const targetColor = targetEvent
+        ? branchStyles[targetEvent.branch].color
+        : sourceColor;
 
-      const controlPoint = sourcePoint.clone().add(targetPoint).multiplyScalar(0.5);
+      const controlPoint = sourcePoint
+        .clone()
+        .add(targetPoint)
+        .multiplyScalar(0.5);
       controlPoint.x += (targetPoint.x - sourcePoint.x) * 0.08;
       controlPoint.y += 1.5 + Math.abs(targetPoint.x - sourcePoint.x) * 0.16;
       controlPoint.z += Math.cos(sourceIndex * 0.8 + targetPoint.z * 0.1) * 0.5;
@@ -244,7 +270,10 @@ export const createFlowRuntime = ({
         }),
       );
 
-      const connectionLine = new THREE.Line(connectionGeometry, connectionMaterial);
+      const connectionLine = new THREE.Line(
+        connectionGeometry,
+        connectionMaterial,
+      );
       connectionLine.renderOrder = 1;
       root.add(connectionLine);
 
@@ -274,6 +303,3 @@ export const createFlowRuntime = ({
   };
 };
 // #endregion
-
-
-

@@ -7,10 +7,7 @@
     "mood": "love",
     "branch": "canonical",
     "description": "The language of love becomes a formal workshop: harmony, introspection, and spiritual vocabulary mark the beginning of modern tradition.",
-    "connections": [
-      "commedia-dante",
-      "leopardi-infinito"
-    ],
+    "connections": ["commedia-dante", "leopardi-infinito"],
     "poems": [
       {
         "id": "donna-pregha",
@@ -36,11 +33,7 @@
     "mood": "spiritual",
     "branch": "canonical",
     "description": "The poem binds theology, politics, and narrative invention into a system that becomes a reference point for centuries.",
-    "connections": [
-      "dolce-stil-novo",
-      "leopardi-infinito",
-      "montale-ossi"
-    ],
+    "connections": ["dolce-stil-novo", "leopardi-infinito", "montale-ossi"],
     "poems": [
       {
         "id": "inferno-xxvi",
@@ -73,11 +66,7 @@
     "mood": "nature",
     "branch": "vision",
     "description": "The hedge becomes a philosophical device: looking at the limit to imagine beyond it and measure modern consciousness.",
-    "connections": [
-      "commedia-dante",
-      "baude-fleurs",
-      "montale-ossi"
-    ],
+    "connections": ["commedia-dante", "baude-fleurs", "montale-ossi"],
     "poems": [
       {
         "id": "infinito",
@@ -104,11 +93,7 @@
     "mood": "revolt",
     "branch": "vision",
     "description": "With Les Fleurs du mal, modernity enters poetry: metropolis, body, and moral ambiguity become lyric matter.",
-    "connections": [
-      "leopardi-infinito",
-      "ungaretti-porto",
-      "ginsberg-howl"
-    ],
+    "connections": ["leopardi-infinito", "ungaretti-porto", "ginsberg-howl"],
     "poems": [
       {
         "id": "spleen",
@@ -134,11 +119,7 @@
     "mood": "exile",
     "branch": "civic",
     "description": "In the trench, the verse breaks and condenses. The page becomes a space of linguistic survival.",
-    "connections": [
-      "baude-fleurs",
-      "montale-ossi",
-      "quasimodo-giorno"
-    ],
+    "connections": ["baude-fleurs", "montale-ossi", "quasimodo-giorno"],
     "poems": [
       {
         "id": "porto-sepolto",
@@ -203,10 +184,7 @@
     "mood": "revolt",
     "branch": "civic",
     "description": "The private voice opens to historical discourse and collective responsibility in the reconstruction of the country.",
-    "connections": [
-      "ungaretti-porto",
-      "ginsberg-howl"
-    ],
+    "connections": ["ungaretti-porto", "ginsberg-howl"],
     "poems": [
       {
         "id": "uomo-tempo",
@@ -232,11 +210,7 @@
     "mood": "revolt",
     "branch": "performative",
     "description": "Public reading changes how text is received: long verse, staged body, and counterculture become one gesture.",
-    "connections": [
-      "baude-fleurs",
-      "quasimodo-giorno",
-      "slam-poetry"
-    ],
+    "connections": ["baude-fleurs", "quasimodo-giorno", "slam-poetry"],
     "poems": [
       {
         "id": "howl-pt1",
@@ -270,10 +244,7 @@
     "mood": "love",
     "branch": "vision",
     "description": "With her editorial return, poetry intertwines eros, spirituality, and biographical fragility without mediation.",
-    "connections": [
-      "montale-ossi",
-      "poesia-digitale"
-    ],
+    "connections": ["montale-ossi", "poesia-digitale"],
     "poems": [
       {
         "id": "terra-santa",
@@ -299,10 +270,7 @@
     "mood": "revolt",
     "branch": "performative",
     "description": "Oral competition turns poetry into a communal rite where rhythm, gesture, and audience response are central.",
-    "connections": [
-      "ginsberg-howl",
-      "poesia-digitale"
-    ],
+    "connections": ["ginsberg-howl", "poesia-digitale"],
     "poems": [
       {
         "id": "slam-set-1",
@@ -328,10 +296,7 @@
     "mood": "spiritual",
     "branch": "performative",
     "description": "Social media, video, and newsletters transform the rhythm and scale of reading, creating transnational micro-communities.",
-    "connections": [
-      "merini-rientro",
-      "slam-poetry"
-    ],
+    "connections": ["merini-rientro", "slam-poetry"],
     "poems": [
       {
         "id": "instapoetry-feed",

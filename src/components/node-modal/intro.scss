@@ -27,7 +27,7 @@
 }
 
 .node-panel__fact:not(:first-child)::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0.08rem;
@@ -51,4 +51,3 @@
   line-height: 1.5;
   padding-top: 0.08rem;
 }
-

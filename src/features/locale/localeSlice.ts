@@ -1,4 +1,8 @@
-import { createSelector, createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import {
+  createSelector,
+  createSlice,
+  type PayloadAction,
+} from "@reduxjs/toolkit";
 import type { RootState } from "../../app/store";
 import { defaultLocale, isSupportedLocale, type AppLocale } from "../../i18n";
 
@@ -46,4 +50,3 @@ export const selectLocale = createSelector(
 export const localeReducer = localeSlice.reducer;
 
 export const { setLocale } = localeSlice.actions;
-

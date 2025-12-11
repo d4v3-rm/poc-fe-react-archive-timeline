@@ -96,9 +96,7 @@ export function NodeModal() {
           </div>
           <h2 id="node-modal-title">{selectedEvent.title}</h2>
           <p className="node-panel__description">{selectedEvent.description}</p>
-          <p className="node-panel__hint">
-            {t("nodeModal.poemSelectionHint")}
-          </p>
+          <p className="node-panel__hint">{t("nodeModal.poemSelectionHint")}</p>
         </section>
 
         <div className="node-modal__body">
@@ -140,7 +138,9 @@ export function NodeModal() {
             className="connections"
             aria-label={t("nodeModal.connectionsAriaLabel")}
           >
-            <p className="connections__title">{t("nodeModal.connectionsTitle")}</p>
+            <p className="connections__title">
+              {t("nodeModal.connectionsTitle")}
+            </p>
             <div className="connections__items">
               {relatedEvents.length > 0 ? (
                 relatedEvents.map((event) => (
@@ -166,4 +166,3 @@ export function NodeModal() {
   );
   // #endregion
 }
-

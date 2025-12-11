@@ -64,7 +64,9 @@
   pointer-events: none;
   opacity: 0;
   transform: translateY(-4px);
-  transition: opacity 140ms ease, transform 140ms ease;
+  transition:
+    opacity 140ms ease,
+    transform 140ms ease;
   z-index: 12;
 }
 
@@ -79,7 +81,7 @@
 }
 
 .hero-panel__icon--nodes::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0.28rem;
   background: currentcolor;
@@ -87,16 +89,16 @@
 
 .hero-panel__icon--branches {
   background:
-    radial-gradient(circle, currentcolor 0 1.5px, transparent 1.6px) 0.06rem 0.12rem / 0.24rem
-      0.24rem no-repeat,
-    radial-gradient(circle, currentcolor 0 1.5px, transparent 1.6px) 0.68rem 0.12rem / 0.24rem
-      0.24rem no-repeat,
-    radial-gradient(circle, currentcolor 0 1.5px, transparent 1.6px) 0.37rem 0.68rem / 0.24rem
-      0.24rem no-repeat;
+    radial-gradient(circle, currentcolor 0 1.5px, transparent 1.6px) 0.06rem
+      0.12rem / 0.24rem 0.24rem no-repeat,
+    radial-gradient(circle, currentcolor 0 1.5px, transparent 1.6px) 0.68rem
+      0.12rem / 0.24rem 0.24rem no-repeat,
+    radial-gradient(circle, currentcolor 0 1.5px, transparent 1.6px) 0.37rem
+      0.68rem / 0.24rem 0.24rem no-repeat;
 }
 
 .hero-panel__icon--branches::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0.45rem;
   top: 0.24rem;
@@ -106,7 +108,7 @@
 }
 
 .hero-panel__icon--branches::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0.18rem;
   top: 0.24rem;
@@ -120,7 +122,7 @@
 }
 
 .hero-panel__icon--poems::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0.18rem;
   right: 0.18rem;
@@ -131,7 +133,7 @@
 }
 
 .hero-panel__icon--poems::after {
-  content: '';
+  content: "";
   position: absolute;
   right: -1px;
   top: -1px;
@@ -164,4 +166,3 @@
     font-size: 0.58rem;
   }
 }
-

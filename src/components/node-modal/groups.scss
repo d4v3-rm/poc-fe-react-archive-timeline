@@ -40,7 +40,9 @@
   display: grid;
   gap: 0.22rem;
   cursor: pointer;
-  transition: border-color 150ms ease, background 150ms ease;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease;
 
   strong {
     font-size: 0.77rem;
@@ -74,4 +76,3 @@
 .poem-group--fragments {
   background: none;
 }
-

@@ -5,14 +5,15 @@
   display: grid;
   place-items: center;
   background:
-    radial-gradient(circle at center, rgba(9, 15, 37, 0.4), rgba(7, 11, 26, 0.72)),
+    radial-gradient(
+      circle at center,
+      rgba(9, 15, 37, 0.4),
+      rgba(7, 11, 26, 0.72)
+    ),
     rgba(4, 7, 18, 0.72);
   backdrop-filter: blur(6px);
-  padding:
-    calc(1rem + var(--safe-top))
-    calc(1rem + var(--safe-right))
-    calc(1rem + var(--safe-bottom))
-    calc(1rem + var(--safe-left));
+  padding: calc(1rem + var(--safe-top)) calc(1rem + var(--safe-right))
+    calc(1rem + var(--safe-bottom)) calc(1rem + var(--safe-left));
   animation: modal-fade 170ms ease;
 }
 
@@ -29,7 +30,7 @@
 
   h3 {
     margin: 0;
-    font-family: 'Bodoni Moda', serif;
+    font-family: "Bodoni Moda", serif;
     font-size: clamp(1.25rem, 2.5vw, 2rem);
     line-height: 1.08;
   }
@@ -114,15 +115,11 @@
 
 @media (max-width: 700px) {
   .poem-modal {
-    padding:
-      calc(0.75rem + var(--safe-top))
-      calc(0.75rem + var(--safe-right))
-      calc(0.75rem + var(--safe-bottom))
-      calc(0.75rem + var(--safe-left));
+    padding: calc(0.75rem + var(--safe-top)) calc(0.75rem + var(--safe-right))
+      calc(0.75rem + var(--safe-bottom)) calc(0.75rem + var(--safe-left));
   }
 
   .poem-modal__card {
     padding: 0.82rem 0.82rem 0.9rem;
   }
 }
-

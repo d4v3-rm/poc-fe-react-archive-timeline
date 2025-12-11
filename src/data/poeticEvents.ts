@@ -45,9 +45,6 @@ const markdownFiles = import.meta.glob<string>(
 const contentUnavailableByLocale: Record<AppLocale, string> = {
   en: "Content unavailable.",
   it: "Contenuto non disponibile.",
-  fr: "Contenu non disponible.",
-  es: "Contenido no disponible.",
-  zh: "内容不可用。",
 };
 
 const eventsByLocale = supportedLocales.reduce<
@@ -64,9 +61,6 @@ const eventsByLocale = supportedLocales.reduce<
   {
     en: [],
     it: [],
-    fr: [],
-    es: [],
-    zh: [],
   },
 );
 
@@ -87,10 +81,15 @@ const resolvePoemBody = (
   }
 
   const trimmedSource = source.trim();
-  return trimmedSource.length > 0 ? trimmedSource : contentUnavailableByLocale[locale];
+  return trimmedSource.length > 0
+    ? trimmedSource
+    : contentUnavailableByLocale[locale];
 };
 
-const toPoemEntry = (locale: AppLocale, poem: PoemContentConfig): PoemEntry => ({
+const toPoemEntry = (
+  locale: AppLocale,
+  poem: PoemContentConfig,
+): PoemEntry => ({
   id: poem.id,
   title: poem.title,
   author: poem.author,
@@ -126,9 +125,6 @@ const localizedEventsByLocale = supportedLocales.reduce<
   {
     en: [],
     it: [],
-    fr: [],
-    es: [],
-    zh: [],
   },
 );
 
@@ -140,4 +136,3 @@ export const getPoeticEvents = (locale: AppLocale): PoeticEvent[] => {
 export const getDefaultEventId = () => {
   return getPoeticEvents(defaultLocale)[0]?.id ?? null;
 };
-

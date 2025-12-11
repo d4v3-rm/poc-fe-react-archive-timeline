@@ -4,11 +4,8 @@
   z-index: 6;
   display: grid;
   place-items: center;
-  padding:
-    calc(1rem + var(--safe-top))
-    calc(1rem + var(--safe-right))
-    calc(1rem + var(--safe-bottom))
-    calc(1rem + var(--safe-left));
+  padding: calc(1rem + var(--safe-top)) calc(1rem + var(--safe-right))
+    calc(1rem + var(--safe-bottom)) calc(1rem + var(--safe-left));
   background: rgba(5, 8, 20, 0.64);
   backdrop-filter: blur(3px);
   animation: modal-fade 170ms ease;
@@ -29,7 +26,7 @@
 
   h2 {
     margin: 0;
-    font-family: 'Bodoni Moda', serif;
+    font-family: "Bodoni Moda", serif;
     font-size: clamp(1.35rem, 2.5vw, 2rem);
     line-height: 1.1;
     letter-spacing: 0.01em;
@@ -54,11 +51,12 @@
   font-size: 0.74rem;
   font-weight: 500;
   cursor: pointer;
-  transition: border-color 150ms ease, background 150ms ease;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease;
 
   &:hover {
     border-color: rgba(199, 215, 255, 0.62);
     background: rgba(16, 25, 56, 0.78);
   }
 }
-

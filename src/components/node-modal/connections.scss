@@ -34,7 +34,9 @@
     gap: 0.22rem;
     text-align: left;
     cursor: pointer;
-    transition: border-color 150ms ease, background 150ms ease;
+    transition:
+      border-color 150ms ease,
+      background 150ms ease;
 
     span {
       font-size: 0.67rem;
@@ -80,4 +82,3 @@
   font-size: 0.75rem;
   padding: 0.62rem;
 }
-

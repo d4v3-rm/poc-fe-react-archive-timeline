@@ -50,9 +50,11 @@ export const bindTimelineInteractions = ({
       return null;
     }
 
-    return (hit.object.userData.event as Parameters<
-      TimelineRuntimeRefs["onSelectRef"]["current"]
-    >[0] | null) ?? null;
+    return (
+      (hit.object.userData.event as
+        | Parameters<TimelineRuntimeRefs["onSelectRef"]["current"]>[0]
+        | null) ?? null
+    );
   };
 
   let activeTouchPointerId: number | null = null;
@@ -64,7 +66,11 @@ export const bindTimelineInteractions = ({
 
   const updateTimelineOffset = (deltaY: number, speed: number) => {
     const nextTarget = targetOffsetRef.current - deltaY * speed;
-    targetOffsetRef.current = THREE.MathUtils.clamp(nextTarget, minOffset, maxOffset);
+    targetOffsetRef.current = THREE.MathUtils.clamp(
+      nextTarget,
+      minOffset,
+      maxOffset,
+    );
   };
 
   const updateHoveredEvent = (
@@ -98,13 +104,17 @@ export const bindTimelineInteractions = ({
   };
 
   const handlePointerMove = (event: PointerEvent) => {
-    if (event.pointerType === "touch" && activeTouchPointerId === event.pointerId) {
+    if (
+      event.pointerType === "touch" &&
+      activeTouchPointerId === event.pointerId
+    ) {
       const deltaX = event.clientX - touchStartX;
       const deltaY = event.clientY - touchStartY;
       const travel = Math.abs(deltaX) + Math.abs(deltaY);
 
       if (touchGesture === "idle" && travel > 8) {
-        touchGesture = Math.abs(deltaY) > Math.abs(deltaX) * 1.15 ? "timeline" : "camera";
+        touchGesture =
+          Math.abs(deltaY) > Math.abs(deltaX) * 1.15 ? "timeline" : "camera";
       }
 
       if (touchGesture === "timeline") {
@@ -130,7 +140,10 @@ export const bindTimelineInteractions = ({
   };
 
   const handlePointerRelease = (event: PointerEvent) => {
-    if (event.pointerType !== "touch" || activeTouchPointerId !== event.pointerId) {
+    if (
+      event.pointerType !== "touch" ||
+      activeTouchPointerId !== event.pointerId
+    ) {
       return;
     }
 
@@ -181,9 +194,18 @@ export const bindTimelineInteractions = ({
     cleanup: () => {
       renderer.domElement.removeEventListener("pointerdown", handlePointerDown);
       renderer.domElement.removeEventListener("pointermove", handlePointerMove);
-      renderer.domElement.removeEventListener("pointerleave", handlePointerLeave);
-      renderer.domElement.removeEventListener("pointerup", handlePointerRelease);
-      renderer.domElement.removeEventListener("pointercancel", handlePointerRelease);
+      renderer.domElement.removeEventListener(
+        "pointerleave",
+        handlePointerLeave,
+      );
+      renderer.domElement.removeEventListener(
+        "pointerup",
+        handlePointerRelease,
+      );
+      renderer.domElement.removeEventListener(
+        "pointercancel",
+        handlePointerRelease,
+      );
       renderer.domElement.removeEventListener("click", handleClick);
       renderer.domElement.removeEventListener("wheel", handleWheel);
 
@@ -195,6 +217,3 @@ export const bindTimelineInteractions = ({
   };
 };
 // #endregion
-
-
-

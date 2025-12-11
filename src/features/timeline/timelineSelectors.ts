@@ -75,7 +75,10 @@ export const selectEffectiveSelectedEventId = createSelector(
       return null;
     }
 
-    if (selectedEventId && filteredEvents.some((event) => event.id === selectedEventId)) {
+    if (
+      selectedEventId &&
+      filteredEvents.some((event) => event.id === selectedEventId)
+    ) {
       return selectedEventId;
     }
 
@@ -86,7 +89,8 @@ export const selectEffectiveSelectedEventId = createSelector(
 export const selectSelectedEvent = createSelector(
   [selectFilteredEvents, selectEffectiveSelectedEventId],
   (filteredEvents, effectiveSelectedEventId) =>
-    filteredEvents.find((event) => event.id === effectiveSelectedEventId) ?? null,
+    filteredEvents.find((event) => event.id === effectiveSelectedEventId) ??
+    null,
 );
 
 export const selectHoveredEvent = createSelector(
@@ -111,7 +115,10 @@ export const selectEffectiveSelectedPoem = createSelector(
       return selectedEvent.poems[0];
     }
 
-    return selectedEvent.poems.find((poem) => poem.id === selectedPoemId) ?? selectedEvent.poems[0];
+    return (
+      selectedEvent.poems.find((poem) => poem.id === selectedPoemId) ??
+      selectedEvent.poems[0]
+    );
   },
 );
 
@@ -126,8 +133,9 @@ export const selectOpenPoem = createSelector(
   },
 );
 
-export const selectGroupedPoems = createSelector([selectSelectedEvent], (selectedEvent) =>
-  selectedEvent ? toGroupedPoems(selectedEvent.poems) : [],
+export const selectGroupedPoems = createSelector(
+  [selectSelectedEvent],
+  (selectedEvent) => (selectedEvent ? toGroupedPoems(selectedEvent.poems) : []),
 );
 
 export const selectRelatedEvents = createSelector(
@@ -147,19 +155,22 @@ export const selectRelatedEvents = createSelector(
   },
 );
 
-export const selectStats = createSelector([selectFilteredEvents], (filteredEvents) => {
-  const branches = new Set(filteredEvents.map((event) => event.branch)).size;
-  const poems = filteredEvents.reduce(
-    (accumulator, event) => accumulator + event.poems.length,
-    0,
-  );
+export const selectStats = createSelector(
+  [selectFilteredEvents],
+  (filteredEvents) => {
+    const branches = new Set(filteredEvents.map((event) => event.branch)).size;
+    const poems = filteredEvents.reduce(
+      (accumulator, event) => accumulator + event.poems.length,
+      0,
+    );
 
-  return {
-    nodes: filteredEvents.length,
-    branches,
-    poems,
-  };
-});
+    return {
+      nodes: filteredEvents.length,
+      branches,
+      poems,
+    };
+  },
+);
 
 export const selectSelectedNodeIndex = createSelector(
   [selectFilteredEvents, selectEffectiveSelectedEventId],

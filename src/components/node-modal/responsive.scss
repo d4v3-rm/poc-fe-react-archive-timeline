@@ -6,11 +6,8 @@
 
 @media (max-width: 940px) {
   .node-modal {
-    padding:
-      calc(0.75rem + var(--safe-top))
-      calc(0.75rem + var(--safe-right))
-      calc(0.75rem + var(--safe-bottom))
-      calc(0.75rem + var(--safe-left));
+    padding: calc(0.75rem + var(--safe-top)) calc(0.75rem + var(--safe-right))
+      calc(0.75rem + var(--safe-bottom)) calc(0.75rem + var(--safe-left));
   }
 
   .node-modal__card {
@@ -58,4 +55,3 @@
     gap: 0.2rem 0.4rem;
   }
 }
-

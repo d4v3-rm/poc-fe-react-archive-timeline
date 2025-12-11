@@ -37,4 +37,6 @@ const toStartupLoaderConfig = (
 
 const parsedUiConfig = rawUiConfig as RawUiConfig;
 
-export const startupLoaderConfig = toStartupLoaderConfig(parsedUiConfig.startupLoader);
+export const startupLoaderConfig = toStartupLoaderConfig(
+  parsedUiConfig.startupLoader,
+);

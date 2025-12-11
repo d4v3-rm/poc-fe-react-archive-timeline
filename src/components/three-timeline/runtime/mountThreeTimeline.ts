@@ -4,16 +4,10 @@ import { createNodeRuntime } from "./nodes";
 import { createProjectionRuntime } from "./projection";
 import { setupResizeLifecycle } from "./resize";
 import { startRenderLoop } from "./render";
-import {
-  createSceneRuntime,
-  disposeSceneRuntime,
-} from "./scene";
+import { createSceneRuntime, disposeSceneRuntime } from "./scene";
 import type { MountThreeTimelineOptions } from "./types";
 
-export type {
-  MountThreeTimelineOptions,
-  TimelineRuntimeRefs,
-} from "./types";
+export type { MountThreeTimelineOptions, TimelineRuntimeRefs } from "./types";
 
 // #region Runtime Mount
 export const mountThreeTimeline = ({
@@ -32,7 +26,9 @@ export const mountThreeTimeline = ({
   focusOffsetByIdRef.current = projectionRuntime.focusOffsetById;
 
   if (activeEventIdRef.current) {
-    const nextOffset = projectionRuntime.focusOffsetById.get(activeEventIdRef.current);
+    const nextOffset = projectionRuntime.focusOffsetById.get(
+      activeEventIdRef.current,
+    );
 
     if (typeof nextOffset === "number") {
       targetOffsetRef.current = nextOffset;
@@ -88,6 +84,3 @@ export const mountThreeTimeline = ({
   };
 };
 // #endregion
-
-
-

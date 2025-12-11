@@ -21,14 +21,18 @@ export const branchStyles: Record<
   performative: { offsetX: 2.95, offsetY: 2.25, color: 0xd5b0ff, phase: 2.5 },
 };
 
-export const poemGroupStyles: Record<PoemGroup, { color: number; speed: number }> =
-  {
-    manifesto: { color: 0xffcc84, speed: 0.22 },
-    cycle: { color: 0x88c8ff, speed: 0.18 },
-    fragments: { color: 0xd9b8ff, speed: 0.26 },
-  };
+export const poemGroupStyles: Record<
+  PoemGroup,
+  { color: number; speed: number }
+> = {
+  manifesto: { color: 0xffcc84, speed: 0.22 },
+  cycle: { color: 0x88c8ff, speed: 0.18 },
+  fragments: { color: 0xd9b8ff, speed: 0.26 },
+};
 
-export const getBranchLabels = (locale: AppLocale): Record<PoeticBranch, string> => {
+export const getBranchLabels = (
+  locale: AppLocale,
+): Record<PoeticBranch, string> => {
   const messages = getMessages(locale);
 
   return {

@@ -114,10 +114,7 @@ function App() {
       <div className="ambient-glow ambient-glow--left" />
       <div className="ambient-glow ambient-glow--right" />
 
-      <main
-        className="stage"
-        aria-label={t("app.stageAriaLabel")}
-      >
+      <main className="stage" aria-label={t("app.stageAriaLabel")}>
         <ThreeTimeline
           locale={locale}
           events={filteredEvents}
@@ -146,5 +143,3 @@ function App() {
 }
 
 export default App;
-
-

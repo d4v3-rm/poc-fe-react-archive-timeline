@@ -6,15 +6,24 @@
   place-content: center;
   justify-items: center;
   gap: 0.55rem;
-  padding:
-    calc(1rem + var(--safe-top))
-    calc(1rem + var(--safe-right))
-    calc(1rem + var(--safe-bottom))
-    calc(1rem + var(--safe-left));
+  padding: calc(1rem + var(--safe-top)) calc(1rem + var(--safe-right))
+    calc(1rem + var(--safe-bottom)) calc(1rem + var(--safe-left));
   background:
-    radial-gradient(circle at 16% 18%, rgba(87, 132, 228, 0.22), transparent 45%),
-    radial-gradient(circle at 84% 22%, rgba(255, 166, 118, 0.2), transparent 44%),
-    radial-gradient(circle at 74% 82%, rgba(162, 122, 240, 0.16), transparent 48%),
+    radial-gradient(
+      circle at 16% 18%,
+      rgba(87, 132, 228, 0.22),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 84% 22%,
+      rgba(255, 166, 118, 0.2),
+      transparent 44%
+    ),
+    radial-gradient(
+      circle at 74% 82%,
+      rgba(162, 122, 240, 0.16),
+      transparent 48%
+    ),
     linear-gradient(150deg, rgba(7, 13, 31, 0.96), rgba(14, 24, 52, 0.96));
   backdrop-filter: blur(4px);
 }
@@ -61,7 +70,12 @@
   width: 30%;
   height: 30%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle at 34% 28%, #fdf3e2, #9f8ef2 72%, #6f8dff 100%);
+  background: radial-gradient(
+    circle at 34% 28%,
+    #fdf3e2,
+    #9f8ef2 72%,
+    #6f8dff 100%
+  );
   box-shadow:
     0 0 20px rgba(163, 186, 255, 0.65),
     0 0 42px rgba(130, 98, 201, 0.32);
@@ -109,4 +123,3 @@
   color: #aebfdf;
   font-size: 0.63rem;
 }
-

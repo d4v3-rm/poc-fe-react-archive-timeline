@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Sora:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Sora:wght@300;400;500;600&display=swap");
 
 :root {
   /* Typography */
-  --font-family-ui: 'Sora', sans-serif;
-  --font-family-display: 'Bodoni Moda', serif;
+  --font-family-ui: "Sora", sans-serif;
+  --font-family-display: "Bodoni Moda", serif;
   --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -100,9 +100,21 @@ body {
   color: var(--ink);
   font-family: var(--font-family-ui);
   background:
-    radial-gradient(circle at 14% 10%, rgba(56, 96, 176, 0.35), transparent 45%),
-    radial-gradient(circle at 84% 18%, rgba(255, 154, 106, 0.26), transparent 43%),
-    radial-gradient(circle at 74% 84%, rgba(115, 88, 178, 0.2), transparent 46%),
+    radial-gradient(
+      circle at 14% 10%,
+      rgba(56, 96, 176, 0.35),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 84% 18%,
+      rgba(255, 154, 106, 0.26),
+      transparent 43%
+    ),
+    radial-gradient(
+      circle at 74% 84%,
+      rgba(115, 88, 178, 0.2),
+      transparent 46%
+    ),
     linear-gradient(150deg, var(--bg-1), var(--bg-2));
 }
 
@@ -273,4 +285,3 @@ kbd {
     transform: translate3d(-50%, -50%, 0) rotate(540deg) translateX(46%);
   }
 }
-

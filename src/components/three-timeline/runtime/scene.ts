@@ -72,7 +72,10 @@ export const createSceneRuntime = (host: HTMLDivElement): SceneRuntime => {
     starsPositions[cursor + 2] = (Math.random() - 0.5) * 170;
   }
 
-  starsGeometry.setAttribute("position", new THREE.BufferAttribute(starsPositions, 3));
+  starsGeometry.setAttribute(
+    "position",
+    new THREE.BufferAttribute(starsPositions, 3),
+  );
 
   const starsMaterial = trackMaterial(
     new THREE.PointsMaterial({
@@ -123,6 +126,3 @@ export const disposeSceneRuntime = (
   }
 };
 // #endregion
-
-
-

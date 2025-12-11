@@ -23,7 +23,9 @@ export const getMoodOptions = (locale: AppLocale) => {
   }));
 };
 
-export const getMoodLabels = (locale: AppLocale): Record<PoeticMood, string> => {
+export const getMoodLabels = (
+  locale: AppLocale,
+): Record<PoeticMood, string> => {
   const messages = getMessages(locale);
 
   return {

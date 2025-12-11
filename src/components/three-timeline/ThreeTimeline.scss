@@ -25,7 +25,11 @@
   border: 1px solid rgba(150, 174, 240, 0.34);
   border-left: 2px solid var(--label-accent);
   border-radius: 0;
-  background: linear-gradient(180deg, rgba(8, 14, 35, 0.7), rgba(7, 12, 30, 0.82));
+  background: linear-gradient(
+    180deg,
+    rgba(8, 14, 35, 0.7),
+    rgba(7, 12, 30, 0.82)
+  );
   box-shadow:
     0 10px 20px rgba(4, 8, 22, 0.24),
     inset 0 0 0 1px rgba(255, 255, 255, 0.03);
@@ -43,7 +47,7 @@
 }
 
 .timeline-node-label::after {
-  content: '';
+  content: "";
   position: absolute;
   left: calc(50% - 1px);
   bottom: -8px;
@@ -165,4 +169,3 @@
     font-size: 0.58rem;
   }
 }
-

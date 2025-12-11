@@ -1,73 +1,141 @@
-# React + TypeScript + Vite
+# 🌌 poc-fe-react-archive-timeline
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An immersive **3D poetry portal** built with React + Three.js.  
+Navigate a branching timeline, open contextual modals, and manage content through JSON + Markdown.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📸 Visual Preview
 
-## React Compiler
+### 🛰️ 3D Timeline
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+![3D Timeline](assets/timeline-preview.png)
 
-## Expanding the ESLint configuration
+### 🧩 Node Modal
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![Node Modal](assets/modal-preview.png)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 📝 Poem Modal
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+![Poem Modal](assets/category-preview.png)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## ✨ Core Features
+
+- 🧭 Fullscreen 3D timeline with `Scroll / Drag / Click` navigation.
+- 🪐 Abstract nodes with dynamic labels and visual connections.
+- 🎛️ Mood filters: `all`, `love`, `nature`, `revolt`, `exile`, `spiritual`.
+- 📚 Node modal with grouped poems: `manifesto`, `cycle`, `fragments`.
+- 📄 Dedicated poem modal focused on metadata + text excerpt.
+- 🌍 Built-in multilingual UI and localized content pipeline.
+- ⚙️ Startup loader configurable from JSON.
+
+---
+
+## 🧱 Tech Stack
+
+- ⚛️ React 19
+- 🟦 TypeScript
+- ⚡ Vite
+- 🧠 Three.js
+- 🧰 Redux Toolkit
+- 🎨 Sass (component-scoped + global tokens)
+
+---
+
+## 🌍 Internationalization
+
+Supported locales:
+
+- 🇮🇹 Italian (`it`)
+- 🇬🇧 English (`en`)
+
+Localization files:
+
+- UI strings: `src/i18n/locales/*.json`
+- Events: `src/content/locales/<locale>/poetic-events.json`
+- Poems: `src/content/locales/<locale>/poems/**/*.md`
+
+---
+
+## 🗂 Content-Driven Setup
+
+### Event Data
+
+Each event in `poetic-events.json` defines:
+
+- `id`, `year`, `title`, `location`
+- `mood`, `branch`, optional `branchFrom`
+- `connections` to other nodes
+- `poems` entries linked to Markdown sources
+
+### Poem Texts
+
+Poem excerpts are loaded from:
+
+- `src/content/locales/<locale>/poems/.../*.md`
+
+### UI Configuration
+
+Global UI runtime config lives in:
+
+- `src/content/ui-config.json`
+
+---
+
+## 🚀 Quick Start
+
+Install dependencies:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Run development server:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Build production bundle:
+
+```bash
+npm run build
+npm run preview
+```
+
+Run checks:
+
+```bash
+npm run lint
+npm run typecheck
+```
+
+---
+
+## 📜 Available Scripts
+
+- `dev` -> start local development server
+- `build` -> TypeScript build + Vite production build
+- `preview` -> preview production build locally
+- `lint` -> run ESLint
+- `typecheck` -> run TypeScript project checks
+
+---
+
+## 🧭 Project Structure
+
+- `src/components/` -> UI components and modal layers
+- `src/components/three-timeline/` -> Three.js runtime and rendering logic
+- `src/features/` -> Redux slices (`timeline`, `locale`)
+- `src/data/` -> content loaders and UI config loaders
+- `src/content/` -> localized editorial data (JSON + Markdown)
+- `src/i18n/` -> translation dictionaries and i18n helpers
+- `src/styles/` -> global tokens and shared styling primitives
+
+---
+
+## 📄 License
+
+MIT. See `LICENSE`.
