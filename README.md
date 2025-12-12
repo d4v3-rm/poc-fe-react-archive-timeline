@@ -1,141 +1,100 @@
 # 🌌 poc-fe-react-archive-timeline
 
-An immersive **3D poetry portal** built with React + Three.js.  
-Navigate a branching timeline, open contextual modals, and manage content through JSON + Markdown.
+<p align="left">
+  <img alt="React" src="https://img.shields.io/badge/React-19.1.1-20232A?logo=react" />
+  <img alt="Vite" src="https://img.shields.io/badge/Vite-7.1.7-646CFF?logo=vite" />
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5.9.3-3178C6?logo=typescript" />
+  <img alt="Three.js" src="https://img.shields.io/badge/Three.js-0.180.0-111111?logo=threedotjs" />
+  <img alt="License" src="https://img.shields.io/badge/License-MIT-2EA043" />
+</p>
 
----
+An immersive **3D poetry archive experience** built with React + Three.js.  
+Navigate an abstract branching timeline, open contextual modals, and drive content from JSON + Markdown.
 
-## 📸 Visual Preview
+## ✨ Highlights
 
-### 🛰️ 3D Timeline
+- 🛰️ Fullscreen 3D timeline with smooth `Scroll / Drag / Click` controls.
+- 🪐 Abstract node visuals with branch-aware labels and flow lines.
+- 🎛️ Mood filtering (`all`, `love`, `nature`, `revolt`, `exile`, `spiritual`).
+- 📚 Node modal with grouped poems (`manifesto`, `cycle`, `fragments`).
+- 🌍 Localized content pipeline (currently: **Italian** + **English**).
+- ⚙️ Config-based startup loader and fully content-driven data layer.
 
-![3D Timeline](assets/timeline-preview.png)
+## 🖼️ Visuals
 
-### 🧩 Node Modal
+| Timeline                                    | Node Modal                              |
+| ------------------------------------------- | --------------------------------------- |
+| ![3D Timeline](assets/timeline-preview.png) | ![Node Modal](assets/modal-preview.png) |
 
-![Node Modal](assets/modal-preview.png)
+| Poem Modal                                 |
+| ------------------------------------------ |
+| ![Poem Modal](assets/category-preview.png) |
 
-### 📝 Poem Modal
+## 🧱 Stack
 
-![Poem Modal](assets/category-preview.png)
+| Layer     | Tech                        |
+| --------- | --------------------------- |
+| UI        | React 19, Sass              |
+| Rendering | Three.js                    |
+| State     | Redux Toolkit + React Redux |
+| Build     | Vite 7                      |
+| Language  | TypeScript                  |
+| Quality   | ESLint + Prettier           |
 
----
+## 🚀 Quick Start
 
-## ✨ Core Features
+```bash
+npm install
+npm run dev
+```
 
-- 🧭 Fullscreen 3D timeline with `Scroll / Drag / Click` navigation.
-- 🪐 Abstract nodes with dynamic labels and visual connections.
-- 🎛️ Mood filters: `all`, `love`, `nature`, `revolt`, `exile`, `spiritual`.
-- 📚 Node modal with grouped poems: `manifesto`, `cycle`, `fragments`.
-- 📄 Dedicated poem modal focused on metadata + text excerpt.
-- 🌍 Built-in multilingual UI and localized content pipeline.
-- ⚙️ Startup loader configurable from JSON.
+Open the local URL shown by Vite (usually `http://localhost:5173`).
 
----
+## 🛠️ Scripts
 
-## 🧱 Tech Stack
+| Command             | Description                   |
+| ------------------- | ----------------------------- |
+| `npm run dev`       | Start development server      |
+| `npm run build`     | Type check + production build |
+| `npm run preview`   | Preview production build      |
+| `npm run lint`      | Run ESLint                    |
+| `npm run lint:fix`  | Auto-fix lint issues          |
+| `npm run format`    | Format codebase with Prettier |
+| `npm run typecheck` | Run TypeScript checks         |
 
-- ⚛️ React 19
-- 🟦 TypeScript
-- ⚡ Vite
-- 🧠 Three.js
-- 🧰 Redux Toolkit
-- 🎨 Sass (component-scoped + global tokens)
-
----
-
-## 🌍 Internationalization
+## 🌍 Localization & Content
 
 Supported locales:
 
 - 🇮🇹 Italian (`it`)
 - 🇬🇧 English (`en`)
 
-Localization files:
+Content sources:
 
-- UI strings: `src/i18n/locales/*.json`
-- Events: `src/content/locales/<locale>/poetic-events.json`
-- Poems: `src/content/locales/<locale>/poems/**/*.md`
-
----
-
-## 🗂 Content-Driven Setup
-
-### Event Data
-
-Each event in `poetic-events.json` defines:
-
-- `id`, `year`, `title`, `location`
-- `mood`, `branch`, optional `branchFrom`
-- `connections` to other nodes
-- `poems` entries linked to Markdown sources
-
-### Poem Texts
-
-Poem excerpts are loaded from:
-
-- `src/content/locales/<locale>/poems/.../*.md`
-
-### UI Configuration
-
-Global UI runtime config lives in:
-
-- `src/content/ui-config.json`
-
----
-
-## 🚀 Quick Start
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Run development server:
-
-```bash
-npm run dev
-```
-
-Build production bundle:
-
-```bash
-npm run build
-npm run preview
-```
-
-Run checks:
-
-```bash
-npm run lint
-npm run typecheck
-```
-
----
-
-## 📜 Available Scripts
-
-- `dev` -> start local development server
-- `build` -> TypeScript build + Vite production build
-- `preview` -> preview production build locally
-- `lint` -> run ESLint
-- `typecheck` -> run TypeScript project checks
-
----
+- UI dictionaries: `src/i18n/locales/*.json`
+- Event configuration: `src/content/locales/<locale>/poetic-events.json`
+- Poem excerpts: `src/content/locales/<locale>/poems/**/*.md`
+- Global UI config: `src/content/ui-config.json`
 
 ## 🧭 Project Structure
 
-- `src/components/` -> UI components and modal layers
-- `src/components/three-timeline/` -> Three.js runtime and rendering logic
-- `src/features/` -> Redux slices (`timeline`, `locale`)
-- `src/data/` -> content loaders and UI config loaders
-- `src/content/` -> localized editorial data (JSON + Markdown)
-- `src/i18n/` -> translation dictionaries and i18n helpers
-- `src/styles/` -> global tokens and shared styling primitives
+```text
+src/
+  app/                         # Redux store + hooks
+  components/                  # UI components + modal layers
+  components/three-timeline/   # Three.js runtime (scene, labels, interactions)
+  content/                     # Localized JSON + Markdown content
+  data/                        # Content and UI config loaders
+  features/                    # Redux slices (timeline, locale)
+  i18n/                        # Translation engine + locale dictionaries
+  styles/                      # Global tokens and shared styles
+```
 
----
+## 📌 Notes
+
+- Dependencies are pinned to versions aligned with the requested baseline.
+- Build output may still show a chunk-size warning due to Three.js payload.
 
 ## 📄 License
 
-MIT. See `LICENSE`.
+MIT - see `LICENSE`.
