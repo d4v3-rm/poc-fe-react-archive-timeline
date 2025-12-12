@@ -1,13 +1,13 @@
 .node-modal__body {
   min-height: 0;
-  max-height: min(56dvh, 29rem);
+  max-height: min(58dvh, 30rem);
   overflow: auto;
   padding-right: 0.24rem;
-  padding-top: 0.88rem;
+  padding-top: 0.92rem;
   border-top: 1px solid rgba(133, 157, 219, 0.24);
   display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(13rem, 1fr);
-  gap: 0.92rem;
+  grid-template-columns: minmax(0, 1.65fr) minmax(13rem, 1fr);
+  gap: 1rem;
   align-items: start;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 210, 146, 0.72) rgba(24, 34, 67, 0.45);

@@ -1,9 +1,11 @@
 .node-modal__intro {
-  border: 0;
-  background: none;
-  padding: 0;
+  border: 1px solid rgba(136, 160, 221, 0.26);
+  background:
+    linear-gradient(170deg, rgba(11, 20, 45, 0.62), rgba(9, 15, 36, 0.7)),
+    rgba(8, 14, 33, 0.64);
+  padding: 0.78rem 0.86rem 0.82rem;
   display: grid;
-  gap: 0.56rem;
+  gap: 0.58rem;
 }
 
 .node-panel__facts {
@@ -17,9 +19,9 @@
   font-size: 0.72rem;
   line-height: 1.2;
   font-weight: 500;
-  color: #bfd0f2;
+  color: #c5d5f4;
   position: relative;
-  padding-left: 0.7rem;
+  padding-left: 0.72rem;
 }
 
 .node-panel__fact:first-child {
@@ -33,21 +35,21 @@
   top: 0.08rem;
   bottom: 0.08rem;
   width: 1px;
-  background: rgba(133, 157, 219, 0.32);
+  background: rgba(133, 157, 219, 0.34);
 }
 
 .node-panel__description {
   margin: 0;
-  font-size: 0.92rem;
+  font-size: 0.93rem;
   line-height: 1.56;
-  color: #cfd9f3;
+  color: #d9e2f8;
 }
 
 .node-panel__hint {
   margin: 0;
-  border: 0;
-  color: #adbdde;
+  border-top: 1px solid rgba(133, 157, 219, 0.24);
+  color: #b7c7e6;
   font-size: 0.76rem;
   line-height: 1.5;
-  padding-top: 0.08rem;
+  padding-top: 0.48rem;
 }
