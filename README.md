@@ -209,17 +209,6 @@ src/
   styles/                      # Global tokens and shared style foundation
 ```
 
----
-
-## 🗺️ Roadmap
-
-- [ ] Add schema validation for content JSON and markdown references.
-- [ ] Add E2E interaction tests for timeline flows.
-- [ ] Add CI performance budget checks.
-- [ ] Add keyboard-first accessibility refinements for modal and labels.
-
----
-
 ## 📄 License
 
 Released under the **MIT License**. See `LICENSE`.
