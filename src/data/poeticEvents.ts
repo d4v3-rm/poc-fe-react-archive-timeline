@@ -1,34 +1,13 @@
 import { defaultLocale, supportedLocales, type AppLocale } from "../i18n";
-import type {
-  PoemEntry,
-  PoemGroup,
-  PoeticBranch,
-  PoeticEvent,
-  PoeticMood,
-} from "../types";
+import type { PoemEntry, PoeticEvent } from "../types";
+import {
+  toMarkdownFileKey,
+  type PoemContentConfig,
+  type PoeticEventContentConfig,
+  validatePoeticEventsContent,
+} from "./poeticEvents.validation";
 
-interface PoemContentConfig {
-  id: string;
-  title: string;
-  author: string;
-  group: PoemGroup;
-  markdown: string;
-}
-
-interface PoeticEventContentConfig {
-  id: string;
-  year: number;
-  title: string;
-  location: string;
-  mood: PoeticMood;
-  branch: PoeticBranch;
-  branchFrom?: string;
-  description: string;
-  connections: string[];
-  poems: PoemContentConfig[];
-}
-
-const rawEventFiles = import.meta.glob<PoeticEventContentConfig[]>(
+const rawEventFiles = import.meta.glob<unknown>(
   "../content/locales/*/poetic-events.json",
   { eager: true, import: "default" },
 );
@@ -55,7 +34,11 @@ const eventsByLocale = supportedLocales.reduce<
       filePath.includes(`/locales/${locale}/`),
     );
 
-    accumulator[locale] = fileEntry?.[1] ?? [];
+    accumulator[locale] = validatePoeticEventsContent(
+      locale,
+      fileEntry?.[1] ?? [],
+      markdownFiles,
+    );
     return accumulator;
   },
   {
@@ -69,8 +52,7 @@ const resolvePoemBody = (
   markdownPath: string,
   poemId: string,
 ) => {
-  const normalizedPath = markdownPath.replace(/\\/g, "/").replace(/^\/+/, "");
-  const key = `../content/locales/${locale}/poems/${normalizedPath}`;
+  const key = toMarkdownFileKey(locale, markdownPath);
   const source = markdownFiles[key];
 
   if (!source) {
