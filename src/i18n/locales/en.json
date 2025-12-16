@@ -82,17 +82,23 @@
     "focus": "{{year}}: {{title}}"
   },
   "nodeModal": {
+    "dialogAriaLabel": "Node details modal",
     "close": "Close",
+    "closeAriaLabel": "Close node details modal",
     "introAriaLabel": "Node introduction",
     "nodeCounter": "Node {{current}}/{{total}}",
     "poemSelectionHint": "Select a poem to open the full card in a modal.",
     "groupedPoemsAriaLabel": "Poems grouped by type",
     "connectionsAriaLabel": "Connections between nodes",
     "connectionsTitle": "Connected nodes",
-    "connectionsEmpty": "No connections available."
+    "connectionsEmpty": "No connections available.",
+    "openPoemAriaLabel": "Open poem {{title}} by {{author}}",
+    "openRelatedNodeAriaLabel": "Open related node {{year}} - {{title}}"
   },
   "poemModal": {
     "close": "Close",
+    "closeAriaLabel": "Close poem modal",
+    "dialogAriaLabel": "Poem details modal",
     "metaSeparator": " - "
   }
 }

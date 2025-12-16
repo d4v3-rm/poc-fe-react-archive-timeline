@@ -15,12 +15,8 @@ import { startupLoaderConfig } from "./data/uiConfig";
 import {
   selectEffectiveSelectedEventId,
   selectFilteredEvents,
-  selectIsNodeModalOpen,
-  selectOpenPoem,
 } from "./features/timeline/timelineSelectors";
 import {
-  closeNodeModal,
-  closePoem,
   selectEvent,
   setHoveredEventId,
 } from "./features/timeline/timelineSlice";
@@ -37,8 +33,6 @@ function App() {
   const { locale, t } = useI18n();
   const filteredEvents = useAppSelector(selectFilteredEvents);
   const activeEventId = useAppSelector(selectEffectiveSelectedEventId);
-  const isNodeModalOpen = useAppSelector(selectIsNodeModalOpen);
-  const openPoem = useAppSelector(selectOpenPoem);
   // #endregion
 
   // #region Event Handlers
@@ -71,29 +65,6 @@ function App() {
       window.clearTimeout(timer);
     };
   }, []);
-
-  useEffect(() => {
-    if (!isNodeModalOpen && !openPoem) {
-      return;
-    }
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        if (openPoem) {
-          dispatch(closePoem());
-          return;
-        }
-
-        dispatch(closeNodeModal());
-      }
-    };
-
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [dispatch, isNodeModalOpen, openPoem]);
 
   useEffect(() => {
     window.localStorage.setItem("poetry_portal_locale", locale);

@@ -1,3 +1,4 @@
+import { useCallback, useId, useRef, type KeyboardEvent } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import {
   getBranchLabels,
@@ -19,10 +20,75 @@ import {
   selectRelatedEvent,
 } from "../features/timeline/timelineSlice";
 import { useI18n } from "../i18n/useI18n";
+import { useDialogA11y } from "./modal/useDialogA11y";
 import "./NodeModal.scss";
+
+const getGridColumnCount = (container: HTMLElement) => {
+  const computedStyle = window.getComputedStyle(container);
+  const columns = computedStyle.gridTemplateColumns
+    .split(" ")
+    .filter((entry) => entry.trim().length > 0);
+
+  return Math.max(columns.length, 1);
+};
+
+const handleArrowNavigation = (
+  event: KeyboardEvent<HTMLElement>,
+  options?: { forceSingleColumn?: boolean },
+) => {
+  if (
+    event.key !== "ArrowLeft" &&
+    event.key !== "ArrowRight" &&
+    event.key !== "ArrowUp" &&
+    event.key !== "ArrowDown"
+  ) {
+    return;
+  }
+
+  const container = event.currentTarget;
+  const buttons = Array.from(
+    container.querySelectorAll<HTMLButtonElement>("button:not([disabled])"),
+  );
+
+  if (buttons.length === 0) {
+    return;
+  }
+
+  const activeElement =
+    document.activeElement instanceof HTMLButtonElement
+      ? document.activeElement
+      : null;
+  const currentIndex = Math.max(
+    buttons.indexOf(activeElement as HTMLButtonElement),
+    0,
+  );
+  const columnCount = options?.forceSingleColumn
+    ? 1
+    : getGridColumnCount(container);
+
+  let nextIndex = currentIndex;
+
+  if (event.key === "ArrowRight") {
+    nextIndex = Math.min(currentIndex + 1, buttons.length - 1);
+  } else if (event.key === "ArrowLeft") {
+    nextIndex = Math.max(currentIndex - 1, 0);
+  } else if (event.key === "ArrowDown") {
+    nextIndex = Math.min(currentIndex + columnCount, buttons.length - 1);
+  } else if (event.key === "ArrowUp") {
+    nextIndex = Math.max(currentIndex - columnCount, 0);
+  }
+
+  if (nextIndex !== currentIndex) {
+    event.preventDefault();
+    buttons[nextIndex]?.focus();
+  }
+};
 
 export function NodeModal() {
   // #region State and Selectors
+  const dialogRef = useRef<HTMLDivElement | null>(null);
+  const titleId = useId();
+  const descriptionId = useId();
   const dispatch = useAppDispatch();
   const isNodeModalOpen = useAppSelector(selectIsNodeModalOpen);
   const selectedEvent = useAppSelector(selectSelectedEvent);
@@ -35,6 +101,18 @@ export function NodeModal() {
   const moodLabels = getMoodLabels(locale);
   const branchLabels = getBranchLabels(locale);
   const poemGroupLabels = getPoemGroupLabels(locale);
+
+  // #region Actions
+  const closeModal = useCallback(() => {
+    dispatch(closeNodeModal());
+  }, [dispatch]);
+
+  useDialogA11y({
+    isOpen: isNodeModalOpen,
+    dialogRef,
+    onRequestClose: closeModal,
+    initialFocusSelector: ".node-modal__close",
+  });
   // #endregion
 
   // #region Guard
@@ -43,23 +121,22 @@ export function NodeModal() {
   }
   // #endregion
 
-  // #region Actions
-  const closeModal = () => {
-    dispatch(closeNodeModal());
-  };
-  // #endregion
-
   // #region Render
   return (
     <div
+      ref={dialogRef}
       className="node-modal"
       role="dialog"
       aria-modal="true"
-      aria-labelledby="node-modal-title"
+      aria-label={t("nodeModal.dialogAriaLabel")}
+      aria-labelledby={titleId}
+      aria-describedby={descriptionId}
+      aria-keyshortcuts="Escape"
       onClick={closeModal}
     >
       <article
         className="node-modal__card"
+        role="document"
         onClick={(event) => event.stopPropagation()}
       >
         <header className="node-modal__header">
@@ -70,6 +147,7 @@ export function NodeModal() {
             className="node-modal__close"
             onClick={closeModal}
             type="button"
+            aria-label={t("nodeModal.closeAriaLabel")}
           >
             {t("nodeModal.close")}
           </button>
@@ -94,8 +172,10 @@ export function NodeModal() {
               {branchLabels[selectedEvent.branch]}
             </p>
           </div>
-          <h2 id="node-modal-title">{selectedEvent.title}</h2>
-          <p className="node-panel__description">{selectedEvent.description}</p>
+          <h2 id={titleId}>{selectedEvent.title}</h2>
+          <p className="node-panel__description" id={descriptionId}>
+            {selectedEvent.description}
+          </p>
           <p className="node-panel__hint">{t("nodeModal.poemSelectionHint")}</p>
         </section>
 
@@ -112,7 +192,10 @@ export function NodeModal() {
                 <p className="poem-group__title">
                   {poemGroupLabels[group]} ({poems.length})
                 </p>
-                <div className="poem-group__items">
+                <div
+                  className="poem-group__items"
+                  onKeyDown={(event) => handleArrowNavigation(event)}
+                >
                   {poems.map((poem) => (
                     <button
                       key={poem.id}
@@ -124,6 +207,10 @@ export function NodeModal() {
                       onClick={() => dispatch(openPoemById(poem.id))}
                       type="button"
                       aria-haspopup="dialog"
+                      aria-label={t("nodeModal.openPoemAriaLabel", {
+                        title: poem.title,
+                        author: poem.author,
+                      })}
                     >
                       <strong>{poem.title}</strong>
                       <span>{poem.author}</span>
@@ -141,13 +228,22 @@ export function NodeModal() {
             <p className="connections__title">
               {t("nodeModal.connectionsTitle")}
             </p>
-            <div className="connections__items">
+            <div
+              className="connections__items"
+              onKeyDown={(event) =>
+                handleArrowNavigation(event, { forceSingleColumn: true })
+              }
+            >
               {relatedEvents.length > 0 ? (
                 relatedEvents.map((event) => (
                   <button
                     key={event.id}
                     onClick={() => dispatch(selectRelatedEvent(event.id))}
                     type="button"
+                    aria-label={t("nodeModal.openRelatedNodeAriaLabel", {
+                      year: event.year,
+                      title: event.title,
+                    })}
                   >
                     <span>{event.year}</span>
                     <strong>{event.title}</strong>

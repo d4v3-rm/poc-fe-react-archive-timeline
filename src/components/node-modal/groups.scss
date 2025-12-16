@@ -67,7 +67,14 @@
 }
 
 .poem-chip:focus-visible {
-  border-color: rgba(196, 213, 250, 0.64);
+  outline: none;
+  border-color: rgba(255, 225, 170, 0.92);
+  background:
+    linear-gradient(165deg, rgba(24, 35, 70, 0.82), rgba(14, 23, 52, 0.88)),
+    rgba(18, 30, 60, 0.6);
+  box-shadow:
+    0 0 0 1px rgba(255, 225, 170, 0.34),
+    0 0 0 4px rgba(255, 225, 170, 0.14);
 }
 
 .poem-chip.is-active {

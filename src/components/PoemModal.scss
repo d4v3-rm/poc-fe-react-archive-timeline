@@ -52,15 +52,30 @@
   border: 1px solid rgba(168, 191, 247, 0.43);
   border-radius: 0;
   background: rgba(11, 19, 43, 0.68);
-  color: #d5dff9;
+  color: #eef4ff;
   padding: 0.5rem 1rem;
   font-size: 0.74rem;
   cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .poem-modal__close:hover {
   border-color: rgba(255, 214, 144, 0.8);
   background: rgba(18, 28, 58, 0.8);
+}
+
+.poem-modal__close:focus-visible {
+  outline: none;
+  border-color: rgba(255, 225, 170, 0.92);
+  background: rgba(18, 28, 60, 0.92);
+  color: #fff7ea;
+  box-shadow:
+    0 0 0 1px rgba(255, 225, 170, 0.34),
+    0 0 0 4px rgba(255, 225, 170, 0.14);
 }
 
 .poem-modal__meta {

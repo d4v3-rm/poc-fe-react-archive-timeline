@@ -82,17 +82,23 @@
     "focus": "{{year}}: {{title}}"
   },
   "nodeModal": {
+    "dialogAriaLabel": "Modale dettagli nodo",
     "close": "Chiudi",
+    "closeAriaLabel": "Chiudi modale dettagli nodo",
     "introAriaLabel": "Introduzione nodo",
     "nodeCounter": "Nodo {{current}}/{{total}}",
     "poemSelectionHint": "Seleziona una poesia per aprire la scheda completa in modale.",
     "groupedPoemsAriaLabel": "Poesie raggruppate per tipologia",
     "connectionsAriaLabel": "Connessioni fra nodi",
     "connectionsTitle": "Nodi collegati",
-    "connectionsEmpty": "Nessuna connessione disponibile."
+    "connectionsEmpty": "Nessuna connessione disponibile.",
+    "openPoemAriaLabel": "Apri poesia {{title}} di {{author}}",
+    "openRelatedNodeAriaLabel": "Apri nodo collegato {{year}} - {{title}}"
   },
   "poemModal": {
     "close": "Chiudi",
+    "closeAriaLabel": "Chiudi modale poesia",
+    "dialogAriaLabel": "Modale dettagli poesia",
     "metaSeparator": " - "
   }
 }

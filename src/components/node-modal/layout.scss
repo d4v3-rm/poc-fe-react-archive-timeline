@@ -56,14 +56,29 @@
   border: 1px solid rgba(151, 174, 236, 0.42);
   border-radius: 0;
   background: rgba(10, 17, 40, 0.72);
-  color: #cfdaff;
+  color: #eef4ff;
   padding: 0.5rem 1rem;
   font-size: 0.74rem;
   font-weight: 500;
   cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .node-modal__close:hover {
   border-color: rgba(208, 224, 255, 0.72);
   background: rgba(16, 25, 56, 0.82);
+}
+
+.node-modal__close:focus-visible {
+  outline: none;
+  border-color: rgba(255, 225, 170, 0.92);
+  background: rgba(18, 28, 60, 0.92);
+  color: #fff7ea;
+  box-shadow:
+    0 0 0 1px rgba(255, 225, 170, 0.38),
+    0 0 0 4px rgba(255, 225, 170, 0.16);
 }
