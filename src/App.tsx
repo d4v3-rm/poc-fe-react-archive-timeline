@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
 import {
+  ContentHealthNotice,
   EmptyState,
   LanguageSwitcher,
   MoodFilterDock,
@@ -15,6 +16,7 @@ import { startupLoaderConfig } from "./data/uiConfig";
 import {
   selectEffectiveSelectedEventId,
   selectFilteredEvents,
+  selectPoeticContentHealth,
 } from "./features/timeline/timelineSelectors";
 import {
   selectEvent,
@@ -33,6 +35,7 @@ function App() {
   const { locale, t } = useI18n();
   const filteredEvents = useAppSelector(selectFilteredEvents);
   const activeEventId = useAppSelector(selectEffectiveSelectedEventId);
+  const contentHealth = useAppSelector(selectPoeticContentHealth);
   // #endregion
 
   // #region Event Handlers
@@ -86,13 +89,17 @@ function App() {
       <div className="ambient-glow ambient-glow--right" />
 
       <main className="stage" aria-label={t("app.stageAriaLabel")}>
-        <ThreeTimeline
-          locale={locale}
-          events={filteredEvents}
-          activeEventId={activeEventId}
-          onSelect={handleSelect}
-          onHover={handleHover}
-        />
+        {!contentHealth.hasFatalError ? (
+          <ThreeTimeline
+            locale={locale}
+            events={filteredEvents}
+            activeEventId={activeEventId}
+            onSelect={handleSelect}
+            onHover={handleHover}
+          />
+        ) : null}
+
+        <ContentHealthNotice />
 
         <section className="ui-top">
           <header className="hero-panel">
@@ -101,12 +108,16 @@ function App() {
           <LanguageSwitcher />
         </section>
 
-        <TutorialDock />
+        {!contentHealth.hasFatalError ? (
+          <>
+            <TutorialDock />
 
-        <MoodFilterDock />
-        <EmptyState />
-        <NodeModal />
-        <PoemModal />
+            <MoodFilterDock />
+            <EmptyState />
+            <NodeModal />
+            <PoemModal />
+          </>
+        ) : null}
       </main>
     </div>
   );

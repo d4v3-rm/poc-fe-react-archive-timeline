@@ -26,6 +26,16 @@ const contentUnavailableByLocale: Record<AppLocale, string> = {
   it: "Contenuto non disponibile.",
 };
 
+const emptyEventsByLocale: Record<AppLocale, PoeticEventContentConfig[]> = {
+  en: [],
+  it: [],
+};
+
+const localeErrors: Record<AppLocale, string | null> = {
+  en: null,
+  it: null,
+};
+
 const eventsByLocale = supportedLocales.reduce<
   Record<AppLocale, PoeticEventContentConfig[]>
 >(
@@ -34,17 +44,23 @@ const eventsByLocale = supportedLocales.reduce<
       filePath.includes(`/locales/${locale}/`),
     );
 
-    accumulator[locale] = validatePoeticEventsContent(
-      locale,
-      fileEntry?.[1] ?? [],
-      markdownFiles,
-    );
+    try {
+      accumulator[locale] = validatePoeticEventsContent(
+        locale,
+        fileEntry?.[1] ?? [],
+        markdownFiles,
+      );
+    } catch (error) {
+      const message =
+        error instanceof Error ? error.message : String(error ?? "Unknown error");
+      localeErrors[locale] = message;
+      accumulator[locale] = [];
+      console.error(message);
+    }
+
     return accumulator;
   },
-  {
-    en: [],
-    it: [],
-  },
+  { ...emptyEventsByLocale },
 );
 
 const resolvePoemBody = (
@@ -110,11 +126,57 @@ const localizedEventsByLocale = supportedLocales.reduce<
   },
 );
 
+const getFirstAvailableLocale = (): AppLocale | null => {
+  if (localizedEventsByLocale[defaultLocale].length > 0) {
+    return defaultLocale;
+  }
+
+  const available = supportedLocales.find(
+    (locale) => localizedEventsByLocale[locale].length > 0,
+  );
+
+  return available ?? null;
+};
+
+const getFallbackEvents = (): PoeticEvent[] => {
+  const fallbackLocale = getFirstAvailableLocale();
+  return fallbackLocale ? localizedEventsByLocale[fallbackLocale] : [];
+};
+
+export interface PoeticContentDiagnostics {
+  hasFatalError: boolean;
+  activeLocales: AppLocale[];
+  fallbackLocale: AppLocale | null;
+  localeErrors: Record<AppLocale, string | null>;
+}
+
+const activeLocales = supportedLocales.filter(
+  (locale) => localizedEventsByLocale[locale].length > 0,
+);
+
+const fallbackLocale = getFirstAvailableLocale();
+
+const contentDiagnostics: PoeticContentDiagnostics = {
+  hasFatalError: activeLocales.length === 0,
+  activeLocales,
+  fallbackLocale,
+  localeErrors,
+};
+
 export const getPoeticEvents = (locale: AppLocale): PoeticEvent[] => {
   const events = localizedEventsByLocale[locale];
-  return events.length > 0 ? events : localizedEventsByLocale[defaultLocale];
+  return events.length > 0 ? events : getFallbackEvents();
 };
 
 export const getDefaultEventId = () => {
-  return getPoeticEvents(defaultLocale)[0]?.id ?? null;
+  return getFallbackEvents()[0]?.id ?? null;
+};
+
+export const getPoeticContentDiagnostics = (): PoeticContentDiagnostics => {
+  return {
+    hasFatalError: contentDiagnostics.hasFatalError,
+    activeLocales: [...contentDiagnostics.activeLocales],
+    fallbackLocale: contentDiagnostics.fallbackLocale,
+    localeErrors: { ...contentDiagnostics.localeErrors },
+  };
 };

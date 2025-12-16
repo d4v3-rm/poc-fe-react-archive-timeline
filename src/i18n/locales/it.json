@@ -48,6 +48,15 @@
     "message": "Nessun nodo con il filtro corrente.",
     "resetButton": "Ripristina tutti i mood"
   },
+  "contentErrors": {
+    "fallbackTitle": "Parte dei contenuti localizzati non è disponibile",
+    "fallbackDescription": "I contenuti in {{locale}} non hanno superato la validazione. Viene usato il fallback in {{fallbackLocale}}.",
+    "fatalTitle": "Impossibile caricare i contenuti della timeline",
+    "fatalDescription": "Nessun contenuto poetico valido è stato caricato. Controlla schema JSON e riferimenti markdown.",
+    "detailsLabel": "Dettagli validazione",
+    "reloadButton": "Ricarica pagina",
+    "unavailableLocale": "Lingua non disponibile"
+  },
   "stats": {
     "ariaLabel": "Statistiche timeline",
     "nodes": {

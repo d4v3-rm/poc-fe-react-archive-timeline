@@ -48,6 +48,15 @@
     "message": "No nodes match the current filter.",
     "resetButton": "Reset all moods"
   },
+  "contentErrors": {
+    "fallbackTitle": "Some localized content is unavailable",
+    "fallbackDescription": "Content in {{locale}} failed validation. Showing fallback content in {{fallbackLocale}}.",
+    "fatalTitle": "Unable to load timeline content",
+    "fatalDescription": "No valid poetic content could be loaded. Check JSON schema and markdown references.",
+    "detailsLabel": "Validation details",
+    "reloadButton": "Reload page",
+    "unavailableLocale": "Unavailable locale"
+  },
   "stats": {
     "ariaLabel": "Timeline statistics",
     "nodes": {

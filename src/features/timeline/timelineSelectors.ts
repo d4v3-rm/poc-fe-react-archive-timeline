@@ -1,6 +1,9 @@
 import { createSelector } from "@reduxjs/toolkit";
 import type { RootState } from "../../app/store";
-import { getPoeticEvents } from "../../data/poeticEvents";
+import {
+  getPoeticContentDiagnostics,
+  getPoeticEvents,
+} from "../../data/poeticEvents";
 import { selectLocale } from "../locale/localeSlice";
 import type { PoemEntry, PoemGroup, PoeticEvent } from "../../types";
 import { poemGroupOrder } from "./constants";
@@ -53,6 +56,19 @@ export const selectIsNodeModalOpen = createSelector(
 
 export const selectPoeticEvents = createSelector([selectLocale], (locale) =>
   getPoeticEvents(locale),
+);
+
+export const selectPoeticContentHealth = createSelector(
+  [selectLocale],
+  (locale) => {
+    const diagnostics = getPoeticContentDiagnostics();
+
+    return {
+      ...diagnostics,
+      activeLocale: locale,
+      activeLocaleError: diagnostics.localeErrors[locale],
+    };
+  },
 );
 
 export const selectFilteredEvents = createSelector(
