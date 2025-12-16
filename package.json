@@ -22,6 +22,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
+    "content:check": "node scripts/content-check.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
