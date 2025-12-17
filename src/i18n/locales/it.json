@@ -1,6 +1,7 @@
 {
   "app": {
-    "stageAriaLabel": "Timeline poetica fullscreen con diramazioni"
+    "stageAriaLabel": "Timeline poetica fullscreen con diramazioni",
+    "loadingExperience": "Caricamento esperienza 3D"
   },
   "language": {
     "selectorAriaLabel": "Selettore lingua",

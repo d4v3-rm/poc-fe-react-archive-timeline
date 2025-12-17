@@ -78,6 +78,24 @@
   }
 }
 
+.stage-loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 5;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(154, 179, 241, 0.44);
+  background:
+    linear-gradient(170deg, rgba(14, 22, 50, 0.88), rgba(9, 15, 35, 0.9)),
+    rgba(9, 15, 35, 0.84);
+  padding: 0.58rem 0.9rem;
+  color: #e6efff;
+  font-size: 0.76rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
 .ui-top {
   position: absolute;
   top: calc(1rem + var(--safe-top));

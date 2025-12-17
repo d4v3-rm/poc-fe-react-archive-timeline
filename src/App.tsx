@@ -1,15 +1,12 @@
-import { useCallback, useEffect, useState } from "react";
+import { Suspense, lazy, useCallback, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
 import {
   ContentHealthNotice,
   EmptyState,
   LanguageSwitcher,
   MoodFilterDock,
-  NodeModal,
-  PoemModal,
   StartupLoader,
   StatsPanel,
-  ThreeTimeline,
   TutorialDock,
 } from "./components";
 import { startupLoaderConfig } from "./data/uiConfig";
@@ -25,6 +22,24 @@ import {
 import { useI18n } from "./i18n/useI18n";
 import type { PoeticEvent } from "./types";
 import "./App.scss";
+
+const LazyThreeTimeline = lazy(() =>
+  import("./components/three-timeline").then((module) => ({
+    default: module.ThreeTimeline,
+  })),
+);
+
+const LazyNodeModal = lazy(() =>
+  import("./components/NodeModal").then((module) => ({
+    default: module.NodeModal,
+  })),
+);
+
+const LazyPoemModal = lazy(() =>
+  import("./components/PoemModal").then((module) => ({
+    default: module.PoemModal,
+  })),
+);
 
 function App() {
   // #region State and Selectors
@@ -89,35 +104,43 @@ function App() {
       <div className="ambient-glow ambient-glow--right" />
 
       <main className="stage" aria-label={t("app.stageAriaLabel")}>
-        {!contentHealth.hasFatalError ? (
-          <ThreeTimeline
-            locale={locale}
-            events={filteredEvents}
-            activeEventId={activeEventId}
-            onSelect={handleSelect}
-            onHover={handleHover}
-          />
-        ) : null}
+        <Suspense
+          fallback={
+            <div className="stage-loading" role="status" aria-live="polite">
+              {t("app.loadingExperience")}
+            </div>
+          }
+        >
+          {!contentHealth.hasFatalError ? (
+            <LazyThreeTimeline
+              locale={locale}
+              events={filteredEvents}
+              activeEventId={activeEventId}
+              onSelect={handleSelect}
+              onHover={handleHover}
+            />
+          ) : null}
 
-        <ContentHealthNotice />
+          <ContentHealthNotice />
 
-        <section className="ui-top">
-          <header className="hero-panel">
-            <StatsPanel />
-          </header>
-          <LanguageSwitcher />
-        </section>
+          <section className="ui-top">
+            <header className="hero-panel">
+              <StatsPanel />
+            </header>
+            <LanguageSwitcher />
+          </section>
 
-        {!contentHealth.hasFatalError ? (
-          <>
-            <TutorialDock />
+          {!contentHealth.hasFatalError ? (
+            <>
+              <TutorialDock />
 
-            <MoodFilterDock />
-            <EmptyState />
-            <NodeModal />
-            <PoemModal />
-          </>
-        ) : null}
+              <MoodFilterDock />
+              <EmptyState />
+              <LazyNodeModal />
+              <LazyPoemModal />
+            </>
+          ) : null}
+        </Suspense>
       </main>
     </div>
   );

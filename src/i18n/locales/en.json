@@ -1,6 +1,7 @@
 {
   "app": {
-    "stageAriaLabel": "Fullscreen poetic timeline with branches"
+    "stageAriaLabel": "Fullscreen poetic timeline with branches",
+    "loadingExperience": "Loading 3D experience"
   },
   "language": {
     "selectorAriaLabel": "Language selector",
