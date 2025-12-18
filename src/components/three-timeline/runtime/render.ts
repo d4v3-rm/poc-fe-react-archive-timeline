@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { recordFrameSample } from "../../../observability/telemetry";
 import { updateLabelLayer } from "./labels";
 import type {
   FlowRuntime,
@@ -54,6 +55,7 @@ export const startRenderLoop = ({
 
   const render = () => {
     frameId = window.requestAnimationFrame(render);
+    recordFrameSample();
 
     const elapsed = clock.getElapsedTime();
     const isCompactViewport = renderer.domElement.clientWidth <= 720;

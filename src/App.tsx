@@ -13,6 +13,8 @@ import { startupLoaderConfig } from "./data/uiConfig";
 import {
   selectEffectiveSelectedEventId,
   selectFilteredEvents,
+  selectIsNodeModalOpen,
+  selectOpenPoem,
   selectPoeticContentHealth,
 } from "./features/timeline/timelineSelectors";
 import {
@@ -20,6 +22,7 @@ import {
   setHoveredEventId,
 } from "./features/timeline/timelineSlice";
 import { useI18n } from "./i18n/useI18n";
+import { recordRuntimeError, trackModalState } from "./observability/telemetry";
 import type { PoeticEvent } from "./types";
 import "./App.scss";
 
@@ -50,6 +53,8 @@ function App() {
   const { locale, t } = useI18n();
   const filteredEvents = useAppSelector(selectFilteredEvents);
   const activeEventId = useAppSelector(selectEffectiveSelectedEventId);
+  const isNodeModalOpen = useAppSelector(selectIsNodeModalOpen);
+  const openPoem = useAppSelector(selectOpenPoem);
   const contentHealth = useAppSelector(selectPoeticContentHealth);
   // #endregion
 
@@ -88,6 +93,32 @@ function App() {
     window.localStorage.setItem("poetry_portal_locale", locale);
     document.documentElement.lang = locale;
   }, [locale]);
+
+  useEffect(() => {
+    trackModalState("node", isNodeModalOpen);
+  }, [isNodeModalOpen]);
+
+  useEffect(() => {
+    trackModalState("poem", Boolean(openPoem));
+  }, [openPoem]);
+
+  useEffect(() => {
+    const handleError = (event: ErrorEvent) => {
+      recordRuntimeError("window.error", event.error ?? event.message);
+    };
+
+    const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
+      recordRuntimeError("window.unhandledrejection", event.reason);
+    };
+
+    window.addEventListener("error", handleError);
+    window.addEventListener("unhandledrejection", handleUnhandledRejection);
+
+    return () => {
+      window.removeEventListener("error", handleError);
+      window.removeEventListener("unhandledrejection", handleUnhandledRejection);
+    };
+  }, []);
   // #endregion
 
   // #region Render

@@ -1,4 +1,5 @@
 import { defaultLocale, supportedLocales, type AppLocale } from "../i18n";
+import { recordRuntimeError } from "../observability/telemetry";
 import type { PoemEntry, PoeticEvent } from "../types";
 import {
   toMarkdownFileKey,
@@ -56,6 +57,7 @@ const eventsByLocale = supportedLocales.reduce<
       localeErrors[locale] = message;
       accumulator[locale] = [];
       console.error(message);
+      recordRuntimeError(`content.validation.${locale}`, message);
     }
 
     return accumulator;
