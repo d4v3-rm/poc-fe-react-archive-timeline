@@ -56,6 +56,7 @@ export const startRenderLoop = ({
     frameId = window.requestAnimationFrame(render);
 
     const elapsed = clock.getElapsedTime();
+    const isCompactViewport = renderer.domElement.clientWidth <= 720;
 
     currentOffset = THREE.MathUtils.lerp(
       currentOffset,
@@ -80,7 +81,7 @@ export const startRenderLoop = ({
       const pulse = 0.78 + Math.sin(elapsed * 1.7 + index * 0.7) * 0.22;
       mesh.material.opacity = (isFocused ? 0.64 : 0.28) * pulse;
       mesh.material.emissiveIntensity = (isFocused ? 0.9 : 0.44) * pulse;
-      glow.material.opacity = (isFocused ? 0.54 : 0.2) * pulse;
+      glow.material.opacity = (isFocused ? 0.54 : isCompactViewport ? 0.14 : 0.2) * pulse;
     });
 
     forkVisuals.forEach(({ sourceId, targetId, branch, line }, index) => {
@@ -92,7 +93,8 @@ export const startRenderLoop = ({
 
       const pulse = 0.7 + Math.sin(elapsed * 1.5 + index * 0.9) * 0.3;
       line.material.opacity =
-        (isFocused ? 0.72 : activeBranch === branch ? 0.38 : 0.18) * pulse;
+        (isFocused ? 0.72 : activeBranch === branch ? 0.38 : isCompactViewport ? 0.12 : 0.18) *
+        pulse;
     });
 
     connectionVisuals.forEach(({ sourceId, targetId, branch, line }, index) => {
@@ -104,7 +106,8 @@ export const startRenderLoop = ({
 
       const pulse = 0.72 + Math.sin(elapsed * 1.2 + index * 1.4) * 0.28;
       line.material.opacity =
-        (isFocused ? 0.46 : activeBranch === branch ? 0.2 : 0.12) * pulse;
+        (isFocused ? 0.46 : activeBranch === branch ? 0.2 : isCompactViewport ? 0.08 : 0.12) *
+        pulse;
     });
 
     flowParticles.forEach((particle, particleIndex) => {
@@ -133,9 +136,21 @@ export const startRenderLoop = ({
       const isHovered = hoveredState.current === event.id;
       const isActive = activeId === event.id;
 
-      const scaleTarget = isActive ? 1.52 : isHovered ? 1.24 : 1;
+      const scaleTarget = isActive
+        ? isCompactViewport
+          ? 1.34
+          : 1.52
+        : isHovered
+          ? isCompactViewport
+            ? 1.08
+            : 1.24
+          : isCompactViewport
+            ? 0.86
+            : 1;
       scaleScratch.setScalar(scaleTarget);
-      satelliteScaleScratch.setScalar(scaleTarget * 1.08);
+      satelliteScaleScratch.setScalar(
+        scaleTarget * (isCompactViewport ? 0.98 : 1.08),
+      );
 
       node.scale.lerp(scaleScratch, 0.13);
       shell.scale.lerp(scaleScratch, 0.1);
@@ -163,7 +178,7 @@ export const startRenderLoop = ({
 
       aura.scale.set(auraSize, auraSize, 1);
       aura.material.opacity =
-        (isActive ? 0.46 : isHovered ? 0.34 : 0.22) +
+        (isActive ? 0.46 : isHovered ? 0.34 : isCompactViewport ? 0.14 : 0.22) +
         Math.sin(elapsed * 1.8 + clusterIndex * 0.8) * 0.02;
 
       satellites.forEach((satellite, satIndex) => {

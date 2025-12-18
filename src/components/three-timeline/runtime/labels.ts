@@ -1,5 +1,9 @@
 import * as THREE from "three";
-import { labelPlacementOffsets, rectanglesOverlap } from "./constants";
+import {
+  compactLabelPlacementOffsets,
+  labelPlacementOffsets,
+  rectanglesOverlap,
+} from "./constants";
 import type {
   LabelLayoutEntry,
   LabelRect,
@@ -43,6 +47,14 @@ export const updateLabelLayer = ({
   camera.getWorldDirection(cameraDirectionScratch);
   const viewportWidth = renderer.domElement.clientWidth;
   const viewportHeight = renderer.domElement.clientHeight;
+  const isCompactViewport = viewportWidth <= 720;
+  const placementOffsets = isCompactViewport
+    ? compactLabelPlacementOffsets
+    : labelPlacementOffsets;
+  const viewportPadding = isCompactViewport ? 8 : 4;
+  const collisionGap = isCompactViewport ? 9 : 6;
+  const maxPassiveLabels = isCompactViewport ? 3 : Number.POSITIVE_INFINITY;
+  let passiveLabelsPlaced = 0;
 
   labelLayouts.length = 0;
   occupiedLabelRects.length = 0;
@@ -102,6 +114,7 @@ export const updateLabelLayer = ({
       depth: labelProjectScratch.z,
       isActive,
       isHovered,
+      isRelated,
       lift,
       baseOpacity,
       priority,
@@ -118,13 +131,21 @@ export const updateLabelLayer = ({
     })
     .forEach((layout) => {
       const { element } = layout;
+      const isPassive = !layout.isActive && !layout.isHovered && !layout.isRelated;
+
+      if (isPassive && passiveLabelsPlaced >= maxPassiveLabels) {
+        element.style.opacity = "0";
+        element.style.zIndex = "0";
+        return;
+      }
+
       const elementWidth = element.offsetWidth || 220;
       const elementHeight = element.offsetHeight || 74;
       let hasPlacement = false;
       let placedX = layout.x;
       let placedY = layout.y + layout.lift;
 
-      for (const offset of labelPlacementOffsets) {
+      for (const offset of placementOffsets) {
         const candidateX = layout.x + offset.x;
         const candidateY = layout.y + layout.lift + offset.y;
 
@@ -136,17 +157,17 @@ export const updateLabelLayer = ({
         };
 
         const overflowsViewport =
-          candidateRect.left < 4 ||
-          candidateRect.right > viewportWidth - 4 ||
-          candidateRect.top < 4 ||
-          candidateRect.bottom > viewportHeight - 4;
+          candidateRect.left < viewportPadding ||
+          candidateRect.right > viewportWidth - viewportPadding ||
+          candidateRect.top < viewportPadding ||
+          candidateRect.bottom > viewportHeight - viewportPadding;
 
         if (overflowsViewport) {
           continue;
         }
 
         const hasCollision = occupiedLabelRects.some((rect) =>
-          rectanglesOverlap(candidateRect, rect, 6),
+          rectanglesOverlap(candidateRect, rect, collisionGap),
         );
 
         if (hasCollision) {
@@ -176,6 +197,10 @@ export const updateLabelLayer = ({
         element.style.opacity = "0";
         element.style.zIndex = "0";
         return;
+      }
+
+      if (isPassive) {
+        passiveLabelsPlaced += 1;
       }
 
       element.style.transform = `translate(-50%, -50%) translate(${placedX}px, ${placedY}px)`;

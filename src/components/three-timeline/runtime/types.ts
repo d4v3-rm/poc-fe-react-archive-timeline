@@ -113,6 +113,7 @@ export interface LabelLayoutEntry {
   depth: number;
   isActive: boolean;
   isHovered: boolean;
+  isRelated: boolean;
   lift: number;
   baseOpacity: string;
   priority: number;

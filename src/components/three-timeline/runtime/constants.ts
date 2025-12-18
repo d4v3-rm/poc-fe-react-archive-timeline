@@ -57,6 +57,14 @@ export const labelPlacementOffsets = [
   { x: 0, y: 30 },
 ];
 
+export const compactLabelPlacementOffsets = [
+  { x: 0, y: 0 },
+  { x: 0, y: -18 },
+  { x: 0, y: 18 },
+  { x: 20, y: -10 },
+  { x: -20, y: -10 },
+];
+
 export const rectanglesOverlap = (
   first: LabelRect,
   second: LabelRect,
