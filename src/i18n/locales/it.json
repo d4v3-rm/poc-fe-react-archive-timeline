@@ -10,6 +10,10 @@
       "en": "Inglese"
     }
   },
+  "theme": {
+    "switchToLight": "Passa alla modalita chiara",
+    "switchToDark": "Passa alla modalita scura"
+  },
   "loader": {
     "defaults": {
       "ariaLabel": "Caricamento archivio poetico",

@@ -110,6 +110,13 @@
   pointer-events: none;
 }
 
+.ui-top__controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.46rem;
+  pointer-events: auto;
+}
+
 .hero-panel {
   width: fit-content;
   max-width: 100%;
@@ -191,6 +198,10 @@
     top: calc(0.75rem + var(--safe-top));
     left: calc(0.75rem + var(--safe-left));
     right: calc(0.75rem + var(--safe-right));
+  }
+
+  .ui-top__controls {
+    gap: 0.34rem;
   }
 
   .hero-panel {
