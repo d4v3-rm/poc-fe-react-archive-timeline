@@ -1,5 +1,5 @@
 {
-  "name": "poc-fe-react-archive-timeline",
+  "name": "poc-fe-react-poetry-viewer",
   "private": true,
   "version": "0.1.0",
   "description": "Timeline poetica 3D fullscreen con contenuti localizzati e configurabili via JSON e Markdown.",

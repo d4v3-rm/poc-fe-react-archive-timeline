@@ -1,4 +1,4 @@
-﻿# 🌌 poc-fe-react-archive-timeline
+﻿# 🌌 poc-fe-react-poetry-viewer
 
 <p align="center">
   <strong>A cinematic 3D poetry archive built with React, Three.js, and a JSON + Markdown content engine.</strong>
