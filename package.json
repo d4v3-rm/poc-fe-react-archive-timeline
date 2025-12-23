@@ -2,7 +2,7 @@
   "name": "poc-fe-react-archive-timeline",
   "private": true,
   "version": "0.1.0",
-  "description": "Timeline poetica 3D fullscreen con contenuti localizzati e configurabili via JSON e Markdown.",
+  "description": "Fullscreen 3D poetry timeline with localized, JSON and Markdown-driven content.",
   "license": "MIT",
   "type": "module",
   "keywords": [
