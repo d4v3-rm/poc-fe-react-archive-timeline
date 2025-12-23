@@ -1,4 +1,4 @@
-﻿# 🌌 poc-fe-react-archive-timeline
+# 🌌 poc-fe-react-archive-timeline
 
 <p align="center">
   <strong>A cinematic 3D poetry archive built with React, Three.js, and a JSON + Markdown content engine.</strong>
@@ -212,3 +212,10 @@ src/
 ## 📄 License
 
 Released under the **MIT License**. See `LICENSE`.
+
+## Live URL
+
+- https://d4v3-rm.github.io/poc-fe-react-archive-timeline/
+
+---
+
