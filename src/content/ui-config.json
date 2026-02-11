@@ -1,0 +1,6 @@
+{
+  "startupLoader": {
+    "enabled": true,
+    "delayMs": 2000
+  }
+}

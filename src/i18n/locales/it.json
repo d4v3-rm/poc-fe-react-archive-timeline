@@ -1,0 +1,118 @@
+{
+  "app": {
+    "stageAriaLabel": "Timeline poetica fullscreen con diramazioni",
+    "loadingExperience": "Caricamento esperienza 3D"
+  },
+  "language": {
+    "selectorAriaLabel": "Selettore lingua",
+    "options": {
+      "it": "Italiano",
+      "en": "Inglese"
+    }
+  },
+  "theme": {
+    "switchToLight": "Passa alla modalita chiara",
+    "switchToDark": "Passa alla modalita scura"
+  },
+  "loader": {
+    "defaults": {
+      "ariaLabel": "Caricamento archivio poetico",
+      "eyebrow": "Archivio poetico 3D",
+      "label": "Sincronizzazione timeline"
+    }
+  },
+  "timeline": {
+    "ariaLabel": "Timeline poetica tridimensionale a diramazioni",
+    "nodeLabelPoems": "{{count}} poesie",
+    "branchLabels": {
+      "canonical": "Radice canonica",
+      "vision": "Ramo visione",
+      "civic": "Ramo civile",
+      "performative": "Ramo performativo"
+    }
+  },
+  "filters": {
+    "ariaLabel": "Filtri mood",
+    "all": "Tutti i mood",
+    "moods": {
+      "love": "Amore",
+      "nature": "Natura",
+      "revolt": "Rivolta",
+      "exile": "Esilio",
+      "spiritual": "Spirituale"
+    }
+  },
+  "poems": {
+    "groups": {
+      "manifesto": "Manifesti",
+      "cycle": "Cicli",
+      "fragments": "Frammenti"
+    }
+  },
+  "emptyState": {
+    "message": "Nessun nodo con il filtro corrente.",
+    "resetButton": "Ripristina tutti i mood"
+  },
+  "contentErrors": {
+    "fallbackTitle": "Parte dei contenuti localizzati non è disponibile",
+    "fallbackDescription": "I contenuti in {{locale}} non hanno superato la validazione. Viene usato il fallback in {{fallbackLocale}}.",
+    "fatalTitle": "Impossibile caricare i contenuti della timeline",
+    "fatalDescription": "Nessun contenuto poetico valido è stato caricato. Controlla schema JSON e riferimenti markdown.",
+    "detailsLabel": "Dettagli validazione",
+    "reloadButton": "Ricarica pagina",
+    "unavailableLocale": "Lingua non disponibile"
+  },
+  "stats": {
+    "ariaLabel": "Statistiche timeline",
+    "nodes": {
+      "ariaLabel": "{{count}} nodi",
+      "tooltip": "Nodi visibili con il filtro attuale"
+    },
+    "branches": {
+      "ariaLabel": "{{count}} rami",
+      "tooltip": "Diramazioni poetiche attive"
+    },
+    "poems": {
+      "ariaLabel": "{{count}} poesie",
+      "tooltip": "Totale poesie nei nodi correnti"
+    }
+  },
+  "tutorial": {
+    "ariaLabel": "Tutorial navigazione",
+    "actions": {
+      "scroll": {
+        "key": "Scroll",
+        "label": "tempo"
+      },
+      "drag": {
+        "key": "Drag",
+        "label": "camera"
+      },
+      "click": {
+        "key": "Click",
+        "label": "nodo"
+      }
+    },
+    "focus": "{{year}}: {{title}}"
+  },
+  "nodeModal": {
+    "dialogAriaLabel": "Modale dettagli nodo",
+    "close": "Chiudi",
+    "closeAriaLabel": "Chiudi modale dettagli nodo",
+    "introAriaLabel": "Introduzione nodo",
+    "nodeCounter": "Nodo {{current}}/{{total}}",
+    "poemSelectionHint": "Seleziona una poesia per aprire la scheda completa in modale.",
+    "groupedPoemsAriaLabel": "Poesie raggruppate per tipologia",
+    "connectionsAriaLabel": "Connessioni fra nodi",
+    "connectionsTitle": "Nodi collegati",
+    "connectionsEmpty": "Nessuna connessione disponibile.",
+    "openPoemAriaLabel": "Apri poesia {{title}} di {{author}}",
+    "openRelatedNodeAriaLabel": "Apri nodo collegato {{year}} - {{title}}"
+  },
+  "poemModal": {
+    "close": "Chiudi",
+    "closeAriaLabel": "Chiudi modale poesia",
+    "dialogAriaLabel": "Modale dettagli poesia",
+    "metaSeparator": " - "
+  }
+}

@@ -1,0 +1,57 @@
+@media (max-width: 1180px) {
+  .node-modal__card {
+    width: min(50rem, 100%);
+  }
+}
+
+@media (max-width: 940px) {
+  .node-modal {
+    padding: calc(0.75rem + var(--safe-top)) calc(0.75rem + var(--safe-right))
+      calc(0.75rem + var(--safe-bottom)) calc(0.75rem + var(--safe-left));
+  }
+
+  .node-modal__card {
+    max-height: min(90vh, 53rem);
+    padding: 0.9rem 0.92rem 0.95rem;
+  }
+
+  .node-modal__intro {
+    padding: 0.68rem 0.72rem 0.76rem;
+  }
+
+  .node-modal__body {
+    grid-template-columns: 1fr;
+    max-height: min(60dvh, 31rem);
+    gap: 0.68rem;
+  }
+
+  .connections {
+    position: static;
+    border-left: 0;
+    border-top: 1px solid rgba(133, 157, 219, 0.24);
+    padding: 0.58rem 0 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .poem-group__items {
+    grid-template-columns: 1fr;
+  }
+
+  .node-modal__card h2 {
+    font-size: clamp(1.2rem, 7vw, 1.7rem);
+  }
+
+  .node-panel__description {
+    font-size: 0.85rem;
+    line-height: 1.44;
+  }
+
+  .node-panel__hint {
+    padding-top: 0.36rem;
+  }
+
+  .node-panel__facts {
+    gap: 0.22rem 0.44rem;
+  }
+}

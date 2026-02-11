@@ -1,73 +1,214 @@
-# React + TypeScript + Vite
+﻿# 🌌 poc-fe-react-archive-timeline
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+  <strong>A cinematic 3D poetry archive built with React, Three.js, and a JSON + Markdown content engine.</strong>
+</p>
 
-Currently, two official plugins are available:
+<p align="center">
+  <img alt="React" src="https://img.shields.io/badge/React-19.1.1-20232A?logo=react&logoColor=61DAFB" />
+  <img alt="Vite" src="https://img.shields.io/badge/Vite-7.1.7-646CFF?logo=vite&logoColor=FFD62E" />
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5.9.3-3178C6?logo=typescript&logoColor=white" />
+  <img alt="Three.js" src="https://img.shields.io/badge/Three.js-0.180.0-111111?logo=threedotjs&logoColor=white" />
+  <img alt="Redux Toolkit" src="https://img.shields.io/badge/Redux_Toolkit-2.9.0-764ABC?logo=redux&logoColor=white" />
+  <img alt="License" src="https://img.shields.io/badge/License-MIT-2EA043" />
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p align="center">
+  <img alt="Timeline Preview" src="assets/timeline-preview.png" />
+</p>
 
-## React Compiler
+<p align="center">
+  Explore poetic history as an abstract memory flow: navigate nodes, filter moods, open event modals, then dive into poem details.
+</p>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Highlights
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 🎯 **Fullscreen 3D timeline** with abstract nodes, branches, and connection trails.
+- 🧭 **Interaction-first navigation**: `Scroll` timeline, `Drag` camera, `Click` node.
+- 🧠 **Content-driven architecture** with localized JSON events + Markdown poem files.
+- 🧩 **Redux Toolkit state model** for filters, selection, modals, and locale state.
+- 🌍 **Bilingual runtime**: Italian (`it`) and English (`en`).
+- 🎨 **Tokenized Sass system** with global design primitives + component styles.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🖼️ UI Gallery
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Timeline Experience | Event Modal |
+| --- | --- |
+| ![3D Timeline](assets/timeline-preview.png) | ![Node Modal](assets/modal-preview.png) |
+
+| Poem Modal |
+| --- |
+| ![Poem Modal](assets/category-preview.png) |
+
+---
+
+## 🧱 Stack
+
+| Layer | Tools |
+| --- | --- |
+| Frontend | React 19, TypeScript 5 |
+| 3D Rendering | Three.js |
+| State | Redux Toolkit, React Redux |
+| Styling | Sass (`.scss`) + global design tokens |
+| Build | Vite 7 |
+| Quality | ESLint + Prettier + TypeScript checks |
+
+---
+
+## 🚀 Quick Start
+
+### 1. Requirements
+
+- Node.js `20+`
+- npm `10+`
+
+### 2. Install
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 3. Run dev server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### 4. Build and preview
+
+```bash
+npm run build
+npm run preview
+```
+
+---
+
+## 🛠️ Available Scripts
+
+| Script | Purpose |
+| --- | --- |
+| `npm run dev` | Start local development |
+| `npm run build` | Typecheck + production build |
+| `npm run preview` | Preview built app |
+| `npm run lint` | Run ESLint checks |
+| `npm run lint:fix` | Auto-fix lint issues |
+| `npm run format` | Apply Prettier formatting |
+| `npm run typecheck` | Run TypeScript checks only |
+
+---
+
+## 🗂️ Content Configuration
+
+This project is fully content-configurable:
+
+- **Events JSON**: `src/content/locales/<locale>/poetic-events.json`
+- **Poem Markdown**: `src/content/locales/<locale>/poems/**/*.md`
+- **UI runtime config**: `src/content/ui-config.json` (for example startup loader options)
+
+### Event schema concept
+
+- Event identity: `id`, `year`, `title`, `location`
+- Semantics: `mood`, `branch`, optional `branchFrom`
+- Topology: `connections[]`
+- Poetry payload: `poems[]` with markdown references
+
+---
+
+## 🌍 Localization
+
+Supported locales:
+
+- 🇮🇹 `it`
+- 🇬🇧 `en`
+
+Localization layers:
+
+- UI dictionaries: `src/i18n/locales/*.json`
+- i18n helpers: `src/i18n/index.ts`, `src/i18n/useI18n.ts`
+- Redux locale slice: `src/features/locale/localeSlice.ts`
+
+---
+
+## 🏗️ Architecture
+
+```mermaid
+flowchart LR
+  A[Localized JSON + Markdown] --> B[data/poeticEvents.ts]
+  B --> C[Redux Store]
+  C --> D[Three Timeline Runtime]
+  C --> E[React UI Layer]
+  D --> F[Node Events]
+  E --> F
+  F --> C
+```
+
+### Runtime modules
+
+- `src/components/three-timeline/` -> scene, runtime, projection, label behavior
+- `src/components/node-modal/` -> modal sections and layout styles
+- `src/data/` -> content loaders and UI config adapters
+- `src/features/` -> state slices/selectors
+- `src/styles/` -> global tokens and shared foundation styles
+
+---
+
+## 🎨 Design System Notes
+
+The visual language is intentionally minimal and atmospheric:
+
+- deep-space gradient canvas
+- sharp rectangular UI surfaces
+- accent-coded mood chips and labels
+- low-noise, high-contrast typography for readability over 3D scenes
+
+Global tokens are centralized in:
+
+- `src/styles/global.scss`
+
+---
+
+## ✅ Quality Gate
+
+Recommended pre-commit sequence:
+
+```bash
+npm run format
+npm run lint
+npm run typecheck
+npm run build
+```
+
+---
+
+## ⚡ Performance
+
+- Three.js is the largest bundle contributor.
+- Chunk-size warnings can occur in production builds for 3D-heavy apps.
+- Typical optimizations:
+  1. lazy load non-critical UI sections
+  2. split heavy runtime chunks
+  3. simplify materials/geometry when needed
+
+---
+
+## 📁 Project Structure
+
+```text
+src/
+  app/                         # Redux store + typed hooks
+  components/                  # UI components and modal layers
+  components/three-timeline/   # 3D timeline runtime modules
+  content/                     # Localized JSON and Markdown content
+  data/                        # Data loaders and UI configuration
+  features/                    # Redux slices/selectors
+  i18n/                        # Translation runtime and dictionaries
+  styles/                      # Global tokens and shared style foundation
+```
+
+## 📄 License
+
+Released under the **MIT License**. See `LICENSE`.

@@ -1,0 +1,324 @@
+[
+  {
+    "id": "dolce-stil-novo",
+    "year": 1292,
+    "title": "Nascita del Dolce Stil Novo",
+    "location": "Firenze",
+    "mood": "love",
+    "branch": "canonical",
+    "description": "La lingua amorosa diventa laboratorio formale: armonia, introspezione e lessico spirituale segnano l inizio della tradizione moderna.",
+    "connections": ["commedia-dante", "leopardi-infinito"],
+    "poems": [
+      {
+        "id": "donna-pregha",
+        "title": "Donna me pregha",
+        "author": "Guido Cavalcanti",
+        "group": "manifesto",
+        "markdown": "dolce-stil-novo/donna-pregha.md"
+      },
+      {
+        "id": "tanto-gentile",
+        "title": "Tanto gentile e tanto onesta pare",
+        "author": "Dante Alighieri",
+        "group": "cycle",
+        "markdown": "dolce-stil-novo/tanto-gentile.md"
+      }
+    ]
+  },
+  {
+    "id": "commedia-dante",
+    "year": 1321,
+    "title": "Si chiude la Commedia",
+    "location": "Ravenna",
+    "mood": "spiritual",
+    "branch": "canonical",
+    "description": "Il poema lega teologia, politica e invenzione narrativa in un sistema che diventera punto di riferimento per secoli.",
+    "connections": ["dolce-stil-novo", "leopardi-infinito", "montale-ossi"],
+    "poems": [
+      {
+        "id": "inferno-xxvi",
+        "title": "Inferno XXVI",
+        "author": "Dante Alighieri",
+        "group": "fragments",
+        "markdown": "commedia-dante/inferno-xxvi.md"
+      },
+      {
+        "id": "purgatorio-i",
+        "title": "Purgatorio I",
+        "author": "Dante Alighieri",
+        "group": "cycle",
+        "markdown": "commedia-dante/purgatorio-i.md"
+      },
+      {
+        "id": "paradiso-xxxiii",
+        "title": "Paradiso XXXIII",
+        "author": "Dante Alighieri",
+        "group": "manifesto",
+        "markdown": "commedia-dante/paradiso-xxxiii.md"
+      }
+    ]
+  },
+  {
+    "id": "leopardi-infinito",
+    "year": 1819,
+    "title": "Leopardi apre la linea dell infinito",
+    "location": "Recanati",
+    "mood": "nature",
+    "branch": "vision",
+    "description": "La siepe diventa dispositivo filosofico: guardare il limite per immaginare l oltre e misurare la coscienza moderna.",
+    "connections": ["commedia-dante", "baude-fleurs", "montale-ossi"],
+    "poems": [
+      {
+        "id": "infinito",
+        "title": "L infinito",
+        "author": "Giacomo Leopardi",
+        "group": "manifesto",
+        "markdown": "leopardi-infinito/infinito.md"
+      },
+      {
+        "id": "sera-festa",
+        "title": "La sera del di di festa",
+        "author": "Giacomo Leopardi",
+        "group": "cycle",
+        "markdown": "leopardi-infinito/sera-festa.md"
+      }
+    ],
+    "branchFrom": "commedia-dante"
+  },
+  {
+    "id": "baude-fleurs",
+    "year": 1857,
+    "title": "Baudelaire e la frattura urbana",
+    "location": "Parigi",
+    "mood": "revolt",
+    "branch": "vision",
+    "description": "Con Les Fleurs du mal la modernita entra nella poesia: metropoli, corpo e ambiguita morale diventano materia lirica.",
+    "connections": ["leopardi-infinito", "ungaretti-porto", "ginsberg-howl"],
+    "poems": [
+      {
+        "id": "spleen",
+        "title": "Spleen",
+        "author": "Charles Baudelaire",
+        "group": "fragments",
+        "markdown": "baude-fleurs/spleen.md"
+      },
+      {
+        "id": "albatros",
+        "title": "L albatros",
+        "author": "Charles Baudelaire",
+        "group": "manifesto",
+        "markdown": "baude-fleurs/albatros.md"
+      }
+    ]
+  },
+  {
+    "id": "ungaretti-porto",
+    "year": 1916,
+    "title": "La parola ridotta alla soglia",
+    "location": "Carso",
+    "mood": "exile",
+    "branch": "civic",
+    "description": "In trincea il verso si spezza e si concentra. La pagina diventa spazio di sopravvivenza linguistica.",
+    "connections": ["baude-fleurs", "montale-ossi", "quasimodo-giorno"],
+    "poems": [
+      {
+        "id": "porto-sepolto",
+        "title": "Il porto sepolto",
+        "author": "Giuseppe Ungaretti",
+        "group": "manifesto",
+        "markdown": "ungaretti-porto/porto-sepolto.md"
+      },
+      {
+        "id": "soldati",
+        "title": "Soldati",
+        "author": "Giuseppe Ungaretti",
+        "group": "fragments",
+        "markdown": "ungaretti-porto/soldati.md"
+      }
+    ],
+    "branchFrom": "baude-fleurs"
+  },
+  {
+    "id": "montale-ossi",
+    "year": 1925,
+    "title": "Montale e il paesaggio aspro",
+    "location": "Genova",
+    "mood": "nature",
+    "branch": "vision",
+    "description": "Ossi di seppia rende il paesaggio costiero un vocabolario di attriti, secchezza e disincanto.",
+    "connections": [
+      "commedia-dante",
+      "leopardi-infinito",
+      "ungaretti-porto",
+      "merini-rientro"
+    ],
+    "poems": [
+      {
+        "id": "meriggiare",
+        "title": "Meriggiare pallido e assorto",
+        "author": "Eugenio Montale",
+        "group": "cycle",
+        "markdown": "montale-ossi/meriggiare.md"
+      },
+      {
+        "id": "non-chiederci",
+        "title": "Non chiederci la parola",
+        "author": "Eugenio Montale",
+        "group": "manifesto",
+        "markdown": "montale-ossi/non-chiederci.md"
+      },
+      {
+        "id": "spesso-male",
+        "title": "Spesso il male di vivere ho incontrato",
+        "author": "Eugenio Montale",
+        "group": "fragments",
+        "markdown": "montale-ossi/spesso-male.md"
+      }
+    ]
+  },
+  {
+    "id": "quasimodo-giorno",
+    "year": 1947,
+    "title": "Il tono civile del dopoguerra",
+    "location": "Milano",
+    "mood": "revolt",
+    "branch": "civic",
+    "description": "La voce privata si apre al discorso storico e alla responsabilita collettiva nella ricostruzione del paese.",
+    "connections": ["ungaretti-porto", "ginsberg-howl"],
+    "poems": [
+      {
+        "id": "uomo-tempo",
+        "title": "Uomo del mio tempo",
+        "author": "Salvatore Quasimodo",
+        "group": "manifesto",
+        "markdown": "quasimodo-giorno/uomo-tempo.md"
+      },
+      {
+        "id": "giorno-dopo-giorno",
+        "title": "Giorno dopo giorno",
+        "author": "Salvatore Quasimodo",
+        "group": "cycle",
+        "markdown": "quasimodo-giorno/giorno-dopo-giorno.md"
+      }
+    ]
+  },
+  {
+    "id": "ginsberg-howl",
+    "year": 1956,
+    "title": "Howl e la poesia performance",
+    "location": "San Francisco",
+    "mood": "revolt",
+    "branch": "performative",
+    "description": "Il reading pubblico cambia la fruizione del testo: verso lungo, corpo in scena e controcultura diventano un solo gesto.",
+    "connections": ["baude-fleurs", "quasimodo-giorno", "slam-poetry"],
+    "poems": [
+      {
+        "id": "howl-pt1",
+        "title": "Howl Parte I",
+        "author": "Allen Ginsberg",
+        "group": "manifesto",
+        "markdown": "ginsberg-howl/howl-pt1.md"
+      },
+      {
+        "id": "america",
+        "title": "America",
+        "author": "Allen Ginsberg",
+        "group": "fragments",
+        "markdown": "ginsberg-howl/america.md"
+      },
+      {
+        "id": "supermarket",
+        "title": "A Supermarket in California",
+        "author": "Allen Ginsberg",
+        "group": "cycle",
+        "markdown": "ginsberg-howl/supermarket.md"
+      }
+    ],
+    "branchFrom": "quasimodo-giorno"
+  },
+  {
+    "id": "merini-rientro",
+    "year": 1979,
+    "title": "La voce frontale di Merini",
+    "location": "Milano",
+    "mood": "love",
+    "branch": "vision",
+    "description": "Con il ritorno editoriale la poesia intreccia eros, spiritualita e fragilita biografica senza mediazioni.",
+    "connections": ["montale-ossi", "poesia-digitale"],
+    "poems": [
+      {
+        "id": "terra-santa",
+        "title": "La Terra Santa",
+        "author": "Alda Merini",
+        "group": "manifesto",
+        "markdown": "merini-rientro/terra-santa.md"
+      },
+      {
+        "id": "aforismi-amore",
+        "title": "Poesie d amore",
+        "author": "Alda Merini",
+        "group": "fragments",
+        "markdown": "merini-rientro/aforismi-amore.md"
+      }
+    ]
+  },
+  {
+    "id": "slam-poetry",
+    "year": 1994,
+    "title": "Lo slam apre la piazza europea",
+    "location": "Parigi e Roma",
+    "mood": "revolt",
+    "branch": "performative",
+    "description": "La competizione orale rende la poesia un rito comunitario dove ritmo, gesto e risposta del pubblico sono centrali.",
+    "connections": ["ginsberg-howl", "poesia-digitale"],
+    "poems": [
+      {
+        "id": "slam-set-1",
+        "title": "Set orale metropolitano",
+        "author": "Comunita slam",
+        "group": "cycle",
+        "markdown": "slam-poetry/slam-set-1.md"
+      },
+      {
+        "id": "spoken-resistenza",
+        "title": "Spoken words di resistenza",
+        "author": "Comunita slam",
+        "group": "manifesto",
+        "markdown": "slam-poetry/spoken-resistenza.md"
+      }
+    ]
+  },
+  {
+    "id": "poesia-digitale",
+    "year": 2015,
+    "title": "Ecologia poetica digitale",
+    "location": "Piattaforme online",
+    "mood": "spiritual",
+    "branch": "performative",
+    "description": "Social, video e newsletter trasformano ritmo e scala della lettura, creando micro comunita transnazionali.",
+    "connections": ["merini-rientro", "slam-poetry"],
+    "poems": [
+      {
+        "id": "instapoetry-feed",
+        "title": "Sequenze feed poetry",
+        "author": "Nuove autrici e nuovi autori",
+        "group": "fragments",
+        "markdown": "poesia-digitale/instapoetry-feed.md"
+      },
+      {
+        "id": "longform-newsletter",
+        "title": "Lunghe lettere poetiche",
+        "author": "Nuove autrici e nuovi autori",
+        "group": "cycle",
+        "markdown": "poesia-digitale/longform-newsletter.md"
+      },
+      {
+        "id": "video-poem-live",
+        "title": "Video poem live",
+        "author": "Nuove autrici e nuovi autori",
+        "group": "manifesto",
+        "markdown": "poesia-digitale/video-poem-live.md"
+      }
+    ]
+  }
+]

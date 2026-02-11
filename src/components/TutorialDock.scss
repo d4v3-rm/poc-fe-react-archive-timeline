@@ -1,0 +1,77 @@
+.tutorial-dock {
+  position: fixed;
+  right: calc(1rem + var(--safe-right));
+  top: calc(1rem + var(--safe-top));
+  z-index: 5;
+  width: auto;
+  max-width: calc(100vw - 2rem - var(--safe-left) - var(--safe-right));
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.interaction-hints {
+  margin: 0;
+  display: grid;
+  gap: 0.24rem;
+  justify-items: end;
+  border: 1px solid rgba(144, 170, 231, 0.28);
+  background:
+    linear-gradient(170deg, rgba(10, 18, 40, 0.7), rgba(8, 14, 34, 0.82)),
+    rgba(9, 16, 38, 0.74);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 12px 24px rgba(4, 8, 22, 0.28);
+  backdrop-filter: blur(8px);
+  padding: 0.32rem 0.4rem;
+}
+
+.interaction-hints__item {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 0.4rem;
+  color: #c3d0ef;
+  font-size: 0.73rem;
+  line-height: 1.2;
+}
+
+.interaction-hints__focus {
+  margin: 0.18rem 0 0;
+  color: #b0c2e8;
+  font-size: 0.66rem;
+  line-height: 1.25;
+  max-width: 18rem;
+  text-align: right;
+  border-top: 1px solid rgba(138, 162, 223, 0.28);
+  padding-top: 0.24rem;
+}
+
+@media (max-width: 1180px) {
+  .tutorial-dock {
+    right: calc(0.75rem + var(--safe-right));
+    top: calc(0.75rem + var(--safe-top));
+    width: auto;
+    max-width: calc(100vw - 1.5rem - var(--safe-left) - var(--safe-right));
+  }
+}
+
+@media (max-width: 700px) {
+  .tutorial-dock {
+    top: calc(4rem + var(--safe-top));
+    right: calc(0.5rem + var(--safe-right));
+  }
+
+  .interaction-hints {
+    padding: 0.24rem 0.3rem;
+  }
+
+  .interaction-hints__focus {
+    display: none;
+  }
+
+  .interaction-hints__item {
+    font-size: 0.67rem;
+  }
+}

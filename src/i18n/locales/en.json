@@ -1,0 +1,118 @@
+{
+  "app": {
+    "stageAriaLabel": "Fullscreen poetic timeline with branches",
+    "loadingExperience": "Loading 3D experience"
+  },
+  "language": {
+    "selectorAriaLabel": "Language selector",
+    "options": {
+      "it": "Italiano",
+      "en": "English"
+    }
+  },
+  "theme": {
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode"
+  },
+  "loader": {
+    "defaults": {
+      "ariaLabel": "Loading poetic archive",
+      "eyebrow": "Poetic Archive 3D",
+      "label": "Synchronizing timeline"
+    }
+  },
+  "timeline": {
+    "ariaLabel": "Three-dimensional branching poetic timeline",
+    "nodeLabelPoems": "{{count}} poems",
+    "branchLabels": {
+      "canonical": "Canonical root",
+      "vision": "Vision branch",
+      "civic": "Civic branch",
+      "performative": "Performative branch"
+    }
+  },
+  "filters": {
+    "ariaLabel": "Mood filters",
+    "all": "All moods",
+    "moods": {
+      "love": "Love",
+      "nature": "Nature",
+      "revolt": "Revolt",
+      "exile": "Exile",
+      "spiritual": "Spiritual"
+    }
+  },
+  "poems": {
+    "groups": {
+      "manifesto": "Manifestos",
+      "cycle": "Cycles",
+      "fragments": "Fragments"
+    }
+  },
+  "emptyState": {
+    "message": "No nodes match the current filter.",
+    "resetButton": "Reset all moods"
+  },
+  "contentErrors": {
+    "fallbackTitle": "Some localized content is unavailable",
+    "fallbackDescription": "Content in {{locale}} failed validation. Showing fallback content in {{fallbackLocale}}.",
+    "fatalTitle": "Unable to load timeline content",
+    "fatalDescription": "No valid poetic content could be loaded. Check JSON schema and markdown references.",
+    "detailsLabel": "Validation details",
+    "reloadButton": "Reload page",
+    "unavailableLocale": "Unavailable locale"
+  },
+  "stats": {
+    "ariaLabel": "Timeline statistics",
+    "nodes": {
+      "ariaLabel": "{{count}} nodes",
+      "tooltip": "Visible nodes with the current filter"
+    },
+    "branches": {
+      "ariaLabel": "{{count}} branches",
+      "tooltip": "Active poetic branches"
+    },
+    "poems": {
+      "ariaLabel": "{{count}} poems",
+      "tooltip": "Total poems in the current nodes"
+    }
+  },
+  "tutorial": {
+    "ariaLabel": "Navigation tutorial",
+    "actions": {
+      "scroll": {
+        "key": "Scroll",
+        "label": "time"
+      },
+      "drag": {
+        "key": "Drag",
+        "label": "camera"
+      },
+      "click": {
+        "key": "Click",
+        "label": "node"
+      }
+    },
+    "focus": "{{year}}: {{title}}"
+  },
+  "nodeModal": {
+    "dialogAriaLabel": "Node details modal",
+    "close": "Close",
+    "closeAriaLabel": "Close node details modal",
+    "introAriaLabel": "Node introduction",
+    "nodeCounter": "Node {{current}}/{{total}}",
+    "poemSelectionHint": "Select a poem to open the full card in a modal.",
+    "groupedPoemsAriaLabel": "Poems grouped by type",
+    "connectionsAriaLabel": "Connections between nodes",
+    "connectionsTitle": "Connected nodes",
+    "connectionsEmpty": "No connections available.",
+    "openPoemAriaLabel": "Open poem {{title}} by {{author}}",
+    "openRelatedNodeAriaLabel": "Open related node {{year}} - {{title}}"
+  },
+  "poemModal": {
+    "close": "Close",
+    "closeAriaLabel": "Close poem modal",
+    "dialogAriaLabel": "Poem details modal",
+    "metaSeparator": " - "
+  }
+}
